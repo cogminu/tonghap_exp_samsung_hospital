@@ -1,0 +1,43 @@
+1.8739 	WARNING 	We strongly recommend you activate the PTB sound engine in PsychoPy prefs as the preferred audio engine. Its timing is vastly superior. Your prefs are currently set to use ['sounddevice', 'PTB', 'pyo', 'pygame'] (in that order).
+3.0477 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순B.ttf
+3.0486 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Bold.ttf
+3.0505 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순L.ttf
+3.0627 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각B.ttf
+3.0705 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년바탕_Bold.ttf
+3.0767 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Light.ttf
+3.0930 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각R.ttf
+3.1086 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목V_Bold.ttf
+3.1316 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년바탕_Regular.ttf
+3.1425 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각L.ttf
+3.1605 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순R.ttf
+3.1845 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Medium.ttf
+3.1942 	WARNING 	C:\Users\Minu Kim\AppData\Roaming\psychopy3\fonts\Times.truetype doesn't have valid font family name
+3.2865 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순B.ttf
+3.2873 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Bold.ttf
+3.2892 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순L.ttf
+3.3009 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각B.ttf
+3.3085 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년바탕_Bold.ttf
+3.3142 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Light.ttf
+3.3297 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각R.ttf
+3.3444 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목V_Bold.ttf
+3.3648 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년바탕_Regular.ttf
+3.3745 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각L.ttf
+3.3904 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순R.ttf
+3.4132 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Medium.ttf
+3.4226 	WARNING 	C:\Users\Minu Kim\AppData\Roaming\psychopy3\fonts\Times.truetype doesn't have valid font family name
+6.3371 	EXP 	Created window1 = Window(allowGUI=True, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x000002CF56DA4F40>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x000002CF570EF280>, multiSample=False, name='window1', numSamples=2, pos=(0, 0), screen=1, size=array([1920, 1080]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+6.3371 	EXP 	window1: mouseVisible = True
+6.3372 	EXP 	window1: mouseVisible = True
+6.3372 	EXP 	window1: Attempting to measure frame rate of screen (1) ...
+6.3372 	EXP 	window1: recordFrameIntervals = False
+6.5037 	EXP 	window1: recordFrameIntervals = True
+6.6866 	EXP 	Screen (1) actual frame rate measured at 60.03Hz
+6.6866 	EXP 	window1: recordFrameIntervals = False
+6.7097 	WARNING 	launchHubServer: If using the iohub mouse or eyetracker devices, fullScr should be True.
+8.9494 	EXP 	Created image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1, 1, 1]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, image=str(...), interpolate=True, mask=None, maskParams=None, name='image', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([1.8, 1. ]), texRes=128.0, units='height', win=Window(...))
+8.9995 	EXP 	Created text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Noto Sans KR', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='asdfasdfasdf', units='height', win=Window(...), wrapWidth=1)
+9.1324 	EXP 	image: autoDraw = True
+9.1324 	EXP 	text: autoDraw = True
+45.3514 	EXP 	image: autoDraw = False
+45.3514 	EXP 	text: autoDraw = False
+45.3655 	EXP 	window1: mouseVisible = True

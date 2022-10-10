@@ -1,0 +1,37 @@
+1.2896 	WARNING 	We strongly recommend you activate the PTB sound engine in PsychoPy prefs as the preferred audio engine. Its timing is vastly superior. Your prefs are currently set to use ['sounddevice', 'PTB', 'pyo', 'pygame'] (in that order).
+2.9737 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Bold.ttf
+2.9753 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각B.ttf
+2.9805 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순L.ttf
+2.9863 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목V_Bold.ttf
+2.9959 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각L.ttf
+3.0005 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순B.ttf
+3.0141 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년바탕_Regular.ttf
+3.0279 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순R.ttf
+3.0332 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Medium.ttf
+3.0624 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년바탕_Bold.ttf
+3.0669 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Light.ttf
+3.0824 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각R.ttf
+3.0911 	WARNING 	C:\Users\Minu Kim\AppData\Roaming\psychopy3\fonts\Times.truetype doesn't have valid font family name
+3.2230 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Bold.ttf
+3.2245 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각B.ttf
+3.2298 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순L.ttf
+3.2353 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목V_Bold.ttf
+3.2445 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각L.ttf
+3.2487 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순B.ttf
+3.2608 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년바탕_Regular.ttf
+3.2726 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순R.ttf
+3.2770 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Medium.ttf
+3.3043 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년바탕_Bold.ttf
+3.3086 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Light.ttf
+3.3236 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각R.ttf
+3.3314 	WARNING 	C:\Users\Minu Kim\AppData\Roaming\psychopy3\fonts\Times.truetype doesn't have valid font family name
+5.1675 	WARNING 	User requested fullscreen with size [1024  768], but screen is actually [1920, 1080]. Using actual size
+5.9043 	EXP 	Created window1 = Window(allowGUI=True, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x000001BFA25ACE80>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x000001BFA2A71190>, multiSample=False, name='window1', numSamples=2, pos=(1920, 0), screen=0, size=array([1920, 1080]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+5.9044 	EXP 	window1: mouseVisible = True
+5.9044 	EXP 	window1: mouseVisible = False
+5.9044 	EXP 	window1: Attempting to measure frame rate of screen (0) ...
+5.9044 	EXP 	window1: recordFrameIntervals = False
+5.9730 	EXP 	window1: recordFrameIntervals = True
+6.0498 	EXP 	Screen (0) actual frame rate measured at 143.25Hz
+6.0498 	EXP 	window1: recordFrameIntervals = False
+8.0090 	EXP 	window1: mouseVisible = True

@@ -1,0 +1,224 @@
+2.3561 	WARNING 	We strongly recommend you activate the PTB sound engine in PsychoPy prefs as the preferred audio engine. Its timing is vastly superior. Your prefs are currently set to use ['sounddevice', 'PTB', 'pyo', 'pygame'] (in that order).
+6.1286 	EXP 	Created window1 = Window(allowGUI=True, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0., 0., 0.]), colorSpace='hsv', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x0000015B6BF52D60>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x0000015B6CEF9220>, multiSample=False, name='window1', numSamples=2, pos=(0, 0), screen=0, size=array([1920, 1080]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+6.1287 	EXP 	window1: mouseVisible = True
+6.1287 	EXP 	window1: mouseVisible = True
+6.1287 	EXP 	window1: Attempting to measure frame rate of screen (0) ...
+6.1287 	EXP 	window1: recordFrameIntervals = False
+6.2953 	EXP 	window1: recordFrameIntervals = True
+6.5290 	EXP 	Screen (0) actual frame rate measured at 60.45Hz
+6.5290 	EXP 	window1: recordFrameIntervals = False
+6.5575 	WARNING 	launchHubServer: If using the iohub mouse or eyetracker devices, fullScr should be True.
+8.1999 	EXP 	Created image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1, 1, 1]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, image='fis_artwork/general_instruction.png', interpolate=True, mask=None, maskParams=None, name='image', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([1920., 1080.]), texRes=128.0, units='pix', win=Window(...))
+8.3399 	EXP 	Created wth_movie = MovieStim3(__class__=<class 'psychopy.visual.movie3.MovieStim3'>, anchor=('center', 'center'), autoLog=True, color=UNKNOWN, colorSpace=UNKNOWN, depth=0.0, filename='ins/weather_intro.mp4', flipHoriz=False, flipVert=False, fps=UNKNOWN, interpolate=True, loop=False, name='wth_movie', noAudio=False, opacity=1, ori=method-wrapper(...), pos=array([0., 0.]), size=None, units='pix', vframe_callback=UNKNOWN, volume=UNKNOWN, win=Window(...))
+9.8588 	WARNING 	1.5188908000000083: Video catchup needed, advancing self._nextFrameT from 0.0 to 0.041666666666666664
+9.8588 	WARNING 	1.5189225999997689: Video catchup needed, advancing self._nextFrameT from 0.041666666666666664 to 0.08333333333333333
+9.8588 	WARNING 	1.518932799999675: Video catchup needed, advancing self._nextFrameT from 0.08333333333333333 to 0.125
+9.8589 	WARNING 	1.5189418999998452: Video catchup needed, advancing self._nextFrameT from 0.125 to 0.16666666666666666
+9.8589 	WARNING 	1.5189508999997088: Video catchup needed, advancing self._nextFrameT from 0.16666666666666666 to 0.20833333333333331
+9.8589 	WARNING 	1.518960099999731: Video catchup needed, advancing self._nextFrameT from 0.20833333333333331 to 0.24999999999999997
+9.8589 	WARNING 	1.5189691999999013: Video catchup needed, advancing self._nextFrameT from 0.24999999999999997 to 0.29166666666666663
+9.8589 	WARNING 	1.5189778999997543: Video catchup needed, advancing self._nextFrameT from 0.29166666666666663 to 0.3333333333333333
+9.8589 	WARNING 	1.518986600000062: Video catchup needed, advancing self._nextFrameT from 0.3333333333333333 to 0.375
+9.8589 	WARNING 	1.518995299999915: Video catchup needed, advancing self._nextFrameT from 0.375 to 0.4166666666666667
+9.8589 	WARNING 	Max reportNDroppedFrames reached, will not log any more dropped frames
+10.0393 	EXP 	Created text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Noto Sans KR', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='text', opacity=1.0, ori=0.0, pos=array([ 0. , -0.4]), rgb=UNKNOWN, text='스페이스로 넘어가세요', units='height', win=Window(...), wrapWidth=1)
+10.0394 	EXP 	window1: mouseVisible = True
+10.6125 	EXP 	Created wth_background_inst = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1, 1, 1]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, image=str(...), interpolate=True, mask=None, maskParams=None, name='wth_background_inst', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([1920., 1080.]), texRes=128.0, units='pix', win=Window(...))
+10.6316 	EXP 	Created wth_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, font='Noto Sans KR', fontFiles=[], height=0.07, italic=False, languageStyle='LTR', name='wth_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='단어연상 연습이 시작됩니다.', units='height', win=Window(...), wrapWidth=1)
+11.2511 	EXP 	Created wth_background_6 = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1, 1, 1]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, image=str(...), interpolate=True, mask=None, maskParams=None, name='wth_background_6', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([2., 1.]), texRes=128.0, units='height', win=Window(...))
+11.2626 	EXP 	Created wth_think_instr_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, font='Noto Sans KR', fontFiles=[], height=0.07, italic=False, languageStyle='LTR', name='wth_think_instr_2', opacity=1.0, ori=0.0, pos=array([0. , 0.3]), rgb=UNKNOWN, text='자유롭게 생각하세요.', units='height', win=Window(...), wrapWidth=1)
+11.2711 	EXP 	Created wth_think_cross_2 = ShapeStim(__class__=<class 'psychopy.visual.shape.ShapeStim'>, anchor=('center', 'center'), autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-3.0, fillColor=array([-1, -1, -1]), fillColorSpace='rgb', fillRGB=array([-1, -1, -1]), interpolate=True, lineColor=array([-1, -1, -1]), lineColorSpace='rgb', lineRGB=array([-1, -1, -1]), lineWidth=0.1, name='wth_think_cross_2', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([0.07, 0.07]), units='height', vertices=ndarray(...), win=Window(...), windingRule=None)
+11.8951 	EXP 	Created image_2 = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1, 1, 1]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, image=str(...), interpolate=True, mask=None, maskParams=None, name='image_2', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([1920., 1080.]), texRes=128.0, units='pix', win=Window(...))
+12.0096 	EXP 	Created wth_word_instr_4 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, font='Noto Sans KR', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='wth_word_instr_4', opacity=1.0, ori=0.0, pos=array([0.  , 0.25]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+12.6036 	EXP 	Created wth_background_7 = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1, 1, 1]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, image=str(...), interpolate=True, mask=None, maskParams=None, name='wth_background_7', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([2., 1.]), texRes=128.0, units='height', win=Window(...))
+12.6054 	EXP 	Created wth_word_typed_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Noto Sans KR', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='wth_word_typed_2', opacity=1.0, ori=0.0, pos=array([0. , 0.2]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+12.6092 	EXP 	window1: mouseVisible = True
+12.6774 	EXP 	Created wth_valence_rating_2 = Slider(__class__=<class 'psychopy.visual.slider.Slider'>, autoDraw=False, autoLog=True, borderColor=None, color=None, colorSpace='rgb', depth=-2, fillColor=None, flip=False, font='Noto Sans KR', granularity=0.0, labelColor=None, labelHeight=0.03, labelWrapWidth=None, labels=('부정', '중립', '긍정'), lineColor=None, markerColor=None, name='wth_valence_rating_2', opacity=None, ori=0.0, pos=array([-0.5, -0.1]), readOnly=False, self=UNKNOWN, size=array([0.45, 0.05]), startValue=None, style='rating', styleTweaks=[], ticks=array([-1,  0,  1]), units='height', win=Window(...))
+12.6893 	EXP 	Created wth_valence_txt_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-3.0, flipHoriz=False, flipVert=False, font='Noto Sans KR', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='wth_valence_txt_2', opacity=1.0, ori=0.0, pos=array([-0.5 , -0.02]), rgb=UNKNOWN, text='단어에서 느껴지는 감정', units='height', win=Window(...), wrapWidth=1)
+12.6982 	EXP 	Created wth_self_txt_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-4.0, flipHoriz=False, flipVert=False, font='Noto Sans KR', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='wth_self_txt_2', opacity=1.0, ori=0.0, pos=array([ 0.4 , -0.02]), rgb=UNKNOWN, text='단어가 자신과 관련이 있는 정도', units='height', win=Window(...), wrapWidth=1)
+12.6997 	EXP 	window1: mouseVisible = True
+12.7902 	EXP 	Created wth_self_rating_2 = Slider(__class__=<class 'psychopy.visual.slider.Slider'>, autoDraw=False, autoLog=True, borderColor=None, color=None, colorSpace='rgb', depth=-5, fillColor=None, flip=False, font='Noto Sans KR', granularity=0.0, labelColor=None, labelHeight=0.03, labelWrapWidth=None, labels=('전혀 나와 관련이 없음', '나와 관련이 매우 많음'), lineColor=None, markerColor=None, name='wth_self_rating_2', opacity=None, ori=0.0, pos=array([ 0.4, -0.1]), readOnly=False, self=UNKNOWN, size=array([0.45, 0.05]), startValue=None, style='rating', styleTweaks=[], ticks=array([0, 1]), units='height', win=Window(...))
+12.8286 	EXP 	window1: mouseVisible = True
+13.4151 	EXP 	Created wth_image_2 = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1, 1, 1]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, image=str(...), interpolate=True, mask=None, maskParams=None, name='wth_image_2', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([2., 1.]), texRes=128.0, units='height', win=Window(...))
+13.4451 	EXP 	Created wth_text_4 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Noto Sans KR', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='wth_text_4', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='연습을 다시 하시겠습니까?\n\ny 혹은 n을 누르세요.', units='height', win=Window(...), wrapWidth=1)
+14.0283 	EXP 	Created wth_background_inst_2 = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1, 1, 1]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, image=str(...), interpolate=True, mask=None, maskParams=None, name='wth_background_inst_2', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([2., 1.]), texRes=128.0, units='height', win=Window(...))
+14.0448 	EXP 	Created wth_text_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.07, italic=False, languageStyle='LTR', name='wth_text_2', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='실험을 시작합니다.\n\n스페이스로 넘어가세요.', units='height', win=Window(...), wrapWidth=1)
+14.6428 	EXP 	Created wth_background = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1, 1, 1]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, image=str(...), interpolate=True, mask=None, maskParams=None, name='wth_background', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([2., 1.]), texRes=128.0, units='height', win=Window(...))
+14.6787 	EXP 	Created wth_think_instr = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.07, italic=False, languageStyle='LTR', name='wth_think_instr', opacity=1.0, ori=0.0, pos=array([0. , 0.3]), rgb=UNKNOWN, text='자유롭게 생각하세요.', units='height', win=Window(...), wrapWidth=1)
+14.6800 	EXP 	Created wth_think_cross = ShapeStim(__class__=<class 'psychopy.visual.shape.ShapeStim'>, anchor=('center', 'center'), autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-3.0, fillColor=array([-1, -1, -1]), fillColorSpace='rgb', fillRGB=array([-1, -1, -1]), interpolate=True, lineColor=array([-1, -1, -1]), lineColorSpace='rgb', lineRGB=array([-1, -1, -1]), lineWidth=0.1, name='wth_think_cross', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([0.07, 0.07]), units='height', vertices=ndarray(...), win=Window(...), windingRule=None)
+15.2696 	EXP 	Created wth_background_2 = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1, 1, 1]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, image=str(...), interpolate=True, mask=None, maskParams=None, name='wth_background_2', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([2., 1.]), texRes=128.0, units='height', win=Window(...))
+15.3038 	EXP 	Created wth_word_instr = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='wth_word_instr', opacity=1.0, ori=0.0, pos=array([0.  , 0.25]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+15.3129 	EXP 	window1: mouseVisible = True
+15.8970 	EXP 	Created wth_background_3 = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1, 1, 1]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, image=str(...), interpolate=True, mask=None, maskParams=None, name='wth_background_3', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([2., 1.]), texRes=128.0, units='height', win=Window(...))
+15.8987 	EXP 	Created wth_word_typed = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='wth_word_typed', opacity=1.0, ori=0.0, pos=array([0. , 0.2]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+15.9002 	EXP 	window1: mouseVisible = True
+15.9341 	EXP 	Created wth_valence_rating = Slider(__class__=<class 'psychopy.visual.slider.Slider'>, autoDraw=False, autoLog=True, borderColor=None, color=None, colorSpace='rgb', depth=-2, fillColor=None, flip=False, font='Noto Sans KR', granularity=0.0, labelColor=None, labelHeight=0.03, labelWrapWidth=None, labels=('부정', '중립', '긍정'), lineColor=None, markerColor=None, name='wth_valence_rating', opacity=None, ori=0.0, pos=array([-0.5, -0.1]), readOnly=False, self=UNKNOWN, size=array([0.45, 0.05]), startValue=None, style='rating', styleTweaks=[], ticks=array([-1,  0,  1]), units='height', win=Window(...))
+15.9436 	EXP 	Created wth_valence_txt = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-3.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='wth_valence_txt', opacity=1.0, ori=0.0, pos=array([-0.5 , -0.02]), rgb=UNKNOWN, text='단어에서 느껴지는 감정', units='height', win=Window(...), wrapWidth=1)
+15.9498 	EXP 	Created wth_self_txt = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-4.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='wth_self_txt', opacity=1.0, ori=0.0, pos=array([ 0.4 , -0.02]), rgb=UNKNOWN, text='단어가 자신과 관련이 있는 정도', units='height', win=Window(...), wrapWidth=1)
+15.9513 	EXP 	window1: mouseVisible = True
+15.9715 	EXP 	Created wth_self_rating = Slider(__class__=<class 'psychopy.visual.slider.Slider'>, autoDraw=False, autoLog=True, borderColor=None, color=None, colorSpace='rgb', depth=-5, fillColor=None, flip=False, font='Noto Sans KR', granularity=0.0, labelColor=None, labelHeight=0.03, labelWrapWidth=None, labels=('전혀 나와 관련이 없음', '나와 관련이 매우 많음'), lineColor=None, markerColor=None, name='wth_self_rating', opacity=None, ori=0.0, pos=array([ 0.4, -0.1]), readOnly=False, self=UNKNOWN, size=array([0.45, 0.05]), startValue=None, style='rating', styleTweaks=[], ticks=array([0, 1]), units='height', win=Window(...))
+15.9759 	EXP 	window1: mouseVisible = True
+15.9850 	EXP 	Created exp_end_back = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1, 1, 1]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, image='pics/blank.png', interpolate=True, mask=None, maskParams=None, name='exp_end_back', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([3., 1.]), texRes=128.0, units='height', win=Window(...))
+16.0126 	EXP 	Created exp_end_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([-1, -1, -1]), colorSpace='rgb', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, font='Noto Sans KR', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='exp_end_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+16.0233 	EXP 	Created total_end_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1, 1, 1]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.04, italic=False, languageStyle='LTR', name='total_end_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='참여해주셔서 감사합니다.\n자동으로 종료됩니다.', units='height', win=Window(...), wrapWidth=1)
+16.0785 	DATA 	Mouse: Left button down, pos=(724,425)
+16.0789 	DATA 	Mouse:  Left button up, pos=(724,425)
+16.0803 	DATA 	Keypress: lalt
+16.0935 	EXP 	wth_movie: autoLog = True
+16.0935 	EXP 	wth_movie: movie = 'ins/weather_intro.mp4'
+16.0935 	EXP 	wth_movie: ori = 0.0
+16.0935 	EXP 	wth_valence_rating_2: autoLog = True
+16.0935 	EXP 	wth_valence_rating_2: markerPos = None
+16.0935 	EXP 	wth_valence_rating_2: styleTweaks = []
+16.0935 	EXP 	wth_valence_rating_2: styleTweaks = []
+16.0935 	EXP 	wth_valence_rating_2: styleTweaks = []
+16.0935 	EXP 	wth_valence_rating_2: styleTweaks = []
+16.0935 	EXP 	wth_valence_rating_2: contrast = 1.0
+16.0935 	EXP 	wth_valence_rating_2: autoLog = True
+16.0935 	EXP 	wth_self_rating_2: autoLog = True
+16.0935 	EXP 	wth_self_rating_2: markerPos = None
+16.0935 	EXP 	wth_self_rating_2: styleTweaks = []
+16.0935 	EXP 	wth_self_rating_2: styleTweaks = []
+16.0935 	EXP 	wth_self_rating_2: styleTweaks = []
+16.0935 	EXP 	wth_self_rating_2: styleTweaks = []
+16.0935 	EXP 	wth_self_rating_2: contrast = 1.0
+16.0935 	EXP 	wth_self_rating_2: autoLog = True
+16.0935 	EXP 	wth_valence_rating: autoLog = True
+16.0935 	EXP 	wth_valence_rating: markerPos = None
+16.0935 	EXP 	wth_valence_rating: styleTweaks = []
+16.0935 	EXP 	wth_valence_rating: styleTweaks = []
+16.0935 	EXP 	wth_valence_rating: styleTweaks = []
+16.0935 	EXP 	wth_valence_rating: styleTweaks = []
+16.0935 	EXP 	wth_valence_rating: contrast = 1.0
+16.0935 	EXP 	wth_valence_rating: autoLog = True
+16.0935 	EXP 	wth_self_rating: autoLog = True
+16.0935 	EXP 	wth_self_rating: markerPos = None
+16.0935 	EXP 	wth_self_rating: styleTweaks = []
+16.0935 	EXP 	wth_self_rating: styleTweaks = []
+16.0935 	EXP 	wth_self_rating: styleTweaks = []
+16.0935 	EXP 	wth_self_rating: styleTweaks = []
+16.0935 	EXP 	wth_self_rating: contrast = 1.0
+16.0935 	EXP 	wth_self_rating: autoLog = True
+16.0935 	EXP 	image: autoDraw = True
+17.2453 	DATA 	Keypress: lalt
+22.5452 	DATA 	Mouse: Left button down, pos=(1349,479)
+22.7113 	DATA 	Mouse:  Left button up, pos=(1349,479)
+22.7114 	DATA 	Mouse: Left button down, pos=(1349,479)
+22.8615 	DATA 	Mouse:  Left button up, pos=(1349,479)
+22.8616 	DATA 	Mouse: Left button down, pos=(1349,479)
+23.0114 	EXP 	Created sequence: random, trialTypes=1, nReps=1, seed=None
+23.0115 	EXP 	New trial (rep=0, index=0): None
+23.0120 	DATA 	Keypress: space
+23.0248 	EXP 	image: autoDraw = False
+23.0926 	DATA 	Mouse:  Left button up, pos=(1349,479)
+25.0270 	EXP 	wth_movie: autoDraw = True
+25.0270 	EXP 	text: autoDraw = True
+26.3939 	EXP 	Created sequence: sequential, trialTypes=1, nReps=10, seed=None
+26.3940 	EXP 	New trial (rep=0, index=0): None
+26.4676 	DATA 	Keypress: space
+26.4760 	EXP 	wth_movie: autoDraw = False
+26.4760 	EXP 	text: autoDraw = False
+26.4760 	EXP 	wth_background_inst: autoDraw = True
+27.3934 	EXP 	wth_text: autoDraw = True
+29.3933 	EXP 	wth_text: autoDraw = False
+32.9111 	EXP 	window1: mouseVisible = False
+32.9388 	DATA 	Keypress: space
+32.9587 	EXP 	wth_background_inst: autoDraw = False
+32.9587 	EXP 	wth_text: autoDraw = False
+32.9587 	EXP 	wth_background_6: autoDraw = True
+32.9587 	EXP 	wth_think_instr_2: autoDraw = True
+32.9587 	EXP 	wth_think_cross_2: autoDraw = True
+37.9590 	EXP 	wth_think_instr_2: autoDraw = False
+37.9590 	EXP 	wth_think_cross_2: autoDraw = False
+42.9422 	EXP 	window1: mouseVisible = True
+42.9909 	EXP 	wth_background_6: autoDraw = False
+42.9909 	EXP 	wth_background_6: autoDraw = False
+42.9909 	EXP 	wth_think_instr_2: autoDraw = False
+42.9909 	EXP 	wth_think_cross_2: autoDraw = False
+42.9909 	EXP 	image_2: autoDraw = True
+42.9909 	EXP 	wth_word_instr_4: autoDraw = True
+52.0368 	DATA 	Mouse: Left button down, pos=(962,502)
+52.0369 	DATA 	Mouse:  Left button up, pos=(962,502)
+52.0369 	DATA 	Keypress: a
+52.0431 	DATA 	Keypress: s
+52.0491 	DATA 	Keypress: d
+52.0566 	DATA 	Keypress: f
+52.0631 	DATA 	Keypress: a
+52.0875 	EXP 	image_2: autoDraw = False
+52.0875 	EXP 	wth_word_instr_4: autoDraw = False
+52.0875 	EXP 	wth_valence_rating_2: markerPos = None
+52.0875 	EXP 	wth_valence_rating_2: markerPos = None
+52.0875 	EXP 	wth_self_rating_2: markerPos = None
+52.0875 	EXP 	wth_self_rating_2: markerPos = None
+52.0875 	EXP 	wth_word_typed_2: height = 0.1
+52.0875 	EXP 	wth_word_typed_2: height = 0.1
+52.0875 	EXP 	wth_word_typed_2: height = 0.1
+52.0875 	EXP 	wth_word_typed_2: text = 'asdf'
+52.0875 	EXP 	wth_background_7: autoDraw = True
+52.0875 	EXP 	wth_word_typed_2: autoDraw = True
+52.0875 	EXP 	wth_valence_rating_2: autoDraw = True
+52.0875 	EXP 	wth_valence_txt_2: autoDraw = True
+52.0875 	EXP 	wth_self_txt_2: autoDraw = True
+52.0875 	EXP 	wth_self_rating_2: autoDraw = True
+53.0400 	DATA 	Mouse: Left button down, pos=(606,443)
+53.0546 	EXP 	wth_valence_rating_2: markerPos = 0.765432098765432
+53.0715 	EXP 	wth_valence_rating_2: markerPos = 0.765432098765432
+53.0883 	EXP 	wth_valence_rating_2: markerPos = 0.765432098765432
+53.1046 	EXP 	wth_valence_rating_2: markerPos = 0.765432098765432
+53.1216 	EXP 	wth_valence_rating_2: markerPos = 0.765432098765432
+53.1378 	EXP 	wth_valence_rating_2: markerPos = 0.765432098765432
+53.1549 	EXP 	wth_valence_rating_2: markerPos = 0.765432098765432
+53.1636 	DATA 	Mouse:  Left button up, pos=(606,443)
+53.1716 	EXP 	wth_valence_rating_2: markerPos = 0.765432098765432
+53.1880 	EXP 	wth_valence_rating_2: markerPos = 0.765432098765432
+53.8945 	DATA 	Mouse: Left button down, pos=(1190,450)
+53.9043 	EXP 	wth_self_rating_2: markerPos = 0.08436213991769548
+53.9214 	EXP 	wth_self_rating_2: markerPos = 0.08436213991769548
+53.9374 	EXP 	wth_self_rating_2: markerPos = 0.08436213991769548
+53.9544 	EXP 	wth_self_rating_2: markerPos = 0.08436213991769548
+53.9714 	EXP 	wth_self_rating_2: markerPos = 0.08436213991769548
+53.9880 	EXP 	wth_self_rating_2: markerPos = 0.08436213991769548
+54.0206 	EXP 	wth_self_rating_2: markerPos = 0.10699588477366256
+54.0223 	DATA 	Mouse:  Left button up, pos=(1207,428)
+54.0381 	EXP 	wth_self_rating_2: markerPos = 0.10699588477366256
+55.2050 	DATA 	Mouse: Left button down, pos=(994,103)
+55.2406 	EXP 	window1: fullscr = True
+55.3018 	EXP 	wth_background_7: autoDraw = False
+55.3018 	EXP 	wth_word_typed_2: autoDraw = False
+55.3018 	EXP 	wth_valence_rating_2: autoDraw = False
+55.3018 	EXP 	wth_valence_txt_2: autoDraw = False
+55.3018 	EXP 	wth_self_txt_2: autoDraw = False
+55.3018 	EXP 	wth_self_rating_2: autoDraw = False
+55.3018 	EXP 	wth_image_2: autoDraw = True
+55.3018 	EXP 	wth_text_4: autoDraw = True
+55.3202 	DATA 	Mouse:  Left button up, pos=(994,122)
+60.2539 	DATA 	Mouse: Left button down, pos=(934,366)
+60.4366 	DATA 	Mouse:  Left button up, pos=(934,366)
+63.9349 	DATA 	Keypress: n
+63.9413 	DATA 	Keypress: space
+63.9515 	EXP 	wth_image_2: autoDraw = False
+63.9515 	EXP 	wth_text_4: autoDraw = False
+63.9515 	EXP 	wth_text_2: font = 'exp_font'
+63.9515 	EXP 	wth_background_inst_2: autoDraw = True
+63.9515 	EXP 	wth_text_2: autoDraw = True
+63.9515 	EXP 	wth_text_2: height = 0.07
+63.9515 	EXP 	wth_text_2: height = 0.07
+63.9515 	EXP 	wth_text_2: height = 0.07
+63.9515 	EXP 	wth_text_2: text = '실험을 시작합니다.\n\n스페이스로 넘어가세요.'
+65.1860 	EXP 	Created sequence: sequential, trialTypes=1, nReps=4, seed=None
+65.1861 	EXP 	New trial (rep=0, index=0): None
+65.1863 	EXP 	window1: mouseVisible = False
+65.2309 	DATA 	Keypress: space
+65.2512 	EXP 	wth_background_inst_2: autoDraw = False
+65.2512 	EXP 	wth_text_2: autoDraw = False
+65.2512 	EXP 	wth_think_instr: font = 'exp_font'
+65.2512 	EXP 	wth_background: autoDraw = True
+65.2512 	EXP 	wth_think_instr: autoDraw = True
+65.2512 	EXP 	wth_think_cross: autoDraw = True
+65.2512 	EXP 	wth_think_instr: height = 0.07
+65.2512 	EXP 	wth_think_instr: height = 0.07
+65.2512 	EXP 	wth_think_instr: height = 0.07
+65.2512 	EXP 	wth_think_instr: text = '자유롭게 생각하세요.'
+70.3022 	DATA 	Keypress: space
+70.6194 	DATA 	Keypress: escape
+71.3216 	EXP 	window1: mouseVisible = True

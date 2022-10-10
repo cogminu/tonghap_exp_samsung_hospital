@@ -1,0 +1,40 @@
+1.2622 	WARNING 	We strongly recommend you activate the PTB sound engine in PsychoPy prefs as the preferred audio engine. Its timing is vastly superior. Your prefs are currently set to use ['sounddevice', 'PTB', 'pyo', 'pygame'] (in that order).
+2.4543 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각R.ttf
+2.4545 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년바탕_Bold.ttf
+2.4631 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순B.ttf
+2.4907 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목V_Bold.ttf
+2.4921 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Bold.ttf
+2.4936 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순L.ttf
+2.5231 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각L.ttf
+2.5248 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년바탕_Regular.ttf
+2.5259 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각B.ttf
+2.5389 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순R.ttf
+2.5525 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Medium.ttf
+2.5727 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Light.ttf
+2.5985 	WARNING 	C:\Users\Minu Kim\AppData\Roaming\psychopy3\fonts\Times.truetype doesn't have valid font family name
+2.6919 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각R.ttf
+2.6920 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년바탕_Bold.ttf
+2.7001 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순B.ttf
+2.7265 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목V_Bold.ttf
+2.7277 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Bold.ttf
+2.7292 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순L.ttf
+2.7572 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각L.ttf
+2.7588 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년바탕_Regular.ttf
+2.7599 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 각B.ttf
+2.7719 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\전주완판본 순R.ttf
+2.7849 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Medium.ttf
+2.8044 	WARNING 	Font Manager failed to load file C:\Windows\Fonts\경기천년제목_Light.ttf
+2.8296 	WARNING 	C:\Users\Minu Kim\AppData\Roaming\psychopy3\fonts\Times.truetype doesn't have valid font family name
+4.4926 	WARNING 	User requested fullscreen with size [1024  768], but screen is actually [1920, 1080]. Using actual size
+4.8546 	EXP 	Created window1 = Window(allowGUI=True, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x00000204F83EAF70>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x00000204F8773430>, multiSample=False, name='window1', numSamples=2, pos=(1920, 0), screen=0, size=array([1920, 1080]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+4.8547 	EXP 	window1: mouseVisible = True
+4.8547 	EXP 	window1: mouseVisible = False
+4.8547 	EXP 	window1: Attempting to measure frame rate of screen (0) ...
+4.8547 	EXP 	window1: recordFrameIntervals = False
+4.9240 	EXP 	window1: recordFrameIntervals = True
+5.0006 	EXP 	Screen (0) actual frame rate measured at 143.50Hz
+5.0006 	EXP 	window1: recordFrameIntervals = False
+7.2542 	EXP 	Created image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1, 1, 1]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, image=str(...), interpolate=True, mask=None, maskParams=None, name='image', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([1.8, 1. ]), texRes=128.0, units='height', win=Window(...))
+7.3981 	EXP 	image: autoDraw = True
+20.4267 	EXP 	image: autoDraw = False
+20.4394 	EXP 	window1: mouseVisible = True

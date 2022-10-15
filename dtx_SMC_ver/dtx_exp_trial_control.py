@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.4),
-    on 10월 14, 2022, at 20:21
+    on 10월 15, 2022, at 18:33
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -64,7 +64,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['id*'], expName, expI
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\Minu Kim\\Documents\\GitHub\\tonghap_exp_samsung_hospital\\dtx_SMC_ver\\dtx_exp_trial_control.py',
+    originPath='C:\\Users\\cogmi\\OneDrive\\문서\\GitHub\\tonghap_exp_samsung_hospital\\dtx_SMC_ver\\dtx_exp_trial_control.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -78,7 +78,7 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 
 # --- Setup the Window ---
 win = visual.Window(
-    size=[1920, 1080], fullscr=False, screen=2, 
+    size=[1920, 1080], fullscr=False, screen=0, 
     winType='pyglet', allowStencil=False,
     monitor='testMonitor', color=[0,0,0], colorSpace='hsv',
     blendMode='avg', useFBO=True, 
@@ -212,7 +212,7 @@ wth_inst_image = visual.ImageStim(
     ori=0.0, pos=(0, 0), size=[1920, 1080],
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=0.0)
+    texRes=128.0, interpolate=True, depth=-1.0)
 gen_inst_resp = keyboard.Keyboard()
 
 # --- Initialize components for Routine "wth_inst" ---
@@ -225,14 +225,7 @@ wth_movie = visual.MovieStim3(
     size=[1920, 1080],
     depth=0.0,
     )
-wth_inst_text = visual.TextStim(win=win, name='wth_inst_text',
-    text='충분히 이해되셨으면\n스페이스로 넘어가세요',
-    font='Malgun Gothic',
-    pos=(0, -.4), height=0.05, wrapWidth=None, ori=0.0, 
-    color='black', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=-1.0);
-wth_shadow_skip = keyboard.Keyboard()
+key_resp = keyboard.Keyboard()
 
 # --- Initialize components for Routine "wth_begin_prac" ---
 wth_background_inst = visual.ImageStim(
@@ -244,12 +237,13 @@ wth_background_inst = visual.ImageStim(
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=0.0)
 wth_text = visual.TextStim(win=win, name='wth_text',
-    text='단어연상 연습이 시작됩니다.',
+    text='단어연상 연습이 시작됩니다.\n\n준비되셨으면 스페이스로 넘어가세요.',
     font='Malgun Gothic',
     pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-1.0);
+wth_next_next = keyboard.Keyboard()
 
 # --- Initialize components for Routine "wth_think_prac" ---
 wth_background_6 = visual.ImageStim(
@@ -286,7 +280,7 @@ wth_word_back = visual.ImageStim(
 wth_word_instr_4 = visual.TextStim(win=win, name='wth_word_instr_4',
     text='지금 무슨 생각을 하고 있는지\n단어나 구로 입력해주세요.',
     font='Malgun Gothic',
-    pos=(0, 0.25), height=0.07, wrapWidth=None, ori=0.0, 
+    pos=(0, 0.25), height=0.06, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-1.0);
@@ -1314,14 +1308,14 @@ para_main_back = visual.ImageStim(
     ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=-1.0)
+    texRes=128.0, interpolate=True, depth=0.0)
 para_main_text = visual.TextStim(win=win, name='para_main_text',
     text='충분히 이해되셨나요?\n\n시작하려면 화면을 \n더블클릭하세요',
     font='Malgun Gothic',
     pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
-    depth=-2.0);
+    depth=-1.0);
 para_mouse = event.Mouse(win=win)
 x, y = [None, None]
 para_mouse.mouseClock = core.Clock()
@@ -1639,7 +1633,7 @@ fis_image_3 = visual.ImageStim(
     ori=0.0, pos=(0, 0), size=(1920, 1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=-1.0)
+    texRes=128.0, interpolate=True, depth=0.0)
 fis_Continue_or_not = keyboard.Keyboard()
 fis_mouse_skip = event.Mouse(win=win)
 x, y = [None, None]
@@ -1650,7 +1644,7 @@ fis_next_text = visual.TextStim(win=win, name='fis_next_text',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
-    depth=-4.0);
+    depth=-3.0);
 
 # --- Initialize components for Routine "fis_readycount" ---
 fis_back = visual.ImageStim(
@@ -1823,6 +1817,7 @@ routineForceEnded = False
 # update component parameters for each repeat
 # Run 'Begin Routine' code from time_control
 
+
 win.mouseVisible = False
 # keep track of which components have finished
 Total_controlComponents = []
@@ -1876,6 +1871,15 @@ routineTimer.reset()
 continueRoutine = True
 routineForceEnded = False
 # update component parameters for each repeat
+# Run 'Begin Routine' code from code_5
+win.fullscr = False
+#not sure if this is necessary
+win.winHandle.set_fullscreen(False)
+win.winHandle.minimize()
+win.flip()
+
+win.winHandle.maximize()
+win.flip()
 gen_inst_resp.keys = []
 gen_inst_resp.rt = []
 _gen_inst_resp_allKeys = []
@@ -1981,11 +1985,11 @@ for thisWeather in weather:
     continueRoutine = True
     routineForceEnded = False
     # update component parameters for each repeat
-    wth_shadow_skip.keys = []
-    wth_shadow_skip.rt = []
-    _wth_shadow_skip_allKeys = []
+    key_resp.keys = []
+    key_resp.rt = []
+    _key_resp_allKeys = []
     # keep track of which components have finished
-    wth_instComponents = [wth_movie, wth_inst_text, wth_shadow_skip]
+    wth_instComponents = [wth_movie, key_resp]
     for thisComponent in wth_instComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -2016,34 +2020,25 @@ for thisWeather in weather:
             win.timeOnFlip(wth_movie, 'tStartRefresh')  # time at next scr refresh
             wth_movie.setAutoDraw(True)
         
-        # *wth_inst_text* updates
-        if wth_inst_text.status == NOT_STARTED and tThisFlip >= wth_movie.status==Finished-frameTolerance:
-            # keep track of start time/frame for later
-            wth_inst_text.frameNStart = frameN  # exact frame index
-            wth_inst_text.tStart = t  # local t and not account for scr refresh
-            wth_inst_text.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(wth_inst_text, 'tStartRefresh')  # time at next scr refresh
-            wth_inst_text.setAutoDraw(True)
-        
-        # *wth_shadow_skip* updates
+        # *key_resp* updates
         waitOnFlip = False
-        if wth_shadow_skip.status == NOT_STARTED and tThisFlip >= 2-frameTolerance:
+        if key_resp.status == NOT_STARTED and tThisFlip >= 2-frameTolerance:
             # keep track of start time/frame for later
-            wth_shadow_skip.frameNStart = frameN  # exact frame index
-            wth_shadow_skip.tStart = t  # local t and not account for scr refresh
-            wth_shadow_skip.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(wth_shadow_skip, 'tStartRefresh')  # time at next scr refresh
-            wth_shadow_skip.status = STARTED
+            key_resp.frameNStart = frameN  # exact frame index
+            key_resp.tStart = t  # local t and not account for scr refresh
+            key_resp.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(key_resp, 'tStartRefresh')  # time at next scr refresh
+            key_resp.status = STARTED
             # keyboard checking is just starting
             waitOnFlip = True
-            win.callOnFlip(wth_shadow_skip.clock.reset)  # t=0 on next screen flip
-            win.callOnFlip(wth_shadow_skip.clearEvents, eventType='keyboard')  # clear events on next screen flip
-        if wth_shadow_skip.status == STARTED and not waitOnFlip:
-            theseKeys = wth_shadow_skip.getKeys(keyList=['space'], waitRelease=False)
-            _wth_shadow_skip_allKeys.extend(theseKeys)
-            if len(_wth_shadow_skip_allKeys):
-                wth_shadow_skip.keys = _wth_shadow_skip_allKeys[-1].name  # just the last key pressed
-                wth_shadow_skip.rt = _wth_shadow_skip_allKeys[-1].rt
+            win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if key_resp.status == STARTED and not waitOnFlip:
+            theseKeys = key_resp.getKeys(keyList=['space'], waitRelease=False)
+            _key_resp_allKeys.extend(theseKeys)
+            if len(_key_resp_allKeys):
+                key_resp.keys = _key_resp_allKeys[-1].name  # just the last key pressed
+                key_resp.rt = _key_resp_allKeys[-1].rt
                 # a response ends the routine
                 continueRoutine = False
         
@@ -2096,8 +2091,13 @@ for thisWeather in weather:
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
+        wth_next_next.keys = []
+        wth_next_next.rt = []
+        _wth_next_next_allKeys = []
+        # Run 'Begin Routine' code from code_6
+        win.fullscr=False
         # keep track of which components have finished
-        wth_begin_pracComponents = [wth_background_inst, wth_text]
+        wth_begin_pracComponents = [wth_background_inst, wth_text, wth_next_next]
         for thisComponent in wth_begin_pracComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -2127,13 +2127,6 @@ for thisWeather in weather:
                 wth_background_inst.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(wth_background_inst, 'tStartRefresh')  # time at next scr refresh
                 wth_background_inst.setAutoDraw(True)
-            if wth_background_inst.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > wth_background_inst.tStartRefresh + transition_duration+3-frameTolerance:
-                    # keep track of stop time/frame for later
-                    wth_background_inst.tStop = t  # not accounting for scr refresh
-                    wth_background_inst.frameNStop = frameN  # exact frame index
-                    wth_background_inst.setAutoDraw(False)
             
             # *wth_text* updates
             if wth_text.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
@@ -2143,13 +2136,28 @@ for thisWeather in weather:
                 wth_text.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(wth_text, 'tStartRefresh')  # time at next scr refresh
                 wth_text.setAutoDraw(True)
-            if wth_text.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > wth_text.tStartRefresh + transition_duration-frameTolerance:
-                    # keep track of stop time/frame for later
-                    wth_text.tStop = t  # not accounting for scr refresh
-                    wth_text.frameNStop = frameN  # exact frame index
-                    wth_text.setAutoDraw(False)
+            
+            # *wth_next_next* updates
+            waitOnFlip = False
+            if wth_next_next.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
+                # keep track of start time/frame for later
+                wth_next_next.frameNStart = frameN  # exact frame index
+                wth_next_next.tStart = t  # local t and not account for scr refresh
+                wth_next_next.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(wth_next_next, 'tStartRefresh')  # time at next scr refresh
+                wth_next_next.status = STARTED
+                # keyboard checking is just starting
+                waitOnFlip = True
+                win.callOnFlip(wth_next_next.clock.reset)  # t=0 on next screen flip
+                win.callOnFlip(wth_next_next.clearEvents, eventType='keyboard')  # clear events on next screen flip
+            if wth_next_next.status == STARTED and not waitOnFlip:
+                theseKeys = wth_next_next.getKeys(keyList=['space'], waitRelease=False)
+                _wth_next_next_allKeys.extend(theseKeys)
+                if len(_wth_next_next_allKeys):
+                    wth_next_next.keys = _wth_next_next_allKeys[-1].name  # just the last key pressed
+                    wth_next_next.rt = _wth_next_next_allKeys[-1].rt
+                    # a response ends the routine
+                    continueRoutine = False
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -2180,6 +2188,8 @@ for thisWeather in weather:
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
+        # Run 'Begin Routine' code from wth_code_6
+        win.fullscr=False
         # keep track of which components have finished
         wth_think_pracComponents = [wth_background_6, wth_think_instr_2, wth_think_cross_2]
         for thisComponent in wth_think_pracComponents:
@@ -2359,6 +2369,7 @@ for thisWeather in weather:
             
                 button = Button(root, text='입력완료', command=lambda: retrieve_input(), height = 3, width= 20)
                 button.pack(expand=1, side = BOTTOM)
+                root.attributes('-topmost',True)
                 root.update()
                 root.mainloop()
                 print(inputValue)
@@ -2403,6 +2414,8 @@ for thisWeather in weather:
         # setup some python lists for storing info about the wth_mouse_5
         wth_mouse_5.clicked_name = []
         gotValidClick = False  # until a click is received
+        # Run 'Begin Routine' code from wth_code_8
+        win.fullscr=False
         # keep track of which components have finished
         wth_rating_pracComponents = [wth_background_7, wth_word_typed_2, wth_valence_rating_2, wth_valence_txt_2, wth_self_txt_2, wth_self_rating_2, wth_rating_end_2, wth_mouse_5]
         for thisComponent in wth_rating_pracComponents:
@@ -2558,6 +2571,7 @@ for thisWeather in weather:
         _wth_key_resp_4_allKeys = []
         # Run 'Begin Routine' code from wth_code_11
         win.mouseVisible = False
+        win.fullscr=False
         # keep track of which components have finished
         wth_end_instComponents = [wth_image_2, wth_text_4, wth_key_resp_4]
         for thisComponent in wth_end_instComponents:
@@ -3461,6 +3475,8 @@ for thisTotal_experiment in total_experiment:
         # update component parameters for each repeat
         # Run 'Begin Routine' code from fl_random_cb
         win.fullscr = True
+        
+        
         fl_starter.keys = []
         fl_starter.rt = []
         _fl_starter_allKeys = []
@@ -3756,7 +3772,7 @@ for thisTotal_experiment in total_experiment:
                 fixation_2.setAutoDraw(True)
             if fixation_2.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > fixation_2.tStartRefresh + 2-frameTolerance:
+                if tThisFlipGlobal > fixation_2.tStartRefresh + 3-frameTolerance:
                     # keep track of stop time/frame for later
                     fixation_2.tStop = t  # not accounting for scr refresh
                     fixation_2.frameNStop = frameN  # exact frame index
@@ -3835,12 +3851,15 @@ for thisTotal_experiment in total_experiment:
             set_cond  = flanker_prac_loop.thisTrial["set"]
             thisn=flanker_prac_loop.thisN
             
-            #win.mouseVisible = False
             
             
             ##########TEST MODE###########
             if test_mode == 1 and thisn == 3:
                 flanker_prac_loop.finished=True
+                win.mouseVisible = True
+            
+            
+            
             # keep track of which components have finished
             fl_tag_pracComponents = []
             for thisComponent in fl_tag_pracComponents:
@@ -4683,7 +4702,7 @@ for thisTotal_experiment in total_experiment:
                 fixation_2.setAutoDraw(True)
             if fixation_2.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > fixation_2.tStartRefresh + 2-frameTolerance:
+                if tThisFlipGlobal > fixation_2.tStartRefresh + 3-frameTolerance:
                     # keep track of stop time/frame for later
                     fixation_2.tStop = t  # not accounting for scr refresh
                     fixation_2.frameNStop = frameN  # exact frame index
@@ -5454,6 +5473,11 @@ for thisTotal_experiment in total_experiment:
         # update component parameters for each repeat
         # Run 'Begin Routine' code from para_random_cb
         win.fullscr = True
+        
+        if test_mode == 1:
+            win.mouseVisible = True
+        else:
+            win.mouseVisible = False
         para_starter_key.keys = []
         para_starter_key.rt = []
         _para_starter_key_allKeys = []
@@ -7099,8 +7123,13 @@ for thisTotal_experiment in total_experiment:
         routineForceEnded = False
         # update component parameters for each repeat
         # Run 'Begin Routine' code from fis_CounterBalancing_code
-        win.mouseVisible = False
+        
         win.fullscr = True
+        
+        if test_mode == 1:
+            win.mouseVisible = True
+        else:
+            win.mouseVisible = False
         fis_key_resp.keys = []
         fis_key_resp.rt = []
         _fis_key_resp_allKeys = []
@@ -7229,7 +7258,7 @@ for thisTotal_experiment in total_experiment:
         # setup some python lists for storing info about the mouse_2
         gotValidClick = False  # until a click is received
         # Run 'Begin Routine' code from fis_code_9
-        win.mouseVisible = False
+        
         fish_trials = 1
         # keep track of which components have finished
         fis_InstructionComponents = [fis_backs, fis_movie, fis_skip_movie, fis_secret_quit, mouse_2]
@@ -7349,8 +7378,6 @@ for thisTotal_experiment in total_experiment:
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
-        # Run 'Begin Routine' code from code
-        win.mouseVisible = False
         # keep track of which components have finished
         fis_readycountComponents = [fis_back, fis_start_prac, fis_get_ready]
         for thisComponent in fis_readycountComponents:
@@ -7477,7 +7504,7 @@ for thisTotal_experiment in total_experiment:
             # Run 'Begin Routine' code from fis_code_2
             fis_slider_2.marker = Fish_2
             fis_slider_2.markerPos = 1.5
-            win.mouseVisible = False
+            
             print(_thisDir)
             Fish_2.setImage(os.path.join(_thisDir,"fis_artwork", str(FishTypeFile)))
             fis_Words_2.setText(Word)
@@ -7619,8 +7646,6 @@ for thisTotal_experiment in total_experiment:
             routineForceEnded = False
             # update component parameters for each repeat
             fis_Feedbacks_2.setText(str(Feedback_2))
-            # Run 'Begin Routine' code from code_2
-            win.mouseVisible = False
             # keep track of which components have finished
             fis_feedback_pracComponents = [fis_BackGround_Feedback_2, fis_Feedbacks_2]
             for thisComponent in fis_feedback_pracComponents:
@@ -7720,8 +7745,6 @@ for thisTotal_experiment in total_experiment:
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
-        # Run 'Begin Routine' code from fis_code_3
-        win.mouseVisible = False
         fis_Continue_or_not.keys = []
         fis_Continue_or_not.rt = []
         _fis_Continue_or_not_allKeys = []
@@ -7835,8 +7858,6 @@ for thisTotal_experiment in total_experiment:
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
-        # Run 'Begin Routine' code from code
-        win.mouseVisible = False
         # keep track of which components have finished
         fis_readycountComponents = [fis_back, fis_start_prac, fis_get_ready]
         for thisComponent in fis_readycountComponents:
@@ -7983,7 +8004,7 @@ for thisTotal_experiment in total_experiment:
                 fis_slider.marker = Fish
                 fis_slider.markerPos = 1.5
                 my_text = visual.TextStim(win, text=Word, font='NanumSquare_acB.ttf')
-                win.mouseVisible = False
+                
                 print(_thisDir)
                 Fish.setImage(os.path.join(_thisDir,"fis_artwork", str(FishTypeFile)))
                 fis_Words.setText(Word)
@@ -8519,8 +8540,6 @@ for thisTotal_experiment in total_experiment:
                 continueRoutine = True
                 routineForceEnded = False
                 # update component parameters for each repeat
-                # Run 'Begin Routine' code from code
-                win.mouseVisible = False
                 # keep track of which components have finished
                 fis_readycountComponents = [fis_back, fis_start_prac, fis_get_ready]
                 for thisComponent in fis_readycountComponents:

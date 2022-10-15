@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.4),
-    on 10월 10, 2022, at 02:22
+    on 10월 14, 2022, at 20:21
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -64,7 +64,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['id*'], expName, expI
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\cogmi\\내 드라이브\\dtx_SMC_ver\\dtx_exp_trial_control.py',
+    originPath='C:\\Users\\Minu Kim\\Documents\\GitHub\\tonghap_exp_samsung_hospital\\dtx_SMC_ver\\dtx_exp_trial_control.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -78,7 +78,7 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 
 # --- Setup the Window ---
 win = visual.Window(
-    size=[1920, 1080], fullscr=False, screen=0, 
+    size=[1920, 1080], fullscr=False, screen=2, 
     winType='pyglet', allowStencil=False,
     monitor='testMonitor', color=[0,0,0], colorSpace='hsv',
     blendMode='avg', useFBO=True, 
@@ -115,14 +115,12 @@ stimulus_interval_prac = 5
 stimulus_interval = 30 #original 30
 # 전환시간 2초
 transition_duration = 2
-
-
 # Run 'Begin Experiment' code from total_code
 
 tot_order = int(expInfo['id*'])%6 + 1
 
 if tot_order == 1:
-    exp_order1 = [1,0,0]
+    exp_order1 = [1,0,0] #flanker, parachute, fish.
     exp_order2 = [0,1,0]
     exp_order3 = [0,0,1]
 elif tot_order == 2:
@@ -150,10 +148,30 @@ exp_loop = 1
 # Run 'Begin Experiment' code from trial_numbers_2
 
 skip_weather = 1
+skip_boat = 0
+skip_para = 0
+skip_fish = 0
+test_mode = 0
+
 activate_weather = expInfo['weather']
+activate_boat = expInfo['boat']
+activate_para = expInfo['parachute']
+activate_fish = expInfo['fish']
+activate_test_mode = expInfo['test_mode']
+
 
 if activate_weather == 'no':
     skip_weather = 0
+    
+if activate_boat == 'no':
+    skip_boat = 1
+if activate_para == 'no':
+    skip_para = 1
+if activate_fish == 'no':
+    skip_fish = 1
+if activate_test_mode == 'yes':
+    test_mode = 1
+
 
 # you can change trial numbers for test
 
@@ -171,6 +189,19 @@ para_main = 1 #default 1 (main loop)
 
 # fish 
 fis_round_tot = 3; # default 5 trial control 3
+fish_practice_reps = 3
+
+#############TEST MODE###############
+if test_mode == 1:
+    wth_trials_n = 1
+    # 자유연상시간 연습
+    stimulus_interval_prac = 3
+    # 자유연상시간 실제
+    stimulus_interval = 5 #original 30
+    # 사회적 민감성
+    fish_practice_reps = 1
+
+
 
 
 # --- Initialize components for Routine "general_instruction" ---
@@ -195,8 +226,8 @@ wth_movie = visual.MovieStim3(
     depth=0.0,
     )
 wth_inst_text = visual.TextStim(win=win, name='wth_inst_text',
-    text='스페이스로 넘어가세요',
-    font='Noto Sans KR',
+    text='충분히 이해되셨으면\n스페이스로 넘어가세요',
+    font='Malgun Gothic',
     pos=(0, -.4), height=0.05, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -214,7 +245,7 @@ wth_background_inst = visual.ImageStim(
     texRes=128.0, interpolate=True, depth=0.0)
 wth_text = visual.TextStim(win=win, name='wth_text',
     text='단어연상 연습이 시작됩니다.',
-    font='Noto Sans KR',
+    font='Malgun Gothic',
     pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -231,7 +262,7 @@ wth_background_6 = visual.ImageStim(
     texRes=128.0, interpolate=True, depth=0.0)
 wth_think_instr_2 = visual.TextStim(win=win, name='wth_think_instr_2',
     text='자유롭게 생각하세요.',
-    font='Noto Sans KR',
+    font='Malgun Gothic',
     pos=(0, .2), height=0.07, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -254,7 +285,7 @@ wth_word_back = visual.ImageStim(
     texRes=128.0, interpolate=True, depth=0.0)
 wth_word_instr_4 = visual.TextStim(win=win, name='wth_word_instr_4',
     text='지금 무슨 생각을 하고 있는지\n단어나 구로 입력해주세요.',
-    font='Noto Sans KR',
+    font='Malgun Gothic',
     pos=(0, 0.25), height=0.07, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -275,7 +306,7 @@ wth_background_7 = visual.ImageStim(
     texRes=128.0, interpolate=True, depth=0.0)
 wth_word_typed_2 = visual.TextStim(win=win, name='wth_word_typed_2',
     text='',
-    font='Noto Sans KR',
+    font='Malgun Gothic',
     pos=(0, 0.2), height=0.07, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -289,14 +320,14 @@ wth_valence_rating_2 = visual.Slider(win=win, name='wth_valence_rating_2',
     flip=False, ori=0.0, depth=-2, readOnly=False)
 wth_valence_txt_2 = visual.TextStim(win=win, name='wth_valence_txt_2',
     text='단어에서 느껴지는 감정',
-    font='Noto Sans KR',
+    font='Malgun Gothic',
     pos=(-.5, -0.02), height=0.04, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-3.0);
 wth_self_txt_2 = visual.TextStim(win=win, name='wth_self_txt_2',
     text='단어가 자신과 관련이 있는 정도',
-    font='Noto Sans KR',
+    font='Malgun Gothic',
     pos=(0.5, -.02), height=0.04, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -309,7 +340,7 @@ wth_self_rating_2 = visual.Slider(win=win, name='wth_self_rating_2',
     font='Noto Sans KR', labelHeight=0.03,
     flip=False, ori=0.0, depth=-5, readOnly=False)
 wth_rating_end_2 = visual.TextBox2(
-     win, text='클릭해 주세요', font='Noto Sans KR',
+     win, text='클릭해 주세요', font='Malgun Gothic',
      pos=(-.02, -.42),     letterHeight=0.03,
      size=(0.19, 0.05), borderWidth=2.0,
      color='black', colorSpace='rgb',
@@ -339,7 +370,7 @@ wth_image_2 = visual.ImageStim(
     texRes=128.0, interpolate=True, depth=0.0)
 wth_text_4 = visual.TextStim(win=win, name='wth_text_4',
     text='넘어가시겠습니까?\n\n넘어가기 : Y\n다시연습 : N\n',
-    font='Noto Sans KR',
+    font='Malgun Gothic',
     pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -357,7 +388,7 @@ wth_background_inst_2 = visual.ImageStim(
     texRes=128.0, interpolate=True, depth=0.0)
 wth_text_2 = visual.TextStim(win=win, name='wth_text_2',
     text='단어연상을 시작합니다\n\n연상시간은 30초이며\n총 4회 반복됩니다\n\n스페이스로 넘어가세요',
-    font='Noto Sans KR',
+    font='Malgun Gothic',
     pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -375,7 +406,7 @@ wth_begin_background = visual.ImageStim(
     texRes=128.0, interpolate=True, depth=0.0)
 wth_begin_text = visual.TextStim(win=win, name='wth_begin_text',
     text='시작',
-    font='Noto Sans KR',
+    font='Malgun Gothic',
     pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -392,7 +423,7 @@ wth_background = visual.ImageStim(
     texRes=128.0, interpolate=True, depth=0.0)
 wth_think_instr = visual.TextStim(win=win, name='wth_think_instr',
     text='자유롭게 생각하세요.',
-    font='Noto Sans KR',
+    font='Malgun Gothic',
     pos=(0, .2), height=0.07, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -435,7 +466,7 @@ wth_background_3 = visual.ImageStim(
     texRes=128.0, interpolate=True, depth=0.0)
 wth_word_typed = visual.TextStim(win=win, name='wth_word_typed',
     text='',
-    font='Noto Sans KR',
+    font='Malgun Gothic',
     pos=(0, 0.2), height=0.1, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -449,14 +480,14 @@ wth_valence_rating = visual.Slider(win=win, name='wth_valence_rating',
     flip=False, ori=0.0, depth=-2, readOnly=False)
 wth_valence_txt = visual.TextStim(win=win, name='wth_valence_txt',
     text='단어에서 느껴지는 감정',
-    font='Noto Sans KR',
+    font='Malgun Gothic',
     pos=(-.5, -0.02), height=0.04, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-3.0);
 wth_self_txt = visual.TextStim(win=win, name='wth_self_txt',
     text='단어가 자신과 관련이 있는 정도',
-    font='Noto Sans KR',
+    font='Malgun Gothic',
     pos=(0.5, -.02), height=0.04, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -469,7 +500,7 @@ wth_self_rating = visual.Slider(win=win, name='wth_self_rating',
     font='Noto Sans KR', labelHeight=0.03,
     flip=False, ori=0.0, depth=-5, readOnly=False)
 wth_rating_end = visual.TextBox2(
-     win, text='클릭해 주세요', font='Noto Sans KR',
+     win, text='클릭해 주세요', font='Malgun Gothic',
      pos=(-.02, -.42),     letterHeight=0.03,
      size=(0.19, 0.05), borderWidth=2.0,
      color='black', colorSpace='rgb',
@@ -499,7 +530,7 @@ wth_end_image = visual.ImageStim(
     texRes=128.0, interpolate=True, depth=0.0)
 exp_end_text = visual.TextStim(win=win, name='exp_end_text',
     text='단어연상 종료\n\n충분히 휴식하시고\n스페이스를 눌러\n다음 과제로 넘어가세요.\n\n(진행자: 키보드 제거)',
-    font='Noto Sans KR',
+    font='Malgun Gothic',
     pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -507,8 +538,6 @@ exp_end_text = visual.TextStim(win=win, name='exp_end_text',
 exp_end_key = keyboard.Keyboard()
 
 # --- Initialize components for Routine "total_loop" ---
-# Run 'Begin Experiment' code from exp_code
-exp_text = '스페이스바를 누르면 다음 실험으로 넘어갑니다'
 
 # --- Initialize components for Routine "fl_starter_code" ---
 # Run 'Begin Experiment' code from fl_random_cb
@@ -520,7 +549,6 @@ testing = 1 #default 1
 
 #fprac = 2 #default 2
 #fmain = 15 #default 15
-
 
 counter_resp = int(expInfo['id*'])%2
 
@@ -542,13 +570,16 @@ fl_starter_back = visual.ImageStim(
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-1.0)
 fl_starter_text = visual.TextStim(win=win, name='fl_starter_text',
-    text='집행기능 측정을 시작합니다.\n\n안내영상을 시청하시려면\n스페이스를 누르세요.',
-    font='Noto Sans KR',
-    pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
+    text='집행기능 측정을 시작합니다.\n\n안내영상을 시청하시려면\n화면을 더블클릭하세요.',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-2.0);
 fl_starter = keyboard.Keyboard()
+fl_next_click = event.Mouse(win=win)
+x, y = [None, None]
+fl_next_click.mouseClock = core.Clock()
 
 # --- Initialize components for Routine "fl_inst" ---
 fl_inst_img = visual.ImageStim(
@@ -562,64 +593,19 @@ fl_inst_img = visual.ImageStim(
 fl_inst_resp = keyboard.Keyboard()
 fl_inst_text_2 = visual.TextStim(win=win, name='fl_inst_text_2',
     text='스페이스로 넘어가세요',
-    font='Noto Sans KR',
+    font='Malgun Gothic',
     pos=(0, -.4), height=0.05, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
-    depth=-1.0);
+    depth=-3.0);
 fl_inst_sound = sound.Sound('ins/fl_inst_click.wav', secs=-1, stereo=True, hamming=True,
     name='fl_inst_sound')
 fl_inst_sound.setVolume(1.0)
-
-# --- Initialize components for Routine "fl_rep2" ---
-fl_back = visual.ImageStim(
-    win=win,
-    name='fl_back', units='pix', 
-    image='pics/fl_back.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1920, 1080),
-    color=[1,1,1], colorSpace='rgb', opacity=None,
-    flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=0.0)
-fl_inst_end_text = visual.TextStim(win=win, name='fl_inst_end_text',
-    text='실험 설명을 다시 들으시겠습니까? \n\nY / N',
-    font='Noto Sans KR',
-    pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
-    color='black', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=-1.0);
-fl_inst_end_key = keyboard.Keyboard()
-# Run 'Begin Experiment' code from fl_inst_end_code
-notex = '아니오'.encode('UTF-8');
-
-# --- Initialize components for Routine "fl_say_practice" ---
-fl_pracbac = visual.ImageStim(
-    win=win,
-    name='fl_pracbac', 
-    image='pics/fl_back.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
-    color=[1,1,1], colorSpace='rgb', opacity=None,
-    flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=0.0)
-fl_prac_text = visual.TextStim(win=win, name='fl_prac_text',
-    text='연습과제 시작',
-    font='Open Sans',
-    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
-    color='black', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=-1.0);
-fl_mouse_prac = event.Mouse(win=win)
+fl_next_again = event.Mouse(win=win)
 x, y = [None, None]
-fl_mouse_prac.mouseClock = core.Clock()
+fl_next_again.mouseClock = core.Clock()
 
 # --- Initialize components for Routine "fl_fix_2" ---
-fixation_2 = visual.ImageStim(
-    win=win,
-    name='fixation_2', 
-    image='pics/fixation_2.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(0.025, 0.025),
-    color=[1,1,1], colorSpace='rgb', opacity=None,
-    flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=False, depth=0.0)
 back_2 = visual.ImageStim(
     win=win,
     name='back_2', units='pix', 
@@ -627,7 +613,22 @@ back_2 = visual.ImageStim(
     ori=0.0, pos=(0, 0), size=(1920, 1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=-1.0)
+    texRes=128.0, interpolate=True, depth=0.0)
+fixation_2 = visual.ImageStim(
+    win=win,
+    name='fixation_2', 
+    image='pics/fixation_2.png', mask=None, anchor='center',
+    ori=0.0, pos=(0, 0), size=(0.025, 0.025),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=False, depth=-1.0)
+fl_next = visual.TextStim(win=win, name='fl_next',
+    text='시작',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-2.0);
 
 # --- Initialize components for Routine "fl_tag_prac" ---
 
@@ -712,6 +713,8 @@ randg = [1,2,1,2,1,2,1,2,1,2];
 #rtn = 0;
 #colnt = shuffle(randg);
 #print(colnt);
+# Run 'Begin Experiment' code from fl_code_clik
+proper_rt = 0
 fl_back_image = visual.ImageStim(
     win=win,
     name='fl_back_image', units='pix', 
@@ -807,7 +810,7 @@ fl_back_image2 = visual.ImageStim(
     texRes=128.0, interpolate=True, depth=-1.0)
 fl_feedback = visual.TextStim(win=win, name='fl_feedback',
     text='',
-    font='Open Sans',
+    font='Malgun Gothic',
     pos=(0, 0), height=0.03, wrapWidth=None, ori=0.0, 
     color='darkred', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -847,8 +850,8 @@ fl_mainback = visual.ImageStim(
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=0.0)
 fl_main_text = visual.TextStim(win=win, name='fl_main_text',
-    text='본 과제 시작\n\n\n계속하려면 클릭하세요',
-    font='Open Sans',
+    text='본 실험으로 넘어가려면\n화면을 더블클릭하세요',
+    font='Malgun Gothic',
     pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -859,14 +862,6 @@ x, y = [None, None]
 fl_mouse_m.mouseClock = core.Clock()
 
 # --- Initialize components for Routine "fl_fix_2" ---
-fixation_2 = visual.ImageStim(
-    win=win,
-    name='fixation_2', 
-    image='pics/fixation_2.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(0.025, 0.025),
-    color=[1,1,1], colorSpace='rgb', opacity=None,
-    flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=False, depth=0.0)
 back_2 = visual.ImageStim(
     win=win,
     name='back_2', units='pix', 
@@ -874,7 +869,22 @@ back_2 = visual.ImageStim(
     ori=0.0, pos=(0, 0), size=(1920, 1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=-1.0)
+    texRes=128.0, interpolate=True, depth=0.0)
+fixation_2 = visual.ImageStim(
+    win=win,
+    name='fixation_2', 
+    image='pics/fixation_2.png', mask=None, anchor='center',
+    ori=0.0, pos=(0, 0), size=(0.025, 0.025),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=False, depth=-1.0)
+fl_next = visual.TextStim(win=win, name='fl_next',
+    text='시작',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-2.0);
 
 # --- Initialize components for Routine "fl_tag_main" ---
 
@@ -959,6 +969,8 @@ randg = [1,2,1,2,1,2,1,2,1,2];
 #rtn = 0;
 #colnt = shuffle(randg);
 #print(colnt);
+# Run 'Begin Experiment' code from fl_code_clik
+proper_rt = 0
 fl_back_image = visual.ImageStim(
     win=win,
     name='fl_back_image', units='pix', 
@@ -1054,7 +1066,7 @@ fl_back_image2 = visual.ImageStim(
     texRes=128.0, interpolate=True, depth=-1.0)
 fl_feedback = visual.TextStim(win=win, name='fl_feedback',
     text='',
-    font='Open Sans',
+    font='Malgun Gothic',
     pos=(0, 0), height=0.03, wrapWidth=None, ori=0.0, 
     color='darkred', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -1088,15 +1100,9 @@ l_button2 = visual.ImageStim(
 # Run 'Begin Experiment' code from para_random_cb
 # This code controls the response counter-balanccing.
 
-#set repetition of loops
-reps_p = 99 #default 99 (instruction repetition loop)
-#para_prac = 2 #default 2 (practice loop)
-#para_main = 1 #default 1 (main loop)
-
 #constant for counter conditions
 bhya_resp = 0
 bayh_resp = 1
-
 
 counter_resp=int(expInfo['id*'])%2
 
@@ -1118,27 +1124,30 @@ elif stset == 2:
 
 para_starter = visual.ImageStim(
     win=win,
-    name='para_starter', 
+    name='para_starter', units='pix', 
     image='pics/st_back.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-1.0)
 para_starter_text = visual.TextStim(win=win, name='para_starter_text',
-    text='실험 진행자가 스페이스 바를 눌러 \n화면을 전환해주세요.',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    text='주의편향 측정을 시작합니다.\n\n안내영상을 시청하시려면\n화면을 더블클릭하세요.',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-2.0);
 para_starter_key = keyboard.Keyboard()
+para_skip_click = event.Mouse(win=win)
+x, y = [None, None]
+para_skip_click.mouseClock = core.Clock()
 
 # --- Initialize components for Routine "para_inst" ---
 para_inst_img = visual.ImageStim(
     win=win,
-    name='para_inst_img', units='height', 
+    name='para_inst_img', units='pix', 
     image='sin', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-1.0)
@@ -1146,48 +1155,16 @@ para_inst_sound = sound.Sound('A', secs=-1, stereo=True, hamming=True,
     name='para_inst_sound')
 para_inst_sound.setVolume(1.0)
 para_inst_key = keyboard.Keyboard()
-
-# --- Initialize components for Routine "para_rep" ---
-para_inst_image = visual.ImageStim(
-    win=win,
-    name='para_inst_image', 
-    image='pics/st_back.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
-    color=[1,1,1], colorSpace='rgb', opacity=None,
-    flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=-1.0)
-para_inst_text = visual.TextStim(win=win, name='para_inst_text',
-    text='실험 설명을 다시 들으시겠습니까?\n\nY / N',
-    font='Open Sans',
-    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
-    color='black', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=-2.0);
-para_end_inst_key = keyboard.Keyboard()
-
-# --- Initialize components for Routine "para_say_prac" ---
-para_prac_back = visual.ImageStim(
-    win=win,
-    name='para_prac_back', 
-    image='pics/st_back.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
-    color=[1,1,1], colorSpace='rgb', opacity=None,
-    flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=0.0)
-para_prac_text = visual.TextStim(win=win, name='para_prac_text',
-    text='연습과제 시작',
-    font='Open Sans',
-    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
-    color='black', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=-1.0);
+para_click_next = event.Mouse(win=win)
+x, y = [None, None]
+para_click_next.mouseClock = core.Clock()
 
 # --- Initialize components for Routine "para_fix" ---
 para_fix_back = visual.ImageStim(
     win=win,
-    name='para_fix_back', 
+    name='para_fix_back', units='pix', 
     image='pics/st_back.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=0.0)
@@ -1199,6 +1176,13 @@ para_fix_2 = visual.ImageStim(
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-1.0)
+para_text_next = visual.TextStim(win=win, name='para_text_next',
+    text='시작',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-2.0);
 
 # --- Initialize components for Routine "para_tag_prc" ---
 
@@ -1270,9 +1254,9 @@ pos_button = "pics/pos_button.png"
 
 para_back = visual.ImageStim(
     win=win,
-    name='para_back', 
+    name='para_back', units='pix', 
     image='pics/st_back.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-2.0)
@@ -1308,15 +1292,15 @@ st2_resp = keyboard.Keyboard()
 # --- Initialize components for Routine "para_feedback" ---
 para_f_back = visual.ImageStim(
     win=win,
-    name='para_f_back', 
+    name='para_f_back', units='pix', 
     image='pics/st_back.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-1.0)
 para_feed_message = visual.TextStim(win=win, name='para_feed_message',
     text='',
-    font='Open Sans',
+    font='Malgun Gothic',
     pos=(0, 0), height=0.03, wrapWidth=None, ori=0.0, 
     color='darkred', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -1325,15 +1309,15 @@ para_feed_message = visual.TextStim(win=win, name='para_feed_message',
 # --- Initialize components for Routine "para_say_main" ---
 para_main_back = visual.ImageStim(
     win=win,
-    name='para_main_back', 
+    name='para_main_back', units='pix', 
     image='pics/st_back.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-1.0)
 para_main_text = visual.TextStim(win=win, name='para_main_text',
-    text='본 과제 시작\n\n\n계속하려면 클릭하세요',
-    font='Open Sans',
+    text='충분히 이해되셨나요?\n\n시작하려면 화면을 \n더블클릭하세요',
+    font='Malgun Gothic',
     pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -1345,9 +1329,9 @@ para_mouse.mouseClock = core.Clock()
 # --- Initialize components for Routine "para_fix" ---
 para_fix_back = visual.ImageStim(
     win=win,
-    name='para_fix_back', 
+    name='para_fix_back', units='pix', 
     image='pics/st_back.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=0.0)
@@ -1359,6 +1343,13 @@ para_fix_2 = visual.ImageStim(
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-1.0)
+para_text_next = visual.TextStim(win=win, name='para_text_next',
+    text='시작',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-2.0);
 
 # --- Initialize components for Routine "para_tag_main" ---
 
@@ -1430,9 +1421,9 @@ pos_button = "pics/pos_button.png"
 
 para_back = visual.ImageStim(
     win=win,
-    name='para_back', 
+    name='para_back', units='pix', 
     image='pics/st_back.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-2.0)
@@ -1468,15 +1459,15 @@ st2_resp = keyboard.Keyboard()
 # --- Initialize components for Routine "para_feedback" ---
 para_f_back = visual.ImageStim(
     win=win,
-    name='para_f_back', 
+    name='para_f_back', units='pix', 
     image='pics/st_back.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-1.0)
 para_feed_message = visual.TextStim(win=win, name='para_feed_message',
     text='',
-    font='Open Sans',
+    font='Malgun Gothic',
     pos=(0, 0), height=0.03, wrapWidth=None, ori=0.0, 
     color='darkred', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
@@ -1509,24 +1500,46 @@ fis_roundN = 1 # default 1
 #fis_round_tot = 5; # default 5
 Gnum = 0;
 Onum = 1;
+image = visual.ImageStim(
+    win=win,
+    name='image', units='pix', 
+    image='fis_artwork/fish_background.png', mask=None, anchor='center',
+    ori=0.0, pos=(0, 0), size=(1920,1080),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=-1.0)
 fis_text_2 = visual.TextStim(win=win, name='fis_text_2',
-    text='지금부터 물고기 과제를 진행하겠습니다. \n\n먼저, 과제 설명과 안내사항을\n영상으로 시청하겠습니다. \n\n',
-    font='Open Sans',
-    pos=(0, 0.05), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=-1.0);
-fis_text_3 = visual.TextStim(win=win, name='fis_text_3',
-    text='실험 진행자가 스페이스 바를 눌러 \n화면을 전환해주세요. ',
-    font='Open Sans',
-    pos=(0, -0.25), height=0.03, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
+    text='사회적 민감성 측정을 시작합니다.\n\n안내영상을 시청하시려면\n화면을 더블클릭',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-2.0);
 fis_key_resp = keyboard.Keyboard()
+mouse = event.Mouse(win=win)
+x, y = [None, None]
+mouse.mouseClock = core.Clock()
 
 # --- Initialize components for Routine "fis_Instruction" ---
+fis_backs = visual.ImageStim(
+    win=win,
+    name='fis_backs', units='pix', 
+    image='fis_artwork/fish_background.png', mask=None, anchor='center',
+    ori=0.0, pos=(0, 0), size=(1920, 1080),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=0.0)
+fis_skip_movie = visual.TextStim(win=win, name='fis_skip_movie',
+    text='충분히 이해되셨으면\n더블클릭으로 넘어가세요',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-2.0);
 fis_secret_quit = keyboard.Keyboard()
+mouse_2 = event.Mouse(win=win)
+x, y = [None, None]
+mouse_2.mouseClock = core.Clock()
 # Run 'Begin Experiment' code from fis_code_9
 if GOloop == Gnum:
     GOcon = Gnum;
@@ -1534,62 +1547,32 @@ if GOloop == Gnum:
 elif GOloop == Onum:
     GOnum = Onum;
     insmov= 'fis_artwork/fish_instruction_OrangeVersion.mp4'
+    
+PracCount= 5
 
-# --- Initialize components for Routine "fis_passint" ---
-fis_PassI_2 = visual.ImageStim(
+# --- Initialize components for Routine "fis_readycount" ---
+fis_back = visual.ImageStim(
     win=win,
-    name='fis_PassI_2', 
-    image='fis_artwork/PassInst.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1.0),
+    name='fis_back', units='pix', 
+    image='fis_artwork/fish_background.png', mask=None, anchor='center',
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=0.0)
-fis_PassInst_2 = keyboard.Keyboard()
-
-# --- Initialize components for Routine "fis_startprac" ---
-fis_mouse_2 = event.Mouse(win=win)
-x, y = [None, None]
-fis_mouse_2.mouseClock = core.Clock()
-# Run 'Begin Experiment' code from fis_praccount_numbering
-PracCount= 5
-fis_image = visual.ImageStim(
-    win=win,
-    name='fis_image', 
-    image='fis_artwork/StartPrac.PNG', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
-    color=[1,1,1], colorSpace='rgb', opacity=None,
-    flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=-2.0)
-
-# --- Initialize components for Routine "fis_readycount" ---
-fis_text_5 = visual.TextStim(win=win, name='fis_text_5',
-    text='Ready',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=0.0);
-fis_text_6 = visual.TextStim(win=win, name='fis_text_6',
-    text='3',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
+fis_start_prac = visual.TextStim(win=win, name='fis_start_prac',
+    text='준비',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-1.0);
-fis_text_7 = visual.TextStim(win=win, name='fis_text_7',
-    text='2',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
+fis_get_ready = visual.TextStim(win=win, name='fis_get_ready',
+    text='시작',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-2.0);
-fis_text_8 = visual.TextStim(win=win, name='fis_text_8',
-    text='1',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=-3.0);
 
 # --- Initialize components for Routine "fis_practiral" ---
 fis_slider_2 = visual.Slider(win=win, name='fis_slider_2',
@@ -1601,9 +1584,9 @@ fis_slider_2 = visual.Slider(win=win, name='fis_slider_2',
     flip=True, ori=0.0, depth=0, readOnly=False)
 fis_BackGround_2 = visual.ImageStim(
     win=win,
-    name='fis_BackGround_2', 
+    name='fis_BackGround_2', units='pix', 
     image='fis_artwork/fish_background.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(2, 1),
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-2.0)
@@ -1611,7 +1594,7 @@ Fish_2 = visual.ImageStim(
     win=win,
     name='Fish_2', 
     image='sin', mask=None, anchor='center',
-    ori=0.0, pos=(1, 1), size=(0.8, 0.7),
+    ori=0.0, pos=(1, 1), size=(0.41, 0.3),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-3.0)
@@ -1625,7 +1608,7 @@ fis_WordBox_2 = visual.ImageStim(
     texRes=128.0, interpolate=True, depth=-4.0)
 fis_Words_2 = visual.TextStim(win=win, name='fis_Words_2',
     text='',
-    font='Arial',
+    font='Malgun Gothic',
     pos=[0,0], height=0.07, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='RTL',
@@ -1634,73 +1617,64 @@ fis_Words_2 = visual.TextStim(win=win, name='fis_Words_2',
 # --- Initialize components for Routine "fis_feedback_prac" ---
 fis_BackGround_Feedback_2 = visual.ImageStim(
     win=win,
-    name='fis_BackGround_Feedback_2', 
+    name='fis_BackGround_Feedback_2', units='pix', 
     image='fis_artwork/fish_background.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(2, 1),
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=0.0)
 fis_Feedbacks_2 = visual.TextStim(win=win, name='fis_Feedbacks_2',
     text='',
-    font='Open Sans',
+    font='Malgun Gothic',
     pos=(0, 0.03), height=0.08, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
     depth=-1.0);
 
 # --- Initialize components for Routine "fis_continue_prac" ---
-fis_Continue_or_not = keyboard.Keyboard()
 fis_image_3 = visual.ImageStim(
     win=win,
-    name='fis_image_3', 
-    image='fis_artwork/Continue.PNG', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
-    color=[1,1,1], colorSpace='rgb', opacity=None,
-    flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=-2.0)
-
-# --- Initialize components for Routine "fis_startMain" ---
-fis_mouse_3 = event.Mouse(win=win)
-x, y = [None, None]
-fis_mouse_3.mouseClock = core.Clock()
-fis_startmain = visual.ImageStim(
-    win=win,
-    name='fis_startmain', 
-    image='fis_artwork/StartMain.PNG', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
+    name='fis_image_3', units='pix', 
+    image='fis_artwork/fish_background.png', mask=None, anchor='center',
+    ori=0.0, pos=(0, 0), size=(1920, 1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-1.0)
+fis_Continue_or_not = keyboard.Keyboard()
+fis_mouse_skip = event.Mouse(win=win)
+x, y = [None, None]
+fis_mouse_skip.mouseClock = core.Clock()
+fis_next_text = visual.TextStim(win=win, name='fis_next_text',
+    text='충분히 이해되셨나요?\n\n정확하고, 최대한 빠르게 반응할수록\n좋은 결과를 얻을 수 있습니다.\n\n화면을 더블클릭하여\n본시행으로 넘어가세요\n',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-4.0);
 
 # --- Initialize components for Routine "fis_readycount" ---
-fis_text_5 = visual.TextStim(win=win, name='fis_text_5',
-    text='Ready',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=0.0);
-fis_text_6 = visual.TextStim(win=win, name='fis_text_6',
-    text='3',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
+fis_back = visual.ImageStim(
+    win=win,
+    name='fis_back', units='pix', 
+    image='fis_artwork/fish_background.png', mask=None, anchor='center',
+    ori=0.0, pos=(0, 0), size=(1920,1080),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=0.0)
+fis_start_prac = visual.TextStim(win=win, name='fis_start_prac',
+    text='준비',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-1.0);
-fis_text_7 = visual.TextStim(win=win, name='fis_text_7',
-    text='2',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
+fis_get_ready = visual.TextStim(win=win, name='fis_get_ready',
+    text='시작',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-2.0);
-fis_text_8 = visual.TextStim(win=win, name='fis_text_8',
-    text='1',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=-3.0);
 
 # --- Initialize components for Routine "fis_main_trial" ---
 fis_slider = visual.Slider(win=win, name='fis_slider',
@@ -1712,9 +1686,9 @@ fis_slider = visual.Slider(win=win, name='fis_slider',
     flip=True, ori=0.0, depth=0, readOnly=False)
 fis_BackGround = visual.ImageStim(
     win=win,
-    name='fis_BackGround', 
+    name='fis_BackGround', units='pix', 
     image='fis_artwork/fish_background.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(2, 1),
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-2.0)
@@ -1722,7 +1696,7 @@ Fish = visual.ImageStim(
     win=win,
     name='Fish', 
     image='sin', mask=None, anchor='center',
-    ori=0.0, pos=(1, 1), size=(0.8, 0.7),
+    ori=0.0, pos=(1, 1), size=(0.41, 0.3),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-3.0)
@@ -1736,7 +1710,7 @@ fis_WordBox = visual.ImageStim(
     texRes=128.0, interpolate=True, depth=-4.0)
 fis_Words = visual.TextStim(win=win, name='fis_Words',
     text='',
-    font='Arial',
+    font='Malgun Gothic',
     pos=[0,0], height=0.07, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='RTL',
@@ -1745,15 +1719,15 @@ fis_Words = visual.TextStim(win=win, name='fis_Words',
 # --- Initialize components for Routine "fis_feedback_trial" ---
 fis_BackGround_Feedback = visual.ImageStim(
     win=win,
-    name='fis_BackGround_Feedback', 
+    name='fis_BackGround_Feedback', units='pix', 
     image='fis_artwork/fish_background.png', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(2, 1),
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=0.0)
 fis_Feedbacks = visual.TextStim(win=win, name='fis_Feedbacks',
     text='',
-    font='Open Sans',
+    font='Malgun Gothic',
     pos=(0, 0.03), height=0.08, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
@@ -1762,21 +1736,21 @@ fis_Feedbacks = visual.TextStim(win=win, name='fis_Feedbacks',
 # --- Initialize components for Routine "fis_main_control" ---
 
 # --- Initialize components for Routine "fis_rout_break" ---
-fis_text = visual.TextStim(win=win, name='fis_text',
-    text='30초 휴식 후 다음 라운드를 시작하겠습니다. \n\n특정 요청을 하는 물고기가 더 많아집니다. \n\n말풍선을 유심히 봐주시기 바랍니다. ',
-    font='Open Sans',
-    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=0.0);
 fis_break_interval = visual.ImageStim(
     win=win,
-    name='fis_break_interval', 
-    image='fis_artwork/30SecBreak.PNG', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
+    name='fis_break_interval', units='pix', 
+    image='fis_artwork/fish_background.png', mask=None, anchor='center',
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=-1.0)
+    texRes=128.0, interpolate=True, depth=0.0)
+fis_text = visual.TextStim(win=win, name='fis_text',
+    text='30초 휴식 후 다음 라운드를 시작하겠습니다. \n\n특정 요청을 하는 물고기가 더 많아집니다. \n\n말풍선을 유심히 봐주시기 바랍니다. ',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-1.0);
 
 # --- Initialize components for Routine "fis_interblock" ---
 fis_mouse = event.Mouse(win=win)
@@ -1784,51 +1758,60 @@ x, y = [None, None]
 fis_mouse.mouseClock = core.Clock()
 fis_stratnextround = visual.ImageStim(
     win=win,
-    name='fis_stratnextround', 
-    image='fis_artwork/StartNextRound.PNG', mask=None, anchor='center',
-    ori=0.0, pos=(0, 0), size=(1.8, 1),
+    name='fis_stratnextround', units='pix', 
+    image='fis_artwork/fish_background.png', mask=None, anchor='center',
+    ori=0.0, pos=(0, 0), size=(1920,1080),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-1.0)
-
-# --- Initialize components for Routine "fis_readycount" ---
-fis_text_5 = visual.TextStim(win=win, name='fis_text_5',
-    text='Ready',
-    font='Open Sans',
+fis_stt_round = visual.TextStim(win=win, name='fis_stt_round',
+    text='시작하려면 \n화면을 더블클릭 하세요',
+    font='Malgun Gothic',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=0.0);
-fis_text_6 = visual.TextStim(win=win, name='fis_text_6',
-    text='3',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=-1.0);
-fis_text_7 = visual.TextStim(win=win, name='fis_text_7',
-    text='2',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
+    color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-2.0);
-fis_text_8 = visual.TextStim(win=win, name='fis_text_8',
-    text='1',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
+
+# --- Initialize components for Routine "fis_readycount" ---
+fis_back = visual.ImageStim(
+    win=win,
+    name='fis_back', units='pix', 
+    image='fis_artwork/fish_background.png', mask=None, anchor='center',
+    ori=0.0, pos=(0, 0), size=(1920,1080),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=0.0)
+fis_start_prac = visual.TextStim(win=win, name='fis_start_prac',
+    text='준비',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
-    depth=-3.0);
+    depth=-1.0);
+fis_get_ready = visual.TextStim(win=win, name='fis_get_ready',
+    text='시작',
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-2.0);
 
 # --- Initialize components for Routine "total_end" ---
+end_back = visual.ImageStim(
+    win=win,
+    name='end_back', units='pix', 
+    image='fis_artwork/fish_background.png', mask=None, anchor='center',
+    ori=0.0, pos=(0, 0), size=(1920,1080),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=0.0)
 total_end_text = visual.TextStim(win=win, name='total_end_text',
     text='참여해주셔서 감사합니다.\n자동으로 종료됩니다.',
-    font='Open Sans',
-    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
+    font='Malgun Gothic',
+    pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
-    depth=0.0);
+    depth=-1.0);
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -2034,7 +2017,7 @@ for thisWeather in weather:
             wth_movie.setAutoDraw(True)
         
         # *wth_inst_text* updates
-        if wth_inst_text.status == NOT_STARTED and tThisFlip >= 2-frameTolerance:
+        if wth_inst_text.status == NOT_STARTED and tThisFlip >= wth_movie.status==Finished-frameTolerance:
             # keep track of start time/frame for later
             wth_inst_text.frameNStart = frameN  # exact frame index
             wth_inst_text.tStart = t  # local t and not account for scr refresh
@@ -2978,7 +2961,7 @@ for thisWeather in weather:
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
-        wth_word_instr.setFont('Noto Sans KR')
+        wth_word_instr.setFont('Malgun Gothic')
         # Run 'Begin Routine' code from wth_code_4
         win.mouseVisible = True
         # keep track of which components have finished
@@ -3383,7 +3366,7 @@ for thisTotal_experiment in total_experiment:
         para_loop = exp_order1[1]
         fish_loop = exp_order1[2]
         exp_text = '스페이스바를 누르면 두번째 실험으로 넘어갑니다'
-    elif exp_loop == 3: 
+    elif exp_loop == 3:
         boat_loop = exp_order2[0]
         para_loop = exp_order2[1]
         fish_loop = exp_order2[2]
@@ -3395,6 +3378,16 @@ for thisTotal_experiment in total_experiment:
         exp_text = '스페이스바를 누르면 마지막 실험으로 넘어갑니다'
     elif exp_loop == 5:
         total_experiment.finished = True
+    
+    if skip_boat == 1:
+        boat_loop = 0
+    if skip_para == 1:
+        para_loop = 0
+    if skip_fish == 1:
+        fish_loop = 0
+    
+    win.fullscr = True
+    
     # keep track of which components have finished
     total_loopComponents = []
     for thisComponent in total_loopComponents:
@@ -3466,11 +3459,15 @@ for thisTotal_experiment in total_experiment:
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
+        # Run 'Begin Routine' code from fl_random_cb
+        win.fullscr = True
         fl_starter.keys = []
         fl_starter.rt = []
         _fl_starter_allKeys = []
+        # setup some python lists for storing info about the fl_next_click
+        gotValidClick = False  # until a click is received
         # keep track of which components have finished
-        fl_starter_codeComponents = [fl_starter_back, fl_starter_text, fl_starter]
+        fl_starter_codeComponents = [fl_starter_back, fl_starter_text, fl_starter, fl_next_click]
         for thisComponent in fl_starter_codeComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -3531,7 +3528,22 @@ for thisTotal_experiment in total_experiment:
                     fl_starter.rt = _fl_starter_allKeys[-1].rt
                     # a response ends the routine
                     continueRoutine = False
-            
+            # *fl_next_click* updates
+            if fl_next_click.status == NOT_STARTED and t >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                fl_next_click.frameNStart = frameN  # exact frame index
+                fl_next_click.tStart = t  # local t and not account for scr refresh
+                fl_next_click.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fl_next_click, 'tStartRefresh')  # time at next scr refresh
+                fl_next_click.status = STARTED
+                fl_next_click.mouseClock.reset()
+                prevButtonState = fl_next_click.getPressed()  # if button is down already this ISN'T a new click
+            if fl_next_click.status == STARTED:  # only update if started and not finished!
+                buttons = fl_next_click.getPressed()
+                if buttons != prevButtonState:  # button state changed?
+                    prevButtonState = buttons
+                    if sum(buttons) > 0:  # state changed to a new click
+                        continueRoutine = False  # abort routine on response            
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
                 core.quit()
@@ -3554,262 +3566,34 @@ for thisTotal_experiment in total_experiment:
         for thisComponent in fl_starter_codeComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
+        # store data for boat (TrialHandler)
         # the Routine "fl_starter_code" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
-        # set up handler to look after randomisation of conditions etc
-        fl_rep_loop2 = data.TrialHandler(nReps=reps, method='random', 
-            extraInfo=expInfo, originPath=-1,
-            trialList=[None],
-            seed=None, name='fl_rep_loop2')
-        thisExp.addLoop(fl_rep_loop2)  # add the loop to the experiment
-        thisFl_rep_loop2 = fl_rep_loop2.trialList[0]  # so we can initialise stimuli with some values
-        # abbreviate parameter names if possible (e.g. rgb = thisFl_rep_loop2.rgb)
-        if thisFl_rep_loop2 != None:
-            for paramName in thisFl_rep_loop2:
-                exec('{} = thisFl_rep_loop2[paramName]'.format(paramName))
-        
-        for thisFl_rep_loop2 in fl_rep_loop2:
-            currentLoop = fl_rep_loop2
-            # abbreviate parameter names if possible (e.g. rgb = thisFl_rep_loop2.rgb)
-            if thisFl_rep_loop2 != None:
-                for paramName in thisFl_rep_loop2:
-                    exec('{} = thisFl_rep_loop2[paramName]'.format(paramName))
-            
-            # --- Prepare to start Routine "fl_inst" ---
-            continueRoutine = True
-            routineForceEnded = False
-            # update component parameters for each repeat
-            # Run 'Begin Routine' code from fl_inst_cb
-            if counter_resp == jkl_resp:
-                inst='ins/inst_jkl.png'
-            elif counter_resp == lkj_resp:
-                inst='ins/inst_lkj.png'
-            
-            
-            nowexp = 1;
-            #fl 1 st 2 
-            fl_inst_img.setImage('ins/fl_inst_click.PNG')
-            fl_inst_resp.keys = []
-            fl_inst_resp.rt = []
-            _fl_inst_resp_allKeys = []
-            fl_inst_sound.setSound('ins/fl_inst_click.wav', hamming=True)
-            fl_inst_sound.setVolume(1.0, log=False)
-            # keep track of which components have finished
-            fl_instComponents = [fl_inst_img, fl_inst_resp, fl_inst_text_2, fl_inst_sound]
-            for thisComponent in fl_instComponents:
-                thisComponent.tStart = None
-                thisComponent.tStop = None
-                thisComponent.tStartRefresh = None
-                thisComponent.tStopRefresh = None
-                if hasattr(thisComponent, 'status'):
-                    thisComponent.status = NOT_STARTED
-            # reset timers
-            t = 0
-            _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-            frameN = -1
-            
-            # --- Run Routine "fl_inst" ---
-            while continueRoutine:
-                # get current time
-                t = routineTimer.getTime()
-                tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-                tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-                frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-                # update/draw components on each frame
-                
-                # *fl_inst_img* updates
-                if fl_inst_img.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
-                    # keep track of start time/frame for later
-                    fl_inst_img.frameNStart = frameN  # exact frame index
-                    fl_inst_img.tStart = t  # local t and not account for scr refresh
-                    fl_inst_img.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(fl_inst_img, 'tStartRefresh')  # time at next scr refresh
-                    fl_inst_img.setAutoDraw(True)
-                
-                # *fl_inst_resp* updates
-                waitOnFlip = False
-                if fl_inst_resp.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
-                    # keep track of start time/frame for later
-                    fl_inst_resp.frameNStart = frameN  # exact frame index
-                    fl_inst_resp.tStart = t  # local t and not account for scr refresh
-                    fl_inst_resp.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(fl_inst_resp, 'tStartRefresh')  # time at next scr refresh
-                    fl_inst_resp.status = STARTED
-                    # keyboard checking is just starting
-                    waitOnFlip = True
-                    win.callOnFlip(fl_inst_resp.clock.reset)  # t=0 on next screen flip
-                    win.callOnFlip(fl_inst_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
-                if fl_inst_resp.status == STARTED and not waitOnFlip:
-                    theseKeys = fl_inst_resp.getKeys(keyList=['space'], waitRelease=False)
-                    _fl_inst_resp_allKeys.extend(theseKeys)
-                    if len(_fl_inst_resp_allKeys):
-                        fl_inst_resp.keys = _fl_inst_resp_allKeys[-1].name  # just the last key pressed
-                        fl_inst_resp.rt = _fl_inst_resp_allKeys[-1].rt
-                        # a response ends the routine
-                        continueRoutine = False
-                
-                # *fl_inst_text_2* updates
-                if fl_inst_text_2.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
-                    # keep track of start time/frame for later
-                    fl_inst_text_2.frameNStart = frameN  # exact frame index
-                    fl_inst_text_2.tStart = t  # local t and not account for scr refresh
-                    fl_inst_text_2.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(fl_inst_text_2, 'tStartRefresh')  # time at next scr refresh
-                    fl_inst_text_2.setAutoDraw(True)
-                # start/stop fl_inst_sound
-                if fl_inst_sound.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
-                    # keep track of start time/frame for later
-                    fl_inst_sound.frameNStart = frameN  # exact frame index
-                    fl_inst_sound.tStart = t  # local t and not account for scr refresh
-                    fl_inst_sound.tStartRefresh = tThisFlipGlobal  # on global time
-                    fl_inst_sound.play(when=win)  # sync with win flip
-                
-                # check for quit (typically the Esc key)
-                if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-                    core.quit()
-                
-                # check if all components have finished
-                if not continueRoutine:  # a component has requested a forced-end of Routine
-                    routineForceEnded = True
-                    break
-                continueRoutine = False  # will revert to True if at least one component still running
-                for thisComponent in fl_instComponents:
-                    if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                        continueRoutine = True
-                        break  # at least one component has not yet finished
-                
-                # refresh the screen
-                if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                    win.flip()
-            
-            # --- Ending Routine "fl_inst" ---
-            for thisComponent in fl_instComponents:
-                if hasattr(thisComponent, "setAutoDraw"):
-                    thisComponent.setAutoDraw(False)
-            fl_inst_sound.stop()  # ensure sound has stopped at end of routine
-            # the Routine "fl_inst" was not non-slip safe, so reset the non-slip timer
-            routineTimer.reset()
-            
-            # --- Prepare to start Routine "fl_rep2" ---
-            continueRoutine = True
-            routineForceEnded = False
-            # update component parameters for each repeat
-            fl_inst_end_key.keys = []
-            fl_inst_end_key.rt = []
-            _fl_inst_end_key_allKeys = []
-            # keep track of which components have finished
-            fl_rep2Components = [fl_back, fl_inst_end_text, fl_inst_end_key]
-            for thisComponent in fl_rep2Components:
-                thisComponent.tStart = None
-                thisComponent.tStop = None
-                thisComponent.tStartRefresh = None
-                thisComponent.tStopRefresh = None
-                if hasattr(thisComponent, 'status'):
-                    thisComponent.status = NOT_STARTED
-            # reset timers
-            t = 0
-            _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-            frameN = -1
-            
-            # --- Run Routine "fl_rep2" ---
-            while continueRoutine:
-                # get current time
-                t = routineTimer.getTime()
-                tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-                tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-                frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-                # update/draw components on each frame
-                
-                # *fl_back* updates
-                if fl_back.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    fl_back.frameNStart = frameN  # exact frame index
-                    fl_back.tStart = t  # local t and not account for scr refresh
-                    fl_back.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(fl_back, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fl_back.started')
-                    fl_back.setAutoDraw(True)
-                
-                # *fl_inst_end_text* updates
-                if fl_inst_end_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    fl_inst_end_text.frameNStart = frameN  # exact frame index
-                    fl_inst_end_text.tStart = t  # local t and not account for scr refresh
-                    fl_inst_end_text.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(fl_inst_end_text, 'tStartRefresh')  # time at next scr refresh
-                    fl_inst_end_text.setAutoDraw(True)
-                
-                # *fl_inst_end_key* updates
-                waitOnFlip = False
-                if fl_inst_end_key.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    fl_inst_end_key.frameNStart = frameN  # exact frame index
-                    fl_inst_end_key.tStart = t  # local t and not account for scr refresh
-                    fl_inst_end_key.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(fl_inst_end_key, 'tStartRefresh')  # time at next scr refresh
-                    fl_inst_end_key.status = STARTED
-                    # keyboard checking is just starting
-                    waitOnFlip = True
-                    win.callOnFlip(fl_inst_end_key.clock.reset)  # t=0 on next screen flip
-                    win.callOnFlip(fl_inst_end_key.clearEvents, eventType='keyboard')  # clear events on next screen flip
-                if fl_inst_end_key.status == STARTED and not waitOnFlip:
-                    theseKeys = fl_inst_end_key.getKeys(keyList=['y','n'], waitRelease=False)
-                    _fl_inst_end_key_allKeys.extend(theseKeys)
-                    if len(_fl_inst_end_key_allKeys):
-                        fl_inst_end_key.keys = _fl_inst_end_key_allKeys[-1].name  # just the last key pressed
-                        fl_inst_end_key.rt = _fl_inst_end_key_allKeys[-1].rt
-                        # a response ends the routine
-                        continueRoutine = False
-                
-                # check for quit (typically the Esc key)
-                if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-                    core.quit()
-                
-                # check if all components have finished
-                if not continueRoutine:  # a component has requested a forced-end of Routine
-                    routineForceEnded = True
-                    break
-                continueRoutine = False  # will revert to True if at least one component still running
-                for thisComponent in fl_rep2Components:
-                    if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                        continueRoutine = True
-                        break  # at least one component has not yet finished
-                
-                # refresh the screen
-                if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                    win.flip()
-            
-            # --- Ending Routine "fl_rep2" ---
-            for thisComponent in fl_rep2Components:
-                if hasattr(thisComponent, "setAutoDraw"):
-                    thisComponent.setAutoDraw(False)
-            # Run 'End Routine' code from fl_inst_end_code
-            if fl_inst_end_key.keys == 'n':
-                fl_rep_loop2.finished = True
-            
-            
-            # the Routine "fl_rep2" was not non-slip safe, so reset the non-slip timer
-            routineTimer.reset()
-            thisExp.nextEntry()
-            
-        # completed reps repeats of 'fl_rep_loop2'
-        
-        
-        # --- Prepare to start Routine "fl_say_practice" ---
+        # --- Prepare to start Routine "fl_inst" ---
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
-        # setup some python lists for storing info about the fl_mouse_prac
-        gotValidClick = False  # until a click is received
-        # Run 'Begin Routine' code from fl_prac_code
-        mouserec=mouse_st.getPos()
-        minRT = .2
+        # Run 'Begin Routine' code from fl_inst_cb
+        if counter_resp == jkl_resp:
+            inst='ins/inst_jkl.png'
+        elif counter_resp == lkj_resp:
+            inst='ins/inst_lkj.png'
         
+        
+        nowexp = 1;
+        #fl 1 st 2 
+        fl_inst_img.setImage('ins/fl_inst_click.PNG')
+        fl_inst_resp.keys = []
+        fl_inst_resp.rt = []
+        _fl_inst_resp_allKeys = []
+        fl_inst_sound.setSound('ins/fl_inst_click.wav', hamming=True)
+        fl_inst_sound.setVolume(1.0, log=False)
+        # setup some python lists for storing info about the fl_next_again
+        gotValidClick = False  # until a click is received
         # keep track of which components have finished
-        fl_say_practiceComponents = [fl_pracbac, fl_prac_text, fl_mouse_prac]
-        for thisComponent in fl_say_practiceComponents:
+        fl_instComponents = [fl_inst_img, fl_inst_resp, fl_inst_text_2, fl_inst_sound, fl_next_again]
+        for thisComponent in fl_instComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
             thisComponent.tStartRefresh = None
@@ -3821,8 +3605,8 @@ for thisTotal_experiment in total_experiment:
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
         frameN = -1
         
-        # --- Run Routine "fl_say_practice" ---
-        while continueRoutine and routineTimer.getTime() < 2.0:
+        # --- Run Routine "fl_inst" ---
+        while continueRoutine:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -3830,71 +3614,68 @@ for thisTotal_experiment in total_experiment:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
-            # *fl_pracbac* updates
-            if fl_pracbac.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # *fl_inst_img* updates
+            if fl_inst_img.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
                 # keep track of start time/frame for later
-                fl_pracbac.frameNStart = frameN  # exact frame index
-                fl_pracbac.tStart = t  # local t and not account for scr refresh
-                fl_pracbac.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fl_pracbac, 'tStartRefresh')  # time at next scr refresh
-                fl_pracbac.setAutoDraw(True)
-            if fl_pracbac.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > fl_pracbac.tStartRefresh + 2-frameTolerance:
-                    # keep track of stop time/frame for later
-                    fl_pracbac.tStop = t  # not accounting for scr refresh
-                    fl_pracbac.frameNStop = frameN  # exact frame index
-                    fl_pracbac.setAutoDraw(False)
+                fl_inst_img.frameNStart = frameN  # exact frame index
+                fl_inst_img.tStart = t  # local t and not account for scr refresh
+                fl_inst_img.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fl_inst_img, 'tStartRefresh')  # time at next scr refresh
+                fl_inst_img.setAutoDraw(True)
             
-            # *fl_prac_text* updates
-            if fl_prac_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # *fl_inst_resp* updates
+            waitOnFlip = False
+            if fl_inst_resp.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
                 # keep track of start time/frame for later
-                fl_prac_text.frameNStart = frameN  # exact frame index
-                fl_prac_text.tStart = t  # local t and not account for scr refresh
-                fl_prac_text.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fl_prac_text, 'tStartRefresh')  # time at next scr refresh
-                fl_prac_text.setAutoDraw(True)
-            if fl_prac_text.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > fl_prac_text.tStartRefresh + 2.0-frameTolerance:
-                    # keep track of stop time/frame for later
-                    fl_prac_text.tStop = t  # not accounting for scr refresh
-                    fl_prac_text.frameNStop = frameN  # exact frame index
-                    fl_prac_text.setAutoDraw(False)
-            # *fl_mouse_prac* updates
-            if fl_mouse_prac.status == NOT_STARTED and t >= 0.0-frameTolerance:
+                fl_inst_resp.frameNStart = frameN  # exact frame index
+                fl_inst_resp.tStart = t  # local t and not account for scr refresh
+                fl_inst_resp.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fl_inst_resp, 'tStartRefresh')  # time at next scr refresh
+                fl_inst_resp.status = STARTED
+                # keyboard checking is just starting
+                waitOnFlip = True
+                win.callOnFlip(fl_inst_resp.clock.reset)  # t=0 on next screen flip
+                win.callOnFlip(fl_inst_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+            if fl_inst_resp.status == STARTED and not waitOnFlip:
+                theseKeys = fl_inst_resp.getKeys(keyList=['space'], waitRelease=False)
+                _fl_inst_resp_allKeys.extend(theseKeys)
+                if len(_fl_inst_resp_allKeys):
+                    fl_inst_resp.keys = _fl_inst_resp_allKeys[-1].name  # just the last key pressed
+                    fl_inst_resp.rt = _fl_inst_resp_allKeys[-1].rt
+                    # a response ends the routine
+                    continueRoutine = False
+            
+            # *fl_inst_text_2* updates
+            if fl_inst_text_2.status == NOT_STARTED and fl_inst_img.status==FINISHED:
                 # keep track of start time/frame for later
-                fl_mouse_prac.frameNStart = frameN  # exact frame index
-                fl_mouse_prac.tStart = t  # local t and not account for scr refresh
-                fl_mouse_prac.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fl_mouse_prac, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.addData('fl_mouse_prac.started', t)
-                fl_mouse_prac.status = STARTED
-                fl_mouse_prac.mouseClock.reset()
-                prevButtonState = fl_mouse_prac.getPressed()  # if button is down already this ISN'T a new click
-            if fl_mouse_prac.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > fl_mouse_prac.tStartRefresh + 2-frameTolerance:
-                    # keep track of stop time/frame for later
-                    fl_mouse_prac.tStop = t  # not accounting for scr refresh
-                    fl_mouse_prac.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.addData('fl_mouse_prac.stopped', t)
-                    fl_mouse_prac.status = FINISHED
-            if fl_mouse_prac.status == STARTED:  # only update if started and not finished!
-                buttons = fl_mouse_prac.getPressed()
+                fl_inst_text_2.frameNStart = frameN  # exact frame index
+                fl_inst_text_2.tStart = t  # local t and not account for scr refresh
+                fl_inst_text_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fl_inst_text_2, 'tStartRefresh')  # time at next scr refresh
+                fl_inst_text_2.setAutoDraw(True)
+            # start/stop fl_inst_sound
+            if fl_inst_sound.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
+                # keep track of start time/frame for later
+                fl_inst_sound.frameNStart = frameN  # exact frame index
+                fl_inst_sound.tStart = t  # local t and not account for scr refresh
+                fl_inst_sound.tStartRefresh = tThisFlipGlobal  # on global time
+                fl_inst_sound.play(when=win)  # sync with win flip
+            # *fl_next_again* updates
+            if fl_next_again.status == NOT_STARTED and t >= 1-frameTolerance:
+                # keep track of start time/frame for later
+                fl_next_again.frameNStart = frameN  # exact frame index
+                fl_next_again.tStart = t  # local t and not account for scr refresh
+                fl_next_again.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fl_next_again, 'tStartRefresh')  # time at next scr refresh
+                fl_next_again.status = STARTED
+                fl_next_again.mouseClock.reset()
+                prevButtonState = fl_next_again.getPressed()  # if button is down already this ISN'T a new click
+            if fl_next_again.status == STARTED:  # only update if started and not finished!
+                buttons = fl_next_again.getPressed()
                 if buttons != prevButtonState:  # button state changed?
                     prevButtonState = buttons
                     if sum(buttons) > 0:  # state changed to a new click
-                        if gotValidClick:  
-                            continueRoutine = False  # abort routine on response
-            # Run 'Each Frame' code from fl_prac_code
-            mouseloc = mouse_st.getPos()
-            if mouseloc[0]==mouserec[0] and mouseloc[1]==mouserec[1]:
-                pass
-            
-            
+                        continueRoutine = False  # abort routine on response            
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
                 core.quit()
@@ -3904,7 +3685,7 @@ for thisTotal_experiment in total_experiment:
                 routineForceEnded = True
                 break
             continueRoutine = False  # will revert to True if at least one component still running
-            for thisComponent in fl_say_practiceComponents:
+            for thisComponent in fl_instComponents:
                 if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                     continueRoutine = True
                     break  # at least one component has not yet finished
@@ -3913,30 +3694,21 @@ for thisTotal_experiment in total_experiment:
             if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
                 win.flip()
         
-        # --- Ending Routine "fl_say_practice" ---
-        for thisComponent in fl_say_practiceComponents:
+        # --- Ending Routine "fl_inst" ---
+        for thisComponent in fl_instComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
+        fl_inst_sound.stop()  # ensure sound has stopped at end of routine
         # store data for boat (TrialHandler)
-        x, y = fl_mouse_prac.getPos()
-        buttons = fl_mouse_prac.getPressed()
-        boat.addData('fl_mouse_prac.x', x)
-        boat.addData('fl_mouse_prac.y', y)
-        boat.addData('fl_mouse_prac.leftButton', buttons[0])
-        boat.addData('fl_mouse_prac.midButton', buttons[1])
-        boat.addData('fl_mouse_prac.rightButton', buttons[2])
-        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-        if routineForceEnded:
-            routineTimer.reset()
-        else:
-            routineTimer.addTime(-2.000000)
+        # the Routine "fl_inst" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
         
         # --- Prepare to start Routine "fl_fix_2" ---
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
         # keep track of which components have finished
-        fl_fix_2Components = [fixation_2, back_2]
+        fl_fix_2Components = [back_2, fixation_2, fl_next]
         for thisComponent in fl_fix_2Components:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -3950,7 +3722,7 @@ for thisTotal_experiment in total_experiment:
         frameN = -1
         
         # --- Run Routine "fl_fix_2" ---
-        while continueRoutine and routineTimer.getTime() < 2.0:
+        while continueRoutine and routineTimer.getTime() < 6.0:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -3958,8 +3730,24 @@ for thisTotal_experiment in total_experiment:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
+            # *back_2* updates
+            if back_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                back_2.frameNStart = frameN  # exact frame index
+                back_2.tStart = t  # local t and not account for scr refresh
+                back_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(back_2, 'tStartRefresh')  # time at next scr refresh
+                back_2.setAutoDraw(True)
+            if back_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > back_2.tStartRefresh + 6-frameTolerance:
+                    # keep track of stop time/frame for later
+                    back_2.tStop = t  # not accounting for scr refresh
+                    back_2.frameNStop = frameN  # exact frame index
+                    back_2.setAutoDraw(False)
+            
             # *fixation_2* updates
-            if fixation_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            if fixation_2.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
                 # keep track of start time/frame for later
                 fixation_2.frameNStart = frameN  # exact frame index
                 fixation_2.tStart = t  # local t and not account for scr refresh
@@ -3974,25 +3762,21 @@ for thisTotal_experiment in total_experiment:
                     fixation_2.frameNStop = frameN  # exact frame index
                     fixation_2.setAutoDraw(False)
             
-            # *back_2* updates
-            if back_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # *fl_next* updates
+            if fl_next.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
                 # keep track of start time/frame for later
-                back_2.frameNStart = frameN  # exact frame index
-                back_2.tStart = t  # local t and not account for scr refresh
-                back_2.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(back_2, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'back_2.started')
-                back_2.setAutoDraw(True)
-            if back_2.status == STARTED:
+                fl_next.frameNStart = frameN  # exact frame index
+                fl_next.tStart = t  # local t and not account for scr refresh
+                fl_next.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fl_next, 'tStartRefresh')  # time at next scr refresh
+                fl_next.setAutoDraw(True)
+            if fl_next.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > back_2.tStartRefresh + 2-frameTolerance:
+                if tThisFlipGlobal > fl_next.tStartRefresh + 2-frameTolerance:
                     # keep track of stop time/frame for later
-                    back_2.tStop = t  # not accounting for scr refresh
-                    back_2.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'back_2.stopped')
-                    back_2.setAutoDraw(False)
+                    fl_next.tStop = t  # not accounting for scr refresh
+                    fl_next.frameNStop = frameN  # exact frame index
+                    fl_next.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -4020,7 +3804,7 @@ for thisTotal_experiment in total_experiment:
         if routineForceEnded:
             routineTimer.reset()
         else:
-            routineTimer.addTime(-2.000000)
+            routineTimer.addTime(-6.000000)
         
         # set up handler to look after randomisation of conditions etc
         flanker_prac_loop = data.TrialHandler(nReps=fprac, method='random', 
@@ -4052,6 +3836,11 @@ for thisTotal_experiment in total_experiment:
             thisn=flanker_prac_loop.thisN
             
             #win.mouseVisible = False
+            
+            
+            ##########TEST MODE###########
+            if test_mode == 1 and thisn == 3:
+                flanker_prac_loop.finished=True
             # keep track of which components have finished
             fl_tag_pracComponents = []
             for thisComponent in fl_tag_pracComponents:
@@ -4333,6 +4122,7 @@ for thisTotal_experiment in total_experiment:
                 
                 elif j_button.contains(fl_mouse):
                     fl_res = 'j'
+                    proper_rt = fl_time.getTime()-1
                     if t>minRT:
                         continueRoutine = False
                     else:
@@ -4341,6 +4131,7 @@ for thisTotal_experiment in total_experiment:
                 
                 elif k_button.contains(fl_mouse):
                     fl_res = 'k'
+                    proper_rt = fl_time.getTime()-1
                     if t>minRT:
                         continueRoutine = False
                     else:
@@ -4349,6 +4140,7 @@ for thisTotal_experiment in total_experiment:
                 
                 elif l_button.contains(fl_mouse):
                     fl_res = 'l'
+                    proper_rt = fl_time.getTime()-1
                     if t>minRT:
                         continueRoutine = False
                     else:
@@ -4371,8 +4163,6 @@ for thisTotal_experiment in total_experiment:
                     fl_fix.tStart = t  # local t and not account for scr refresh
                     fl_fix.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(fl_fix, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fl_fix.started')
                     fl_fix.setAutoDraw(True)
                 if fl_fix.status == STARTED:
                     # is it time to stop? (based on global clock, using actual start)
@@ -4380,8 +4170,6 @@ for thisTotal_experiment in total_experiment:
                         # keep track of stop time/frame for later
                         fl_fix.tStop = t  # not accounting for scr refresh
                         fl_fix.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'fl_fix.stopped')
                         fl_fix.setAutoDraw(False)
                 
                 # *dist1* updates
@@ -4438,8 +4226,6 @@ for thisTotal_experiment in total_experiment:
                     j_button.tStart = t  # local t and not account for scr refresh
                     j_button.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(j_button, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'j_button.started')
                     j_button.setAutoDraw(True)
                 
                 # *k_button* updates
@@ -4449,8 +4235,6 @@ for thisTotal_experiment in total_experiment:
                     k_button.tStart = t  # local t and not account for scr refresh
                     k_button.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(k_button, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'k_button.started')
                     k_button.setAutoDraw(True)
                 
                 # *l_button* updates
@@ -4460,8 +4244,6 @@ for thisTotal_experiment in total_experiment:
                     l_button.tStart = t  # local t and not account for scr refresh
                     l_button.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(l_button, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'l_button.started')
                     l_button.setAutoDraw(True)
                 # *fl_mouse* updates
                 if fl_mouse.status == NOT_STARTED and t >= 1-frameTolerance:
@@ -4526,8 +4308,8 @@ for thisTotal_experiment in total_experiment:
             #elif mouse_fl.clicked_name == ['l_button']:
             #    fl_res = 'l'
             
-            fl_mouse.time = fl_time.getTime()
-            fl_mouse.time = fl_mouse.time-1
+            fl_mouse.time = fl_time.getTime()-1
+            
             if fl_res == fl_ans:
                 fl_corr = 1
             elif fl_res != fl_ans:
@@ -4537,6 +4319,7 @@ for thisTotal_experiment in total_experiment:
             thisExp.addData('fl_res', fl_res)
             thisExp.addData('fl_corr', fl_corr)
             thisExp.addData('fl_rt', fl_mouse.time)
+            thisExp.addData('fl_rt_2', proper_rt)
             
             # store data for flanker_prac_loop (TrialHandler)
             # the Routine "Flanker" was not non-slip safe, so reset the non-slip timer
@@ -4557,22 +4340,22 @@ for thisTotal_experiment in total_experiment:
                 fl_mouse.time = -1
             
             if (fl_mouse.time == -1): 
-                message = "좀 더 빨리 응답하세요"
+                message = "더 빨리 응답하세요"
                 feedur = 1
             elif (fl_mouse.time < 0.150): 
                 message = "고양이를 보고 반응하세요"
                 feedur = 3
             elif (fl_mouse.time > 1.5) and (fl_corr == 1): 
-                message = "좀 더 빨리 응답하세요"
+                message = "더 빨리 응답하세요"
                 feedur = 1
             elif (fl_mouse.time > 1.5) and (fl_corr == 0): 
-                message = "틀렸습니다, 좀 더 빨리 응답하세요"
+                message = "오답, 더 빨리 응답하세요"
                 feedur = 1
             elif (fl_mouse.time < 1.5) and (fl_corr == 1): 
                 message = ""
                 feedur = 0
             elif (fl_mouse.time < 1.5) and (fl_corr == 0): 
-                message = "틀렸습니다"
+                message = "오답"
                 feedur = 1
             
             
@@ -4646,8 +4429,6 @@ for thisTotal_experiment in total_experiment:
                     j_button2.tStart = t  # local t and not account for scr refresh
                     j_button2.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(j_button2, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'j_button2.started')
                     j_button2.setAutoDraw(True)
                 if j_button2.status == STARTED:
                     # is it time to stop? (based on global clock, using actual start)
@@ -4655,8 +4436,6 @@ for thisTotal_experiment in total_experiment:
                         # keep track of stop time/frame for later
                         j_button2.tStop = t  # not accounting for scr refresh
                         j_button2.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'j_button2.stopped')
                         j_button2.setAutoDraw(False)
                 
                 # *k_button2* updates
@@ -4666,8 +4445,6 @@ for thisTotal_experiment in total_experiment:
                     k_button2.tStart = t  # local t and not account for scr refresh
                     k_button2.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(k_button2, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'k_button2.started')
                     k_button2.setAutoDraw(True)
                 if k_button2.status == STARTED:
                     # is it time to stop? (based on global clock, using actual start)
@@ -4675,8 +4452,6 @@ for thisTotal_experiment in total_experiment:
                         # keep track of stop time/frame for later
                         k_button2.tStop = t  # not accounting for scr refresh
                         k_button2.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'k_button2.stopped')
                         k_button2.setAutoDraw(False)
                 
                 # *l_button2* updates
@@ -4686,8 +4461,6 @@ for thisTotal_experiment in total_experiment:
                     l_button2.tStart = t  # local t and not account for scr refresh
                     l_button2.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(l_button2, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'l_button2.started')
                     l_button2.setAutoDraw(True)
                 if l_button2.status == STARTED:
                     # is it time to stop? (based on global clock, using actual start)
@@ -4695,8 +4468,6 @@ for thisTotal_experiment in total_experiment:
                         # keep track of stop time/frame for later
                         l_button2.tStop = t  # not accounting for scr refresh
                         l_button2.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'l_button2.stopped')
                         l_button2.setAutoDraw(False)
                 
                 # check for quit (typically the Esc key)
@@ -4770,8 +4541,6 @@ for thisTotal_experiment in total_experiment:
                 fl_mainback.tStart = t  # local t and not account for scr refresh
                 fl_mainback.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(fl_mainback, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'fl_mainback.started')
                 fl_mainback.setAutoDraw(True)
             
             # *fl_main_text* updates
@@ -4811,8 +4580,6 @@ for thisTotal_experiment in total_experiment:
                 fl_mouse_m.tStart = t  # local t and not account for scr refresh
                 fl_mouse_m.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(fl_mouse_m, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.addData('fl_mouse_m.started', t)
                 fl_mouse_m.status = STARTED
                 fl_mouse_m.mouseClock.reset()
                 prevButtonState = fl_mouse_m.getPressed()  # if button is down already this ISN'T a new click
@@ -4860,13 +4627,6 @@ for thisTotal_experiment in total_experiment:
         if fl_key_resp.keys != None:  # we had a response
             boat.addData('fl_key_resp.rt', fl_key_resp.rt)
         # store data for boat (TrialHandler)
-        x, y = fl_mouse_m.getPos()
-        buttons = fl_mouse_m.getPressed()
-        boat.addData('fl_mouse_m.x', x)
-        boat.addData('fl_mouse_m.y', y)
-        boat.addData('fl_mouse_m.leftButton', buttons[0])
-        boat.addData('fl_mouse_m.midButton', buttons[1])
-        boat.addData('fl_mouse_m.rightButton', buttons[2])
         # the Routine "fl_say_main" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
@@ -4875,7 +4635,7 @@ for thisTotal_experiment in total_experiment:
         routineForceEnded = False
         # update component parameters for each repeat
         # keep track of which components have finished
-        fl_fix_2Components = [fixation_2, back_2]
+        fl_fix_2Components = [back_2, fixation_2, fl_next]
         for thisComponent in fl_fix_2Components:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -4889,7 +4649,7 @@ for thisTotal_experiment in total_experiment:
         frameN = -1
         
         # --- Run Routine "fl_fix_2" ---
-        while continueRoutine and routineTimer.getTime() < 2.0:
+        while continueRoutine and routineTimer.getTime() < 6.0:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -4897,8 +4657,24 @@ for thisTotal_experiment in total_experiment:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
+            # *back_2* updates
+            if back_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                back_2.frameNStart = frameN  # exact frame index
+                back_2.tStart = t  # local t and not account for scr refresh
+                back_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(back_2, 'tStartRefresh')  # time at next scr refresh
+                back_2.setAutoDraw(True)
+            if back_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > back_2.tStartRefresh + 6-frameTolerance:
+                    # keep track of stop time/frame for later
+                    back_2.tStop = t  # not accounting for scr refresh
+                    back_2.frameNStop = frameN  # exact frame index
+                    back_2.setAutoDraw(False)
+            
             # *fixation_2* updates
-            if fixation_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            if fixation_2.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
                 # keep track of start time/frame for later
                 fixation_2.frameNStart = frameN  # exact frame index
                 fixation_2.tStart = t  # local t and not account for scr refresh
@@ -4913,25 +4689,21 @@ for thisTotal_experiment in total_experiment:
                     fixation_2.frameNStop = frameN  # exact frame index
                     fixation_2.setAutoDraw(False)
             
-            # *back_2* updates
-            if back_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # *fl_next* updates
+            if fl_next.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
                 # keep track of start time/frame for later
-                back_2.frameNStart = frameN  # exact frame index
-                back_2.tStart = t  # local t and not account for scr refresh
-                back_2.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(back_2, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'back_2.started')
-                back_2.setAutoDraw(True)
-            if back_2.status == STARTED:
+                fl_next.frameNStart = frameN  # exact frame index
+                fl_next.tStart = t  # local t and not account for scr refresh
+                fl_next.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fl_next, 'tStartRefresh')  # time at next scr refresh
+                fl_next.setAutoDraw(True)
+            if fl_next.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > back_2.tStartRefresh + 2-frameTolerance:
+                if tThisFlipGlobal > fl_next.tStartRefresh + 2-frameTolerance:
                     # keep track of stop time/frame for later
-                    back_2.tStop = t  # not accounting for scr refresh
-                    back_2.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'back_2.stopped')
-                    back_2.setAutoDraw(False)
+                    fl_next.tStop = t  # not accounting for scr refresh
+                    fl_next.frameNStop = frameN  # exact frame index
+                    fl_next.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -4959,7 +4731,7 @@ for thisTotal_experiment in total_experiment:
         if routineForceEnded:
             routineTimer.reset()
         else:
-            routineTimer.addTime(-2.000000)
+            routineTimer.addTime(-6.000000)
         
         # set up handler to look after randomisation of conditions etc
         flanker_main_loop = data.TrialHandler(nReps=fmain, method='random', 
@@ -4989,6 +4761,12 @@ for thisTotal_experiment in total_experiment:
             targ_cond = flanker_main_loop.thisTrial["target"]
             set_cond  = flanker_main_loop.thisTrial["set"]
             thisn = flanker_main_loop.thisN
+            
+            
+            
+            ##########TEST MODE###########
+            if test_mode == 1 and thisn == 3:
+                flanker_main_loop.finished=True
             # keep track of which components have finished
             fl_tag_mainComponents = []
             for thisComponent in fl_tag_mainComponents:
@@ -5270,6 +5048,7 @@ for thisTotal_experiment in total_experiment:
                 
                 elif j_button.contains(fl_mouse):
                     fl_res = 'j'
+                    proper_rt = fl_time.getTime()-1
                     if t>minRT:
                         continueRoutine = False
                     else:
@@ -5278,6 +5057,7 @@ for thisTotal_experiment in total_experiment:
                 
                 elif k_button.contains(fl_mouse):
                     fl_res = 'k'
+                    proper_rt = fl_time.getTime()-1
                     if t>minRT:
                         continueRoutine = False
                     else:
@@ -5286,6 +5066,7 @@ for thisTotal_experiment in total_experiment:
                 
                 elif l_button.contains(fl_mouse):
                     fl_res = 'l'
+                    proper_rt = fl_time.getTime()-1
                     if t>minRT:
                         continueRoutine = False
                     else:
@@ -5308,8 +5089,6 @@ for thisTotal_experiment in total_experiment:
                     fl_fix.tStart = t  # local t and not account for scr refresh
                     fl_fix.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(fl_fix, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fl_fix.started')
                     fl_fix.setAutoDraw(True)
                 if fl_fix.status == STARTED:
                     # is it time to stop? (based on global clock, using actual start)
@@ -5317,8 +5096,6 @@ for thisTotal_experiment in total_experiment:
                         # keep track of stop time/frame for later
                         fl_fix.tStop = t  # not accounting for scr refresh
                         fl_fix.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'fl_fix.stopped')
                         fl_fix.setAutoDraw(False)
                 
                 # *dist1* updates
@@ -5375,8 +5152,6 @@ for thisTotal_experiment in total_experiment:
                     j_button.tStart = t  # local t and not account for scr refresh
                     j_button.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(j_button, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'j_button.started')
                     j_button.setAutoDraw(True)
                 
                 # *k_button* updates
@@ -5386,8 +5161,6 @@ for thisTotal_experiment in total_experiment:
                     k_button.tStart = t  # local t and not account for scr refresh
                     k_button.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(k_button, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'k_button.started')
                     k_button.setAutoDraw(True)
                 
                 # *l_button* updates
@@ -5397,8 +5170,6 @@ for thisTotal_experiment in total_experiment:
                     l_button.tStart = t  # local t and not account for scr refresh
                     l_button.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(l_button, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'l_button.started')
                     l_button.setAutoDraw(True)
                 # *fl_mouse* updates
                 if fl_mouse.status == NOT_STARTED and t >= 1-frameTolerance:
@@ -5463,8 +5234,8 @@ for thisTotal_experiment in total_experiment:
             #elif mouse_fl.clicked_name == ['l_button']:
             #    fl_res = 'l'
             
-            fl_mouse.time = fl_time.getTime()
-            fl_mouse.time = fl_mouse.time-1
+            fl_mouse.time = fl_time.getTime()-1
+            
             if fl_res == fl_ans:
                 fl_corr = 1
             elif fl_res != fl_ans:
@@ -5474,6 +5245,7 @@ for thisTotal_experiment in total_experiment:
             thisExp.addData('fl_res', fl_res)
             thisExp.addData('fl_corr', fl_corr)
             thisExp.addData('fl_rt', fl_mouse.time)
+            thisExp.addData('fl_rt_2', proper_rt)
             
             # store data for flanker_main_loop (TrialHandler)
             # the Routine "Flanker" was not non-slip safe, so reset the non-slip timer
@@ -5494,22 +5266,22 @@ for thisTotal_experiment in total_experiment:
                 fl_mouse.time = -1
             
             if (fl_mouse.time == -1): 
-                message = "좀 더 빨리 응답하세요"
+                message = "더 빨리 응답하세요"
                 feedur = 1
             elif (fl_mouse.time < 0.150): 
                 message = "고양이를 보고 반응하세요"
                 feedur = 3
             elif (fl_mouse.time > 1.5) and (fl_corr == 1): 
-                message = "좀 더 빨리 응답하세요"
+                message = "더 빨리 응답하세요"
                 feedur = 1
             elif (fl_mouse.time > 1.5) and (fl_corr == 0): 
-                message = "틀렸습니다, 좀 더 빨리 응답하세요"
+                message = "오답, 더 빨리 응답하세요"
                 feedur = 1
             elif (fl_mouse.time < 1.5) and (fl_corr == 1): 
                 message = ""
                 feedur = 0
             elif (fl_mouse.time < 1.5) and (fl_corr == 0): 
-                message = "틀렸습니다"
+                message = "오답"
                 feedur = 1
             
             
@@ -5583,8 +5355,6 @@ for thisTotal_experiment in total_experiment:
                     j_button2.tStart = t  # local t and not account for scr refresh
                     j_button2.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(j_button2, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'j_button2.started')
                     j_button2.setAutoDraw(True)
                 if j_button2.status == STARTED:
                     # is it time to stop? (based on global clock, using actual start)
@@ -5592,8 +5362,6 @@ for thisTotal_experiment in total_experiment:
                         # keep track of stop time/frame for later
                         j_button2.tStop = t  # not accounting for scr refresh
                         j_button2.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'j_button2.stopped')
                         j_button2.setAutoDraw(False)
                 
                 # *k_button2* updates
@@ -5603,8 +5371,6 @@ for thisTotal_experiment in total_experiment:
                     k_button2.tStart = t  # local t and not account for scr refresh
                     k_button2.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(k_button2, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'k_button2.started')
                     k_button2.setAutoDraw(True)
                 if k_button2.status == STARTED:
                     # is it time to stop? (based on global clock, using actual start)
@@ -5612,8 +5378,6 @@ for thisTotal_experiment in total_experiment:
                         # keep track of stop time/frame for later
                         k_button2.tStop = t  # not accounting for scr refresh
                         k_button2.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'k_button2.stopped')
                         k_button2.setAutoDraw(False)
                 
                 # *l_button2* updates
@@ -5623,8 +5387,6 @@ for thisTotal_experiment in total_experiment:
                     l_button2.tStart = t  # local t and not account for scr refresh
                     l_button2.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(l_button2, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'l_button2.started')
                     l_button2.setAutoDraw(True)
                 if l_button2.status == STARTED:
                     # is it time to stop? (based on global clock, using actual start)
@@ -5632,8 +5394,6 @@ for thisTotal_experiment in total_experiment:
                         # keep track of stop time/frame for later
                         l_button2.tStop = t  # not accounting for scr refresh
                         l_button2.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'l_button2.stopped')
                         l_button2.setAutoDraw(False)
                 
                 # check for quit (typically the Esc key)
@@ -5692,11 +5452,15 @@ for thisTotal_experiment in total_experiment:
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
+        # Run 'Begin Routine' code from para_random_cb
+        win.fullscr = True
         para_starter_key.keys = []
         para_starter_key.rt = []
         _para_starter_key_allKeys = []
+        # setup some python lists for storing info about the para_skip_click
+        gotValidClick = False  # until a click is received
         # keep track of which components have finished
-        para_starter_codeComponents = [para_starter, para_starter_text, para_starter_key]
+        para_starter_codeComponents = [para_starter, para_starter_text, para_starter_key, para_skip_click]
         for thisComponent in para_starter_codeComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -5725,8 +5489,6 @@ for thisTotal_experiment in total_experiment:
                 para_starter.tStart = t  # local t and not account for scr refresh
                 para_starter.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(para_starter, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'para_starter.started')
                 para_starter.setAutoDraw(True)
             
             # *para_starter_text* updates
@@ -5740,14 +5502,12 @@ for thisTotal_experiment in total_experiment:
             
             # *para_starter_key* updates
             waitOnFlip = False
-            if para_starter_key.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            if para_starter_key.status == NOT_STARTED and tThisFlip >= 2-frameTolerance:
                 # keep track of start time/frame for later
                 para_starter_key.frameNStart = frameN  # exact frame index
                 para_starter_key.tStart = t  # local t and not account for scr refresh
                 para_starter_key.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(para_starter_key, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'para_starter_key.started')
                 para_starter_key.status = STARTED
                 # keyboard checking is just starting
                 waitOnFlip = True
@@ -5761,7 +5521,22 @@ for thisTotal_experiment in total_experiment:
                     para_starter_key.rt = _para_starter_key_allKeys[-1].rt
                     # a response ends the routine
                     continueRoutine = False
-            
+            # *para_skip_click* updates
+            if para_skip_click.status == NOT_STARTED and t >= 2-frameTolerance:
+                # keep track of start time/frame for later
+                para_skip_click.frameNStart = frameN  # exact frame index
+                para_skip_click.tStart = t  # local t and not account for scr refresh
+                para_skip_click.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(para_skip_click, 'tStartRefresh')  # time at next scr refresh
+                para_skip_click.status = STARTED
+                para_skip_click.mouseClock.reset()
+                prevButtonState = para_skip_click.getPressed()  # if button is down already this ISN'T a new click
+            if para_skip_click.status == STARTED:  # only update if started and not finished!
+                buttons = para_skip_click.getPressed()
+                if buttons != prevButtonState:  # button state changed?
+                    prevButtonState = buttons
+                    if sum(buttons) > 0:  # state changed to a new click
+                        continueRoutine = False  # abort routine on response            
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
                 core.quit()
@@ -5784,263 +5559,33 @@ for thisTotal_experiment in total_experiment:
         for thisComponent in para_starter_codeComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        # check responses
-        if para_starter_key.keys in ['', [], None]:  # No response was made
-            para_starter_key.keys = None
-        para.addData('para_starter_key.keys',para_starter_key.keys)
-        if para_starter_key.keys != None:  # we had a response
-            para.addData('para_starter_key.rt', para_starter_key.rt)
+        # store data for para (TrialHandler)
         # the Routine "para_starter_code" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
-        # set up handler to look after randomisation of conditions etc
-        para_rep_loop = data.TrialHandler(nReps=reps_p, method='random', 
-            extraInfo=expInfo, originPath=-1,
-            trialList=[None],
-            seed=None, name='para_rep_loop')
-        thisExp.addLoop(para_rep_loop)  # add the loop to the experiment
-        thisPara_rep_loop = para_rep_loop.trialList[0]  # so we can initialise stimuli with some values
-        # abbreviate parameter names if possible (e.g. rgb = thisPara_rep_loop.rgb)
-        if thisPara_rep_loop != None:
-            for paramName in thisPara_rep_loop:
-                exec('{} = thisPara_rep_loop[paramName]'.format(paramName))
-        
-        for thisPara_rep_loop in para_rep_loop:
-            currentLoop = para_rep_loop
-            # abbreviate parameter names if possible (e.g. rgb = thisPara_rep_loop.rgb)
-            if thisPara_rep_loop != None:
-                for paramName in thisPara_rep_loop:
-                    exec('{} = thisPara_rep_loop[paramName]'.format(paramName))
-            
-            # --- Prepare to start Routine "para_inst" ---
-            continueRoutine = True
-            routineForceEnded = False
-            # update component parameters for each repeat
-            # Run 'Begin Routine' code from para_rep_code
-            if counter_resp == bhya_resp:
-                inst='ins/st2_bhya.png'
-                aud= 'ins/st2_bhya.wav'
-            elif counter_resp == bayh_resp:
-                inst='ins/st2_bayh.png'
-                aud= 'ins/st2_bayh.wav'
-            
-            para_inst_img.setImage(inst)
-            para_inst_sound.setSound(aud, hamming=True)
-            para_inst_sound.setVolume(1.0, log=False)
-            para_inst_key.keys = []
-            para_inst_key.rt = []
-            _para_inst_key_allKeys = []
-            # keep track of which components have finished
-            para_instComponents = [para_inst_img, para_inst_sound, para_inst_key]
-            for thisComponent in para_instComponents:
-                thisComponent.tStart = None
-                thisComponent.tStop = None
-                thisComponent.tStartRefresh = None
-                thisComponent.tStopRefresh = None
-                if hasattr(thisComponent, 'status'):
-                    thisComponent.status = NOT_STARTED
-            # reset timers
-            t = 0
-            _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-            frameN = -1
-            
-            # --- Run Routine "para_inst" ---
-            while continueRoutine:
-                # get current time
-                t = routineTimer.getTime()
-                tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-                tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-                frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-                # update/draw components on each frame
-                
-                # *para_inst_img* updates
-                if para_inst_img.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
-                    # keep track of start time/frame for later
-                    para_inst_img.frameNStart = frameN  # exact frame index
-                    para_inst_img.tStart = t  # local t and not account for scr refresh
-                    para_inst_img.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(para_inst_img, 'tStartRefresh')  # time at next scr refresh
-                    para_inst_img.setAutoDraw(True)
-                # start/stop para_inst_sound
-                if para_inst_sound.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
-                    # keep track of start time/frame for later
-                    para_inst_sound.frameNStart = frameN  # exact frame index
-                    para_inst_sound.tStart = t  # local t and not account for scr refresh
-                    para_inst_sound.tStartRefresh = tThisFlipGlobal  # on global time
-                    # add timestamp to datafile
-                    thisExp.addData('para_inst_sound.started', tThisFlipGlobal)
-                    para_inst_sound.play(when=win)  # sync with win flip
-                
-                # *para_inst_key* updates
-                waitOnFlip = False
-                if para_inst_key.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
-                    # keep track of start time/frame for later
-                    para_inst_key.frameNStart = frameN  # exact frame index
-                    para_inst_key.tStart = t  # local t and not account for scr refresh
-                    para_inst_key.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(para_inst_key, 'tStartRefresh')  # time at next scr refresh
-                    para_inst_key.status = STARTED
-                    # keyboard checking is just starting
-                    waitOnFlip = True
-                    win.callOnFlip(para_inst_key.clock.reset)  # t=0 on next screen flip
-                    win.callOnFlip(para_inst_key.clearEvents, eventType='keyboard')  # clear events on next screen flip
-                if para_inst_key.status == STARTED and not waitOnFlip:
-                    theseKeys = para_inst_key.getKeys(keyList=['q','space'], waitRelease=False)
-                    _para_inst_key_allKeys.extend(theseKeys)
-                    if len(_para_inst_key_allKeys):
-                        para_inst_key.keys = _para_inst_key_allKeys[-1].name  # just the last key pressed
-                        para_inst_key.rt = _para_inst_key_allKeys[-1].rt
-                        # a response ends the routine
-                        continueRoutine = False
-                
-                # check for quit (typically the Esc key)
-                if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-                    core.quit()
-                
-                # check if all components have finished
-                if not continueRoutine:  # a component has requested a forced-end of Routine
-                    routineForceEnded = True
-                    break
-                continueRoutine = False  # will revert to True if at least one component still running
-                for thisComponent in para_instComponents:
-                    if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                        continueRoutine = True
-                        break  # at least one component has not yet finished
-                
-                # refresh the screen
-                if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                    win.flip()
-            
-            # --- Ending Routine "para_inst" ---
-            for thisComponent in para_instComponents:
-                if hasattr(thisComponent, "setAutoDraw"):
-                    thisComponent.setAutoDraw(False)
-            # Run 'End Routine' code from para_rep_code
-            backpic = 'pics\st_back.png';
-            
-            nowexp = 2;
-            #fl 1 st 2 
-            para_inst_sound.stop()  # ensure sound has stopped at end of routine
-            # check responses
-            if para_inst_key.keys in ['', [], None]:  # No response was made
-                para_inst_key.keys = None
-            para_rep_loop.addData('para_inst_key.keys',para_inst_key.keys)
-            if para_inst_key.keys != None:  # we had a response
-                para_rep_loop.addData('para_inst_key.rt', para_inst_key.rt)
-            # the Routine "para_inst" was not non-slip safe, so reset the non-slip timer
-            routineTimer.reset()
-            
-            # --- Prepare to start Routine "para_rep" ---
-            continueRoutine = True
-            routineForceEnded = False
-            # update component parameters for each repeat
-            para_end_inst_key.keys = []
-            para_end_inst_key.rt = []
-            _para_end_inst_key_allKeys = []
-            # keep track of which components have finished
-            para_repComponents = [para_inst_image, para_inst_text, para_end_inst_key]
-            for thisComponent in para_repComponents:
-                thisComponent.tStart = None
-                thisComponent.tStop = None
-                thisComponent.tStartRefresh = None
-                thisComponent.tStopRefresh = None
-                if hasattr(thisComponent, 'status'):
-                    thisComponent.status = NOT_STARTED
-            # reset timers
-            t = 0
-            _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-            frameN = -1
-            
-            # --- Run Routine "para_rep" ---
-            while continueRoutine:
-                # get current time
-                t = routineTimer.getTime()
-                tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-                tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-                frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-                # update/draw components on each frame
-                
-                # *para_inst_image* updates
-                if para_inst_image.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    para_inst_image.frameNStart = frameN  # exact frame index
-                    para_inst_image.tStart = t  # local t and not account for scr refresh
-                    para_inst_image.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(para_inst_image, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'para_inst_image.started')
-                    para_inst_image.setAutoDraw(True)
-                
-                # *para_inst_text* updates
-                if para_inst_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    para_inst_text.frameNStart = frameN  # exact frame index
-                    para_inst_text.tStart = t  # local t and not account for scr refresh
-                    para_inst_text.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(para_inst_text, 'tStartRefresh')  # time at next scr refresh
-                    para_inst_text.setAutoDraw(True)
-                
-                # *para_end_inst_key* updates
-                waitOnFlip = False
-                if para_end_inst_key.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    para_end_inst_key.frameNStart = frameN  # exact frame index
-                    para_end_inst_key.tStart = t  # local t and not account for scr refresh
-                    para_end_inst_key.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(para_end_inst_key, 'tStartRefresh')  # time at next scr refresh
-                    para_end_inst_key.status = STARTED
-                    # keyboard checking is just starting
-                    waitOnFlip = True
-                    win.callOnFlip(para_end_inst_key.clock.reset)  # t=0 on next screen flip
-                    win.callOnFlip(para_end_inst_key.clearEvents, eventType='keyboard')  # clear events on next screen flip
-                if para_end_inst_key.status == STARTED and not waitOnFlip:
-                    theseKeys = para_end_inst_key.getKeys(keyList=['y','n'], waitRelease=False)
-                    _para_end_inst_key_allKeys.extend(theseKeys)
-                    if len(_para_end_inst_key_allKeys):
-                        para_end_inst_key.keys = _para_end_inst_key_allKeys[-1].name  # just the last key pressed
-                        para_end_inst_key.rt = _para_end_inst_key_allKeys[-1].rt
-                        # a response ends the routine
-                        continueRoutine = False
-                
-                # check for quit (typically the Esc key)
-                if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-                    core.quit()
-                
-                # check if all components have finished
-                if not continueRoutine:  # a component has requested a forced-end of Routine
-                    routineForceEnded = True
-                    break
-                continueRoutine = False  # will revert to True if at least one component still running
-                for thisComponent in para_repComponents:
-                    if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                        continueRoutine = True
-                        break  # at least one component has not yet finished
-                
-                # refresh the screen
-                if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                    win.flip()
-            
-            # --- Ending Routine "para_rep" ---
-            for thisComponent in para_repComponents:
-                if hasattr(thisComponent, "setAutoDraw"):
-                    thisComponent.setAutoDraw(False)
-            # Run 'End Routine' code from para_end_inst
-            if para_end_inst_key.keys == 'n':
-                para_rep_loop.finished = True
-            # the Routine "para_rep" was not non-slip safe, so reset the non-slip timer
-            routineTimer.reset()
-            thisExp.nextEntry()
-            
-        # completed reps_p repeats of 'para_rep_loop'
-        
-        
-        # --- Prepare to start Routine "para_say_prac" ---
+        # --- Prepare to start Routine "para_inst" ---
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
+        # Run 'Begin Routine' code from para_rep_code
+        if counter_resp == bhya_resp:
+            inst='ins/st2_bhya.png'
+            aud= 'ins/st2_bhya.wav'
+        elif counter_resp == bayh_resp:
+            inst='ins/st2_bayh.png'
+            aud= 'ins/st2_bayh.wav'
+        
+        para_inst_img.setImage(inst)
+        para_inst_sound.setSound(aud, hamming=True)
+        para_inst_sound.setVolume(1.0, log=False)
+        para_inst_key.keys = []
+        para_inst_key.rt = []
+        _para_inst_key_allKeys = []
+        # setup some python lists for storing info about the para_click_next
+        gotValidClick = False  # until a click is received
         # keep track of which components have finished
-        para_say_pracComponents = [para_prac_back, para_prac_text]
-        for thisComponent in para_say_pracComponents:
+        para_instComponents = [para_inst_img, para_inst_sound, para_inst_key, para_click_next]
+        for thisComponent in para_instComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
             thisComponent.tStartRefresh = None
@@ -6052,8 +5597,8 @@ for thisTotal_experiment in total_experiment:
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
         frameN = -1
         
-        # --- Run Routine "para_say_prac" ---
-        while continueRoutine and routineTimer.getTime() < 2.0:
+        # --- Run Routine "para_inst" ---
+        while continueRoutine:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -6061,46 +5606,59 @@ for thisTotal_experiment in total_experiment:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
-            # *para_prac_back* updates
-            if para_prac_back.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # *para_inst_img* updates
+            if para_inst_img.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
                 # keep track of start time/frame for later
-                para_prac_back.frameNStart = frameN  # exact frame index
-                para_prac_back.tStart = t  # local t and not account for scr refresh
-                para_prac_back.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(para_prac_back, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'para_prac_back.started')
-                para_prac_back.setAutoDraw(True)
-            if para_prac_back.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > para_prac_back.tStartRefresh + 2-frameTolerance:
-                    # keep track of stop time/frame for later
-                    para_prac_back.tStop = t  # not accounting for scr refresh
-                    para_prac_back.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'para_prac_back.stopped')
-                    para_prac_back.setAutoDraw(False)
-            
-            # *para_prac_text* updates
-            if para_prac_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                para_inst_img.frameNStart = frameN  # exact frame index
+                para_inst_img.tStart = t  # local t and not account for scr refresh
+                para_inst_img.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(para_inst_img, 'tStartRefresh')  # time at next scr refresh
+                para_inst_img.setAutoDraw(True)
+            # start/stop para_inst_sound
+            if para_inst_sound.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
                 # keep track of start time/frame for later
-                para_prac_text.frameNStart = frameN  # exact frame index
-                para_prac_text.tStart = t  # local t and not account for scr refresh
-                para_prac_text.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(para_prac_text, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'para_prac_text.started')
-                para_prac_text.setAutoDraw(True)
-            if para_prac_text.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > para_prac_text.tStartRefresh + 2-frameTolerance:
-                    # keep track of stop time/frame for later
-                    para_prac_text.tStop = t  # not accounting for scr refresh
-                    para_prac_text.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'para_prac_text.stopped')
-                    para_prac_text.setAutoDraw(False)
+                para_inst_sound.frameNStart = frameN  # exact frame index
+                para_inst_sound.tStart = t  # local t and not account for scr refresh
+                para_inst_sound.tStartRefresh = tThisFlipGlobal  # on global time
+                para_inst_sound.play(when=win)  # sync with win flip
             
+            # *para_inst_key* updates
+            waitOnFlip = False
+            if para_inst_key.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
+                # keep track of start time/frame for later
+                para_inst_key.frameNStart = frameN  # exact frame index
+                para_inst_key.tStart = t  # local t and not account for scr refresh
+                para_inst_key.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(para_inst_key, 'tStartRefresh')  # time at next scr refresh
+                para_inst_key.status = STARTED
+                # keyboard checking is just starting
+                waitOnFlip = True
+                win.callOnFlip(para_inst_key.clock.reset)  # t=0 on next screen flip
+                win.callOnFlip(para_inst_key.clearEvents, eventType='keyboard')  # clear events on next screen flip
+            if para_inst_key.status == STARTED and not waitOnFlip:
+                theseKeys = para_inst_key.getKeys(keyList=['space'], waitRelease=False)
+                _para_inst_key_allKeys.extend(theseKeys)
+                if len(_para_inst_key_allKeys):
+                    para_inst_key.keys = _para_inst_key_allKeys[-1].name  # just the last key pressed
+                    para_inst_key.rt = _para_inst_key_allKeys[-1].rt
+                    # a response ends the routine
+                    continueRoutine = False
+            # *para_click_next* updates
+            if para_click_next.status == NOT_STARTED and t >= 1-frameTolerance:
+                # keep track of start time/frame for later
+                para_click_next.frameNStart = frameN  # exact frame index
+                para_click_next.tStart = t  # local t and not account for scr refresh
+                para_click_next.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(para_click_next, 'tStartRefresh')  # time at next scr refresh
+                para_click_next.status = STARTED
+                para_click_next.mouseClock.reset()
+                prevButtonState = para_click_next.getPressed()  # if button is down already this ISN'T a new click
+            if para_click_next.status == STARTED:  # only update if started and not finished!
+                buttons = para_click_next.getPressed()
+                if buttons != prevButtonState:  # button state changed?
+                    prevButtonState = buttons
+                    if sum(buttons) > 0:  # state changed to a new click
+                        continueRoutine = False  # abort routine on response            
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
                 core.quit()
@@ -6110,7 +5668,7 @@ for thisTotal_experiment in total_experiment:
                 routineForceEnded = True
                 break
             continueRoutine = False  # will revert to True if at least one component still running
-            for thisComponent in para_say_pracComponents:
+            for thisComponent in para_instComponents:
                 if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                     continueRoutine = True
                     break  # at least one component has not yet finished
@@ -6119,22 +5677,26 @@ for thisTotal_experiment in total_experiment:
             if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
                 win.flip()
         
-        # --- Ending Routine "para_say_prac" ---
-        for thisComponent in para_say_pracComponents:
+        # --- Ending Routine "para_inst" ---
+        for thisComponent in para_instComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-        if routineForceEnded:
-            routineTimer.reset()
-        else:
-            routineTimer.addTime(-2.000000)
+        # Run 'End Routine' code from para_rep_code
+        backpic = 'pics\st_back.png';
+        
+        nowexp = 2;
+        #fl 1 st 2 
+        para_inst_sound.stop()  # ensure sound has stopped at end of routine
+        # store data for para (TrialHandler)
+        # the Routine "para_inst" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
         
         # --- Prepare to start Routine "para_fix" ---
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
         # keep track of which components have finished
-        para_fixComponents = [para_fix_back, para_fix_2]
+        para_fixComponents = [para_fix_back, para_fix_2, para_text_next]
         for thisComponent in para_fixComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -6148,7 +5710,7 @@ for thisTotal_experiment in total_experiment:
         frameN = -1
         
         # --- Run Routine "para_fix" ---
-        while continueRoutine and routineTimer.getTime() < 2.0:
+        while continueRoutine and routineTimer.getTime() < 6.0:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -6163,38 +5725,46 @@ for thisTotal_experiment in total_experiment:
                 para_fix_back.tStart = t  # local t and not account for scr refresh
                 para_fix_back.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(para_fix_back, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'para_fix_back.started')
                 para_fix_back.setAutoDraw(True)
             if para_fix_back.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > para_fix_back.tStartRefresh + 2-frameTolerance:
+                if tThisFlipGlobal > para_fix_back.tStartRefresh + 6-frameTolerance:
                     # keep track of stop time/frame for later
                     para_fix_back.tStop = t  # not accounting for scr refresh
                     para_fix_back.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'para_fix_back.stopped')
                     para_fix_back.setAutoDraw(False)
             
             # *para_fix_2* updates
-            if para_fix_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            if para_fix_2.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
                 # keep track of start time/frame for later
                 para_fix_2.frameNStart = frameN  # exact frame index
                 para_fix_2.tStart = t  # local t and not account for scr refresh
                 para_fix_2.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(para_fix_2, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'para_fix_2.started')
                 para_fix_2.setAutoDraw(True)
             if para_fix_2.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > para_fix_2.tStartRefresh + 2-frameTolerance:
+                if tThisFlipGlobal > para_fix_2.tStartRefresh + 3-frameTolerance:
                     # keep track of stop time/frame for later
                     para_fix_2.tStop = t  # not accounting for scr refresh
                     para_fix_2.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'para_fix_2.stopped')
                     para_fix_2.setAutoDraw(False)
+            
+            # *para_text_next* updates
+            if para_text_next.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
+                # keep track of start time/frame for later
+                para_text_next.frameNStart = frameN  # exact frame index
+                para_text_next.tStart = t  # local t and not account for scr refresh
+                para_text_next.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(para_text_next, 'tStartRefresh')  # time at next scr refresh
+                para_text_next.setAutoDraw(True)
+            if para_text_next.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > para_text_next.tStartRefresh + 2-frameTolerance:
+                    # keep track of stop time/frame for later
+                    para_text_next.tStop = t  # not accounting for scr refresh
+                    para_text_next.frameNStop = frameN  # exact frame index
+                    para_text_next.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -6222,7 +5792,7 @@ for thisTotal_experiment in total_experiment:
         if routineForceEnded:
             routineTimer.reset()
         else:
-            routineTimer.addTime(-2.000000)
+            routineTimer.addTime(-6.000000)
         
         # set up handler to look after randomisation of conditions etc
         para_prac_loop = data.TrialHandler(nReps=para_prac, method='random', 
@@ -6252,6 +5822,10 @@ for thisTotal_experiment in total_experiment:
             targ_cond = para_prac_loop.thisTrial["target"]
             set_cond  = para_prac_loop.thisTrial["set"]
             thisn = para_prac_loop.thisN
+            
+            ##########TEST MODE###########
+            if test_mode == 1 and thisn == 3:
+                para_prac_loop.finished=True
             # keep track of which components have finished
             para_tag_prcComponents = []
             for thisComponent in para_tag_prcComponents:
@@ -6477,6 +6051,8 @@ for thisTotal_experiment in total_experiment:
                 
                 elif para_targ_2.contains(mouse_st):
                     st_res = 'k'
+                    para_rt = st_time.getTime()-1
+                
                     if t>minRT:
                         continueRoutine = False
                     else:
@@ -6489,8 +6065,6 @@ for thisTotal_experiment in total_experiment:
                     para_back.tStart = t  # local t and not account for scr refresh
                     para_back.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(para_back, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'para_back.started')
                     para_back.setAutoDraw(True)
                 
                 # *para_fix_prac* updates
@@ -6625,6 +6199,7 @@ for thisTotal_experiment in total_experiment:
             thisExp.addData('st_res', st_res)
             thisExp.addData('st_corr', st_corr)
             thisExp.addData('st_rt', mouse_st.time)
+            thisExp.addData('st_rt2', para_rt)
             # store data for para_prac_loop (TrialHandler)
             # check responses
             if st2_resp.keys in ['', [], None]:  # No response was made
@@ -6659,7 +6234,7 @@ for thisTotal_experiment in total_experiment:
                 message = "고양이를 보고 반응하세요"
                 feedur = 3
             elif (mouse_st.time > 1.5) and (st_corr == 0) and (st2_ans == 'k'):
-                message = "틀렸습니다, 좀 더 빨리 응답하세요"
+                message = "오답, 좀 더 빨리 응답하세요"
                 feedur = 1
             elif (st2_ans == 'k') and (st_corr == 1): 
                 message = ""
@@ -6668,10 +6243,10 @@ for thisTotal_experiment in total_experiment:
                 message = ""
                 feedur = 0.0
             elif (st2_ans == 'k') and (st_corr == 0): 
-                message = "틀렸습니다"
+                message = "오답"
                 feedur = 1
             elif (st2_ans != 'k') and (st_corr == 0): 
-                message = "틀렸습니다"
+                message = "오답"
                 feedur = 1
             
             
@@ -6766,12 +6341,7 @@ for thisTotal_experiment in total_experiment:
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
-        # Run 'Begin Routine' code from para_say_main_2
-        mouserec=para_mouse.getPos()
-        minRT = .2
-        
         # setup some python lists for storing info about the para_mouse
-        para_mouse.clicked_name = []
         gotValidClick = False  # until a click is received
         # keep track of which components have finished
         para_say_mainComponents = [para_main_back, para_main_text, para_mouse]
@@ -6795,20 +6365,6 @@ for thisTotal_experiment in total_experiment:
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
-            # Run 'Each Frame' code from para_say_main_2
-            mouseloc = para_mouse.getPos()
-            if mouseloc[0]==mouserec[0] and mouseloc[1]==mouserec[1]:
-                pass
-            elif para_main_back.contains(para_mouse):
-                 if t>minRT:
-                     continueRoutine = False
-                 else:
-                      mouserec = para_mouse.getPos()
-            elif para_main_text.contains(para_mouse):
-                 if t>minRT:
-                     continueRoutine = False
-                 else:
-                      mouserec = para_mouse.getPos()
             
             # *para_main_back* updates
             if para_main_back.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
@@ -6817,8 +6373,6 @@ for thisTotal_experiment in total_experiment:
                 para_main_back.tStart = t  # local t and not account for scr refresh
                 para_main_back.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(para_main_back, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'para_main_back.started')
                 para_main_back.setAutoDraw(True)
             
             # *para_main_text* updates
@@ -6828,8 +6382,6 @@ for thisTotal_experiment in total_experiment:
                 para_main_text.tStart = t  # local t and not account for scr refresh
                 para_main_text.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(para_main_text, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'para_main_text.started')
                 para_main_text.setAutoDraw(True)
             # *para_mouse* updates
             if para_mouse.status == NOT_STARTED and t >= 0.0-frameTolerance:
@@ -6838,8 +6390,6 @@ for thisTotal_experiment in total_experiment:
                 para_mouse.tStart = t  # local t and not account for scr refresh
                 para_mouse.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(para_mouse, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.addData('para_mouse.started', t)
                 para_mouse.status = STARTED
                 para_mouse.mouseClock.reset()
                 prevButtonState = para_mouse.getPressed()  # if button is down already this ISN'T a new click
@@ -6848,17 +6398,6 @@ for thisTotal_experiment in total_experiment:
                 if buttons != prevButtonState:  # button state changed?
                     prevButtonState = buttons
                     if sum(buttons) > 0:  # state changed to a new click
-                        # check if the mouse was inside our 'clickable' objects
-                        gotValidClick = False
-                        try:
-                            iter([para_main_back, para_main_text])
-                            clickableList = [para_main_back, para_main_text]
-                        except:
-                            clickableList = [[para_main_back, para_main_text]]
-                        for obj in clickableList:
-                            if obj.contains(para_mouse):
-                                gotValidClick = True
-                                para_mouse.clicked_name.append(obj.name)
                         continueRoutine = False  # abort routine on response            
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -6883,27 +6422,6 @@ for thisTotal_experiment in total_experiment:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
         # store data for para (TrialHandler)
-        x, y = para_mouse.getPos()
-        buttons = para_mouse.getPressed()
-        if sum(buttons):
-            # check if the mouse was inside our 'clickable' objects
-            gotValidClick = False
-            try:
-                iter([para_main_back, para_main_text])
-                clickableList = [para_main_back, para_main_text]
-            except:
-                clickableList = [[para_main_back, para_main_text]]
-            for obj in clickableList:
-                if obj.contains(para_mouse):
-                    gotValidClick = True
-                    para_mouse.clicked_name.append(obj.name)
-        para.addData('para_mouse.x', x)
-        para.addData('para_mouse.y', y)
-        para.addData('para_mouse.leftButton', buttons[0])
-        para.addData('para_mouse.midButton', buttons[1])
-        para.addData('para_mouse.rightButton', buttons[2])
-        if len(para_mouse.clicked_name):
-            para.addData('para_mouse.clicked_name', para_mouse.clicked_name[0])
         # the Routine "para_say_main" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
@@ -6912,7 +6430,7 @@ for thisTotal_experiment in total_experiment:
         routineForceEnded = False
         # update component parameters for each repeat
         # keep track of which components have finished
-        para_fixComponents = [para_fix_back, para_fix_2]
+        para_fixComponents = [para_fix_back, para_fix_2, para_text_next]
         for thisComponent in para_fixComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -6926,7 +6444,7 @@ for thisTotal_experiment in total_experiment:
         frameN = -1
         
         # --- Run Routine "para_fix" ---
-        while continueRoutine and routineTimer.getTime() < 2.0:
+        while continueRoutine and routineTimer.getTime() < 6.0:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -6941,38 +6459,46 @@ for thisTotal_experiment in total_experiment:
                 para_fix_back.tStart = t  # local t and not account for scr refresh
                 para_fix_back.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(para_fix_back, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'para_fix_back.started')
                 para_fix_back.setAutoDraw(True)
             if para_fix_back.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > para_fix_back.tStartRefresh + 2-frameTolerance:
+                if tThisFlipGlobal > para_fix_back.tStartRefresh + 6-frameTolerance:
                     # keep track of stop time/frame for later
                     para_fix_back.tStop = t  # not accounting for scr refresh
                     para_fix_back.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'para_fix_back.stopped')
                     para_fix_back.setAutoDraw(False)
             
             # *para_fix_2* updates
-            if para_fix_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            if para_fix_2.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
                 # keep track of start time/frame for later
                 para_fix_2.frameNStart = frameN  # exact frame index
                 para_fix_2.tStart = t  # local t and not account for scr refresh
                 para_fix_2.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(para_fix_2, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'para_fix_2.started')
                 para_fix_2.setAutoDraw(True)
             if para_fix_2.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > para_fix_2.tStartRefresh + 2-frameTolerance:
+                if tThisFlipGlobal > para_fix_2.tStartRefresh + 3-frameTolerance:
                     # keep track of stop time/frame for later
                     para_fix_2.tStop = t  # not accounting for scr refresh
                     para_fix_2.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'para_fix_2.stopped')
                     para_fix_2.setAutoDraw(False)
+            
+            # *para_text_next* updates
+            if para_text_next.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
+                # keep track of start time/frame for later
+                para_text_next.frameNStart = frameN  # exact frame index
+                para_text_next.tStart = t  # local t and not account for scr refresh
+                para_text_next.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(para_text_next, 'tStartRefresh')  # time at next scr refresh
+                para_text_next.setAutoDraw(True)
+            if para_text_next.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > para_text_next.tStartRefresh + 2-frameTolerance:
+                    # keep track of stop time/frame for later
+                    para_text_next.tStop = t  # not accounting for scr refresh
+                    para_text_next.frameNStop = frameN  # exact frame index
+                    para_text_next.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -7000,7 +6526,7 @@ for thisTotal_experiment in total_experiment:
         if routineForceEnded:
             routineTimer.reset()
         else:
-            routineTimer.addTime(-2.000000)
+            routineTimer.addTime(-6.000000)
         
         # set up handler to look after randomisation of conditions etc
         para_main_loop = data.TrialHandler(nReps=para_main, method='random', 
@@ -7030,6 +6556,10 @@ for thisTotal_experiment in total_experiment:
             targ_cond = para_main_loop.thisTrial["target"]
             set_cond  = para_main_loop.thisTrial["set"]
             thisn = para_main_loop.thisN
+            
+            ##########TEST MODE###########
+            if test_mode == 1 and thisn == 3:
+                para_main_loop.finished=True
             # keep track of which components have finished
             para_tag_mainComponents = []
             for thisComponent in para_tag_mainComponents:
@@ -7255,6 +6785,8 @@ for thisTotal_experiment in total_experiment:
                 
                 elif para_targ_2.contains(mouse_st):
                     st_res = 'k'
+                    para_rt = st_time.getTime()-1
+                
                     if t>minRT:
                         continueRoutine = False
                     else:
@@ -7267,8 +6799,6 @@ for thisTotal_experiment in total_experiment:
                     para_back.tStart = t  # local t and not account for scr refresh
                     para_back.tStartRefresh = tThisFlipGlobal  # on global time
                     win.timeOnFlip(para_back, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'para_back.started')
                     para_back.setAutoDraw(True)
                 
                 # *para_fix_prac* updates
@@ -7403,6 +6933,7 @@ for thisTotal_experiment in total_experiment:
             thisExp.addData('st_res', st_res)
             thisExp.addData('st_corr', st_corr)
             thisExp.addData('st_rt', mouse_st.time)
+            thisExp.addData('st_rt2', para_rt)
             # store data for para_main_loop (TrialHandler)
             # check responses
             if st2_resp.keys in ['', [], None]:  # No response was made
@@ -7437,7 +6968,7 @@ for thisTotal_experiment in total_experiment:
                 message = "고양이를 보고 반응하세요"
                 feedur = 3
             elif (mouse_st.time > 1.5) and (st_corr == 0) and (st2_ans == 'k'):
-                message = "틀렸습니다, 좀 더 빨리 응답하세요"
+                message = "오답, 좀 더 빨리 응답하세요"
                 feedur = 1
             elif (st2_ans == 'k') and (st_corr == 1): 
                 message = ""
@@ -7446,10 +6977,10 @@ for thisTotal_experiment in total_experiment:
                 message = ""
                 feedur = 0.0
             elif (st2_ans == 'k') and (st_corr == 0): 
-                message = "틀렸습니다"
+                message = "오답"
                 feedur = 1
             elif (st2_ans != 'k') and (st_corr == 0): 
-                message = "틀렸습니다"
+                message = "오답"
                 feedur = 1
             
             
@@ -7569,11 +7100,14 @@ for thisTotal_experiment in total_experiment:
         # update component parameters for each repeat
         # Run 'Begin Routine' code from fis_CounterBalancing_code
         win.mouseVisible = False
+        win.fullscr = True
         fis_key_resp.keys = []
         fis_key_resp.rt = []
         _fis_key_resp_allKeys = []
+        # setup some python lists for storing info about the mouse
+        gotValidClick = False  # until a click is received
         # keep track of which components have finished
-        fis_initialSetComponents = [fis_text_2, fis_text_3, fis_key_resp]
+        fis_initialSetComponents = [image, fis_text_2, fis_key_resp, mouse]
         for thisComponent in fis_initialSetComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -7595,6 +7129,15 @@ for thisTotal_experiment in total_experiment:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
+            # *image* updates
+            if image.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                image.frameNStart = frameN  # exact frame index
+                image.tStart = t  # local t and not account for scr refresh
+                image.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(image, 'tStartRefresh')  # time at next scr refresh
+                image.setAutoDraw(True)
+            
             # *fis_text_2* updates
             if fis_text_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
@@ -7602,20 +7145,7 @@ for thisTotal_experiment in total_experiment:
                 fis_text_2.tStart = t  # local t and not account for scr refresh
                 fis_text_2.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(fis_text_2, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'fis_text_2.started')
                 fis_text_2.setAutoDraw(True)
-            
-            # *fis_text_3* updates
-            if fis_text_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                # keep track of start time/frame for later
-                fis_text_3.frameNStart = frameN  # exact frame index
-                fis_text_3.tStart = t  # local t and not account for scr refresh
-                fis_text_3.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fis_text_3, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'fis_text_3.started')
-                fis_text_3.setAutoDraw(True)
             
             # *fis_key_resp* updates
             waitOnFlip = False
@@ -7625,8 +7155,6 @@ for thisTotal_experiment in total_experiment:
                 fis_key_resp.tStart = t  # local t and not account for scr refresh
                 fis_key_resp.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(fis_key_resp, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'fis_key_resp.started')
                 fis_key_resp.status = STARTED
                 # keyboard checking is just starting
                 waitOnFlip = True
@@ -7640,7 +7168,22 @@ for thisTotal_experiment in total_experiment:
                     fis_key_resp.rt = _fis_key_resp_allKeys[-1].rt
                     # a response ends the routine
                     continueRoutine = False
-            
+            # *mouse* updates
+            if mouse.status == NOT_STARTED and t >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                mouse.frameNStart = frameN  # exact frame index
+                mouse.tStart = t  # local t and not account for scr refresh
+                mouse.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(mouse, 'tStartRefresh')  # time at next scr refresh
+                mouse.status = STARTED
+                mouse.mouseClock.reset()
+                prevButtonState = mouse.getPressed()  # if button is down already this ISN'T a new click
+            if mouse.status == STARTED:  # only update if started and not finished!
+                buttons = mouse.getPressed()
+                if buttons != prevButtonState:  # button state changed?
+                    prevButtonState = buttons
+                    if sum(buttons) > 0:  # state changed to a new click
+                        continueRoutine = False  # abort routine on response            
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
                 core.quit()
@@ -7663,248 +7206,34 @@ for thisTotal_experiment in total_experiment:
         for thisComponent in fis_initialSetComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        # check responses
-        if fis_key_resp.keys in ['', [], None]:  # No response was made
-            fis_key_resp.keys = None
-        fish.addData('fis_key_resp.keys',fis_key_resp.keys)
-        if fis_key_resp.keys != None:  # we had a response
-            fish.addData('fis_key_resp.rt', fis_key_resp.rt)
+        # store data for fish (TrialHandler)
         # the Routine "fis_initialSet" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
-        # set up handler to look after randomisation of conditions etc
-        fis_instloop = data.TrialHandler(nReps=InstCount, method='sequential', 
-            extraInfo=expInfo, originPath=-1,
-            trialList=[None],
-            seed=None, name='fis_instloop')
-        thisExp.addLoop(fis_instloop)  # add the loop to the experiment
-        thisFis_instloop = fis_instloop.trialList[0]  # so we can initialise stimuli with some values
-        # abbreviate parameter names if possible (e.g. rgb = thisFis_instloop.rgb)
-        if thisFis_instloop != None:
-            for paramName in thisFis_instloop:
-                exec('{} = thisFis_instloop[paramName]'.format(paramName))
-        
-        for thisFis_instloop in fis_instloop:
-            currentLoop = fis_instloop
-            # abbreviate parameter names if possible (e.g. rgb = thisFis_instloop.rgb)
-            if thisFis_instloop != None:
-                for paramName in thisFis_instloop:
-                    exec('{} = thisFis_instloop[paramName]'.format(paramName))
-            
-            # --- Prepare to start Routine "fis_Instruction" ---
-            continueRoutine = True
-            routineForceEnded = False
-            # update component parameters for each repeat
-            fis_movie = visual.MovieStim3(
-                win=win, name='fis_movie', units='',
-                noAudio = False,
-                filename=insmov,
-                ori=0.0, pos=(0, 0), opacity=None,
-                loop=False, anchor='center',
-                size=[1.8,1],
-                depth=0.0,
-                )
-            fis_secret_quit.keys = []
-            fis_secret_quit.rt = []
-            _fis_secret_quit_allKeys = []
-            # keep track of which components have finished
-            fis_InstructionComponents = [fis_movie, fis_secret_quit]
-            for thisComponent in fis_InstructionComponents:
-                thisComponent.tStart = None
-                thisComponent.tStop = None
-                thisComponent.tStartRefresh = None
-                thisComponent.tStopRefresh = None
-                if hasattr(thisComponent, 'status'):
-                    thisComponent.status = NOT_STARTED
-            # reset timers
-            t = 0
-            _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-            frameN = -1
-            
-            # --- Run Routine "fis_Instruction" ---
-            while continueRoutine:
-                # get current time
-                t = routineTimer.getTime()
-                tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-                tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-                frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-                # update/draw components on each frame
-                
-                # *fis_movie* updates
-                if fis_movie.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    fis_movie.frameNStart = frameN  # exact frame index
-                    fis_movie.tStart = t  # local t and not account for scr refresh
-                    fis_movie.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(fis_movie, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fis_movie.started')
-                    fis_movie.setAutoDraw(True)
-                
-                # *fis_secret_quit* updates
-                waitOnFlip = False
-                if fis_secret_quit.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    fis_secret_quit.frameNStart = frameN  # exact frame index
-                    fis_secret_quit.tStart = t  # local t and not account for scr refresh
-                    fis_secret_quit.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(fis_secret_quit, 'tStartRefresh')  # time at next scr refresh
-                    fis_secret_quit.status = STARTED
-                    # keyboard checking is just starting
-                    waitOnFlip = True
-                    win.callOnFlip(fis_secret_quit.clock.reset)  # t=0 on next screen flip
-                    win.callOnFlip(fis_secret_quit.clearEvents, eventType='keyboard')  # clear events on next screen flip
-                if fis_secret_quit.status == STARTED and not waitOnFlip:
-                    theseKeys = fis_secret_quit.getKeys(keyList=['q'], waitRelease=False)
-                    _fis_secret_quit_allKeys.extend(theseKeys)
-                    if len(_fis_secret_quit_allKeys):
-                        fis_secret_quit.keys = _fis_secret_quit_allKeys[-1].name  # just the last key pressed
-                        fis_secret_quit.rt = _fis_secret_quit_allKeys[-1].rt
-                        # a response ends the routine
-                        continueRoutine = False
-                
-                # check for quit (typically the Esc key)
-                if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-                    core.quit()
-                
-                # check if all components have finished
-                if not continueRoutine:  # a component has requested a forced-end of Routine
-                    routineForceEnded = True
-                    break
-                continueRoutine = False  # will revert to True if at least one component still running
-                for thisComponent in fis_InstructionComponents:
-                    if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                        continueRoutine = True
-                        break  # at least one component has not yet finished
-                
-                # refresh the screen
-                if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                    win.flip()
-            
-            # --- Ending Routine "fis_Instruction" ---
-            for thisComponent in fis_InstructionComponents:
-                if hasattr(thisComponent, "setAutoDraw"):
-                    thisComponent.setAutoDraw(False)
-            fis_movie.stop()
-            # the Routine "fis_Instruction" was not non-slip safe, so reset the non-slip timer
-            routineTimer.reset()
-            
-            # --- Prepare to start Routine "fis_passint" ---
-            continueRoutine = True
-            routineForceEnded = False
-            # update component parameters for each repeat
-            fis_PassInst_2.keys = []
-            fis_PassInst_2.rt = []
-            _fis_PassInst_2_allKeys = []
-            # keep track of which components have finished
-            fis_passintComponents = [fis_PassI_2, fis_PassInst_2]
-            for thisComponent in fis_passintComponents:
-                thisComponent.tStart = None
-                thisComponent.tStop = None
-                thisComponent.tStartRefresh = None
-                thisComponent.tStopRefresh = None
-                if hasattr(thisComponent, 'status'):
-                    thisComponent.status = NOT_STARTED
-            # reset timers
-            t = 0
-            _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-            frameN = -1
-            
-            # --- Run Routine "fis_passint" ---
-            while continueRoutine:
-                # get current time
-                t = routineTimer.getTime()
-                tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-                tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-                frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-                # update/draw components on each frame
-                
-                # *fis_PassI_2* updates
-                if fis_PassI_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    fis_PassI_2.frameNStart = frameN  # exact frame index
-                    fis_PassI_2.tStart = t  # local t and not account for scr refresh
-                    fis_PassI_2.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(fis_PassI_2, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fis_PassI_2.started')
-                    fis_PassI_2.setAutoDraw(True)
-                
-                # *fis_PassInst_2* updates
-                waitOnFlip = False
-                if fis_PassInst_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    fis_PassInst_2.frameNStart = frameN  # exact frame index
-                    fis_PassInst_2.tStart = t  # local t and not account for scr refresh
-                    fis_PassInst_2.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(fis_PassInst_2, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fis_PassInst_2.started')
-                    fis_PassInst_2.status = STARTED
-                    # keyboard checking is just starting
-                    waitOnFlip = True
-                    win.callOnFlip(fis_PassInst_2.clock.reset)  # t=0 on next screen flip
-                    win.callOnFlip(fis_PassInst_2.clearEvents, eventType='keyboard')  # clear events on next screen flip
-                if fis_PassInst_2.status == STARTED and not waitOnFlip:
-                    theseKeys = fis_PassInst_2.getKeys(keyList=['y','n'], waitRelease=False)
-                    _fis_PassInst_2_allKeys.extend(theseKeys)
-                    if len(_fis_PassInst_2_allKeys):
-                        fis_PassInst_2.keys = _fis_PassInst_2_allKeys[-1].name  # just the last key pressed
-                        fis_PassInst_2.rt = _fis_PassInst_2_allKeys[-1].rt
-                        # a response ends the routine
-                        continueRoutine = False
-                
-                # check for quit (typically the Esc key)
-                if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-                    core.quit()
-                
-                # check if all components have finished
-                if not continueRoutine:  # a component has requested a forced-end of Routine
-                    routineForceEnded = True
-                    break
-                continueRoutine = False  # will revert to True if at least one component still running
-                for thisComponent in fis_passintComponents:
-                    if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                        continueRoutine = True
-                        break  # at least one component has not yet finished
-                
-                # refresh the screen
-                if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                    win.flip()
-            
-            # --- Ending Routine "fis_passint" ---
-            for thisComponent in fis_passintComponents:
-                if hasattr(thisComponent, "setAutoDraw"):
-                    thisComponent.setAutoDraw(False)
-            # Run 'End Routine' code from fis_code_5
-            if fis_PassInst_2.keys == 'y':
-                fis_instloop.finished = False
-            else:
-                fis_instloop.finished = True
-            # check responses
-            if fis_PassInst_2.keys in ['', [], None]:  # No response was made
-                fis_PassInst_2.keys = None
-            fis_instloop.addData('fis_PassInst_2.keys',fis_PassInst_2.keys)
-            if fis_PassInst_2.keys != None:  # we had a response
-                fis_instloop.addData('fis_PassInst_2.rt', fis_PassInst_2.rt)
-            # the Routine "fis_passint" was not non-slip safe, so reset the non-slip timer
-            routineTimer.reset()
-            thisExp.nextEntry()
-            
-        # completed InstCount repeats of 'fis_instloop'
-        
-        
-        # --- Prepare to start Routine "fis_startprac" ---
+        # --- Prepare to start Routine "fis_Instruction" ---
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
-        # setup some python lists for storing info about the fis_mouse_2
+        fis_movie = visual.MovieStim3(
+            win=win, name='fis_movie', units='pix',
+            noAudio = False,
+            filename=insmov,
+            ori=0.0, pos=(0, 0), opacity=None,
+            loop=False, anchor='center',
+            size=(1920,1080),
+            depth=-1.0,
+            )
+        fis_secret_quit.keys = []
+        fis_secret_quit.rt = []
+        _fis_secret_quit_allKeys = []
+        # setup some python lists for storing info about the mouse_2
         gotValidClick = False  # until a click is received
-        # Run 'Begin Routine' code from fis_praccount_numbering
-        win.mouseVisible = True
+        # Run 'Begin Routine' code from fis_code_9
+        win.mouseVisible = False
+        fish_trials = 1
         # keep track of which components have finished
-        fis_startpracComponents = [fis_mouse_2, fis_image]
-        for thisComponent in fis_startpracComponents:
+        fis_InstructionComponents = [fis_backs, fis_movie, fis_skip_movie, fis_secret_quit, mouse_2]
+        for thisComponent in fis_InstructionComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
             thisComponent.tStartRefresh = None
@@ -7916,7 +7245,7 @@ for thisTotal_experiment in total_experiment:
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
         frameN = -1
         
-        # --- Run Routine "fis_startprac" ---
+        # --- Run Routine "fis_Instruction" ---
         while continueRoutine:
             # get current time
             t = routineTimer.getTime()
@@ -7924,35 +7253,71 @@ for thisTotal_experiment in total_experiment:
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
-            # *fis_mouse_2* updates
-            if fis_mouse_2.status == NOT_STARTED and t >= 0.5-frameTolerance:
+            
+            # *fis_backs* updates
+            if fis_backs.status == NOT_STARTED and fis_movie.status==FINISHED:
                 # keep track of start time/frame for later
-                fis_mouse_2.frameNStart = frameN  # exact frame index
-                fis_mouse_2.tStart = t  # local t and not account for scr refresh
-                fis_mouse_2.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fis_mouse_2, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.addData('fis_mouse_2.started', t)
-                fis_mouse_2.status = STARTED
-                fis_mouse_2.mouseClock.reset()
-                prevButtonState = fis_mouse_2.getPressed()  # if button is down already this ISN'T a new click
-            if fis_mouse_2.status == STARTED:  # only update if started and not finished!
-                buttons = fis_mouse_2.getPressed()
+                fis_backs.frameNStart = frameN  # exact frame index
+                fis_backs.tStart = t  # local t and not account for scr refresh
+                fis_backs.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fis_backs, 'tStartRefresh')  # time at next scr refresh
+                fis_backs.setAutoDraw(True)
+            
+            # *fis_movie* updates
+            if fis_movie.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                fis_movie.frameNStart = frameN  # exact frame index
+                fis_movie.tStart = t  # local t and not account for scr refresh
+                fis_movie.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fis_movie, 'tStartRefresh')  # time at next scr refresh
+                fis_movie.setAutoDraw(True)
+            
+            # *fis_skip_movie* updates
+            if fis_skip_movie.status == NOT_STARTED and fis_movie.status==FINISHED:
+                # keep track of start time/frame for later
+                fis_skip_movie.frameNStart = frameN  # exact frame index
+                fis_skip_movie.tStart = t  # local t and not account for scr refresh
+                fis_skip_movie.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fis_skip_movie, 'tStartRefresh')  # time at next scr refresh
+                fis_skip_movie.setAutoDraw(True)
+            
+            # *fis_secret_quit* updates
+            waitOnFlip = False
+            if fis_secret_quit.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                fis_secret_quit.frameNStart = frameN  # exact frame index
+                fis_secret_quit.tStart = t  # local t and not account for scr refresh
+                fis_secret_quit.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fis_secret_quit, 'tStartRefresh')  # time at next scr refresh
+                fis_secret_quit.status = STARTED
+                # keyboard checking is just starting
+                waitOnFlip = True
+                win.callOnFlip(fis_secret_quit.clock.reset)  # t=0 on next screen flip
+                win.callOnFlip(fis_secret_quit.clearEvents, eventType='keyboard')  # clear events on next screen flip
+            if fis_secret_quit.status == STARTED and not waitOnFlip:
+                theseKeys = fis_secret_quit.getKeys(keyList=['space'], waitRelease=False)
+                _fis_secret_quit_allKeys.extend(theseKeys)
+                if len(_fis_secret_quit_allKeys):
+                    fis_secret_quit.keys = _fis_secret_quit_allKeys[-1].name  # just the last key pressed
+                    fis_secret_quit.rt = _fis_secret_quit_allKeys[-1].rt
+                    # a response ends the routine
+                    continueRoutine = False
+            # *mouse_2* updates
+            if mouse_2.status == NOT_STARTED and t >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                mouse_2.frameNStart = frameN  # exact frame index
+                mouse_2.tStart = t  # local t and not account for scr refresh
+                mouse_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(mouse_2, 'tStartRefresh')  # time at next scr refresh
+                mouse_2.status = STARTED
+                mouse_2.mouseClock.reset()
+                prevButtonState = mouse_2.getPressed()  # if button is down already this ISN'T a new click
+            if mouse_2.status == STARTED:  # only update if started and not finished!
+                buttons = mouse_2.getPressed()
                 if buttons != prevButtonState:  # button state changed?
                     prevButtonState = buttons
                     if sum(buttons) > 0:  # state changed to a new click
                         continueRoutine = False  # abort routine on response            
-            # *fis_image* updates
-            if fis_image.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                # keep track of start time/frame for later
-                fis_image.frameNStart = frameN  # exact frame index
-                fis_image.tStart = t  # local t and not account for scr refresh
-                fis_image.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fis_image, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'fis_image.started')
-                fis_image.setAutoDraw(True)
-            
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
                 core.quit()
@@ -7962,7 +7327,7 @@ for thisTotal_experiment in total_experiment:
                 routineForceEnded = True
                 break
             continueRoutine = False  # will revert to True if at least one component still running
-            for thisComponent in fis_startpracComponents:
+            for thisComponent in fis_InstructionComponents:
                 if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                     continueRoutine = True
                     break  # at least one component has not yet finished
@@ -7971,27 +7336,23 @@ for thisTotal_experiment in total_experiment:
             if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
                 win.flip()
         
-        # --- Ending Routine "fis_startprac" ---
-        for thisComponent in fis_startpracComponents:
+        # --- Ending Routine "fis_Instruction" ---
+        for thisComponent in fis_InstructionComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
+        fis_movie.stop()
         # store data for fish (TrialHandler)
-        x, y = fis_mouse_2.getPos()
-        buttons = fis_mouse_2.getPressed()
-        fish.addData('fis_mouse_2.x', x)
-        fish.addData('fis_mouse_2.y', y)
-        fish.addData('fis_mouse_2.leftButton', buttons[0])
-        fish.addData('fis_mouse_2.midButton', buttons[1])
-        fish.addData('fis_mouse_2.rightButton', buttons[2])
-        # the Routine "fis_startprac" was not non-slip safe, so reset the non-slip timer
+        # the Routine "fis_Instruction" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
         # --- Prepare to start Routine "fis_readycount" ---
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
+        # Run 'Begin Routine' code from code
+        win.mouseVisible = False
         # keep track of which components have finished
-        fis_readycountComponents = [fis_text_5, fis_text_6, fis_text_7, fis_text_8]
+        fis_readycountComponents = [fis_back, fis_start_prac, fis_get_ready]
         for thisComponent in fis_readycountComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -8005,7 +7366,7 @@ for thisTotal_experiment in total_experiment:
         frameN = -1
         
         # --- Run Routine "fis_readycount" ---
-        while continueRoutine and routineTimer.getTime() < 4.45:
+        while continueRoutine and routineTimer.getTime() < 7.0:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -8013,85 +7374,53 @@ for thisTotal_experiment in total_experiment:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
-            # *fis_text_5* updates
-            if fis_text_5.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # *fis_back* updates
+            if fis_back.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                fis_text_5.frameNStart = frameN  # exact frame index
-                fis_text_5.tStart = t  # local t and not account for scr refresh
-                fis_text_5.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fis_text_5, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'fis_text_5.started')
-                fis_text_5.setAutoDraw(True)
-            if fis_text_5.status == STARTED:
+                fis_back.frameNStart = frameN  # exact frame index
+                fis_back.tStart = t  # local t and not account for scr refresh
+                fis_back.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fis_back, 'tStartRefresh')  # time at next scr refresh
+                fis_back.setAutoDraw(True)
+            if fis_back.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > fis_text_5.tStartRefresh + 1.5-frameTolerance:
+                if tThisFlipGlobal > fis_back.tStartRefresh + 7-frameTolerance:
                     # keep track of stop time/frame for later
-                    fis_text_5.tStop = t  # not accounting for scr refresh
-                    fis_text_5.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fis_text_5.stopped')
-                    fis_text_5.setAutoDraw(False)
+                    fis_back.tStop = t  # not accounting for scr refresh
+                    fis_back.frameNStop = frameN  # exact frame index
+                    fis_back.setAutoDraw(False)
             
-            # *fis_text_6* updates
-            if fis_text_6.status == NOT_STARTED and tThisFlip >= 1.55-frameTolerance:
+            # *fis_start_prac* updates
+            if fis_start_prac.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
                 # keep track of start time/frame for later
-                fis_text_6.frameNStart = frameN  # exact frame index
-                fis_text_6.tStart = t  # local t and not account for scr refresh
-                fis_text_6.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fis_text_6, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'fis_text_6.started')
-                fis_text_6.setAutoDraw(True)
-            if fis_text_6.status == STARTED:
+                fis_start_prac.frameNStart = frameN  # exact frame index
+                fis_start_prac.tStart = t  # local t and not account for scr refresh
+                fis_start_prac.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fis_start_prac, 'tStartRefresh')  # time at next scr refresh
+                fis_start_prac.setAutoDraw(True)
+            if fis_start_prac.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > fis_text_6.tStartRefresh + 0.95-frameTolerance:
+                if tThisFlipGlobal > fis_start_prac.tStartRefresh + 2-frameTolerance:
                     # keep track of stop time/frame for later
-                    fis_text_6.tStop = t  # not accounting for scr refresh
-                    fis_text_6.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fis_text_6.stopped')
-                    fis_text_6.setAutoDraw(False)
+                    fis_start_prac.tStop = t  # not accounting for scr refresh
+                    fis_start_prac.frameNStop = frameN  # exact frame index
+                    fis_start_prac.setAutoDraw(False)
             
-            # *fis_text_7* updates
-            if fis_text_7.status == NOT_STARTED and tThisFlip >= 2.55-frameTolerance:
+            # *fis_get_ready* updates
+            if fis_get_ready.status == NOT_STARTED and tThisFlip >= 3.5-frameTolerance:
                 # keep track of start time/frame for later
-                fis_text_7.frameNStart = frameN  # exact frame index
-                fis_text_7.tStart = t  # local t and not account for scr refresh
-                fis_text_7.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fis_text_7, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'fis_text_7.started')
-                fis_text_7.setAutoDraw(True)
-            if fis_text_7.status == STARTED:
+                fis_get_ready.frameNStart = frameN  # exact frame index
+                fis_get_ready.tStart = t  # local t and not account for scr refresh
+                fis_get_ready.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fis_get_ready, 'tStartRefresh')  # time at next scr refresh
+                fis_get_ready.setAutoDraw(True)
+            if fis_get_ready.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > fis_text_7.tStartRefresh + 0.95-frameTolerance:
+                if tThisFlipGlobal > fis_get_ready.tStartRefresh + 2-frameTolerance:
                     # keep track of stop time/frame for later
-                    fis_text_7.tStop = t  # not accounting for scr refresh
-                    fis_text_7.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fis_text_7.stopped')
-                    fis_text_7.setAutoDraw(False)
-            
-            # *fis_text_8* updates
-            if fis_text_8.status == NOT_STARTED and tThisFlip >= 3.5-frameTolerance:
-                # keep track of start time/frame for later
-                fis_text_8.frameNStart = frameN  # exact frame index
-                fis_text_8.tStart = t  # local t and not account for scr refresh
-                fis_text_8.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fis_text_8, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'fis_text_8.started')
-                fis_text_8.setAutoDraw(True)
-            if fis_text_8.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > fis_text_8.tStartRefresh + 0.95-frameTolerance:
-                    # keep track of stop time/frame for later
-                    fis_text_8.tStop = t  # not accounting for scr refresh
-                    fis_text_8.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fis_text_8.stopped')
-                    fis_text_8.setAutoDraw(False)
+                    fis_get_ready.tStop = t  # not accounting for scr refresh
+                    fis_get_ready.frameNStop = frameN  # exact frame index
+                    fis_get_ready.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -8119,303 +7448,42 @@ for thisTotal_experiment in total_experiment:
         if routineForceEnded:
             routineTimer.reset()
         else:
-            routineTimer.addTime(-4.450000)
+            routineTimer.addTime(-7.000000)
         
         # set up handler to look after randomisation of conditions etc
-        fis_prac = data.TrialHandler(nReps=PracCount, method='sequential', 
+        fis_temp = data.TrialHandler(nReps=fish_practice_reps, method='sequential', 
             extraInfo=expInfo, originPath=-1,
-            trialList=[None],
-            seed=None, name='fis_prac')
-        thisExp.addLoop(fis_prac)  # add the loop to the experiment
-        thisFis_prac = fis_prac.trialList[0]  # so we can initialise stimuli with some values
-        # abbreviate parameter names if possible (e.g. rgb = thisFis_prac.rgb)
-        if thisFis_prac != None:
-            for paramName in thisFis_prac:
-                exec('{} = thisFis_prac[paramName]'.format(paramName))
+            trialList=data.importConditions(GOprac),
+            seed=None, name='fis_temp')
+        thisExp.addLoop(fis_temp)  # add the loop to the experiment
+        thisFis_temp = fis_temp.trialList[0]  # so we can initialise stimuli with some values
+        # abbreviate parameter names if possible (e.g. rgb = thisFis_temp.rgb)
+        if thisFis_temp != None:
+            for paramName in thisFis_temp:
+                exec('{} = thisFis_temp[paramName]'.format(paramName))
         
-        for thisFis_prac in fis_prac:
-            currentLoop = fis_prac
-            # abbreviate parameter names if possible (e.g. rgb = thisFis_prac.rgb)
-            if thisFis_prac != None:
-                for paramName in thisFis_prac:
-                    exec('{} = thisFis_prac[paramName]'.format(paramName))
-            
-            # set up handler to look after randomisation of conditions etc
-            fis_temp = data.TrialHandler(nReps=1.0, method='sequential', 
-                extraInfo=expInfo, originPath=-1,
-                trialList=data.importConditions(GOprac),
-                seed=None, name='fis_temp')
-            thisExp.addLoop(fis_temp)  # add the loop to the experiment
-            thisFis_temp = fis_temp.trialList[0]  # so we can initialise stimuli with some values
+        for thisFis_temp in fis_temp:
+            currentLoop = fis_temp
             # abbreviate parameter names if possible (e.g. rgb = thisFis_temp.rgb)
             if thisFis_temp != None:
                 for paramName in thisFis_temp:
                     exec('{} = thisFis_temp[paramName]'.format(paramName))
             
-            for thisFis_temp in fis_temp:
-                currentLoop = fis_temp
-                # abbreviate parameter names if possible (e.g. rgb = thisFis_temp.rgb)
-                if thisFis_temp != None:
-                    for paramName in thisFis_temp:
-                        exec('{} = thisFis_temp[paramName]'.format(paramName))
-                
-                # --- Prepare to start Routine "fis_practiral" ---
-                continueRoutine = True
-                routineForceEnded = False
-                # update component parameters for each repeat
-                fis_slider_2.reset()
-                # Run 'Begin Routine' code from fis_code_2
-                fis_slider_2.marker = Fish_2
-                fis_slider_2.markerPos = 1.5
-                
-                print(_thisDir)
-                Fish_2.setImage(os.path.join(_thisDir,"fis_artwork", str(FishTypeFile)))
-                fis_Words_2.setText(Word)
-                # keep track of which components have finished
-                fis_practiralComponents = [fis_slider_2, fis_BackGround_2, Fish_2, fis_WordBox_2, fis_Words_2]
-                for thisComponent in fis_practiralComponents:
-                    thisComponent.tStart = None
-                    thisComponent.tStop = None
-                    thisComponent.tStartRefresh = None
-                    thisComponent.tStopRefresh = None
-                    if hasattr(thisComponent, 'status'):
-                        thisComponent.status = NOT_STARTED
-                # reset timers
-                t = 0
-                _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-                frameN = -1
-                
-                # --- Run Routine "fis_practiral" ---
-                while continueRoutine:
-                    # get current time
-                    t = routineTimer.getTime()
-                    tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-                    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-                    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-                    # update/draw components on each frame
-                    
-                    # *fis_slider_2* updates
-                    if fis_slider_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                        # keep track of start time/frame for later
-                        fis_slider_2.frameNStart = frameN  # exact frame index
-                        fis_slider_2.tStart = t  # local t and not account for scr refresh
-                        fis_slider_2.tStartRefresh = tThisFlipGlobal  # on global time
-                        win.timeOnFlip(fis_slider_2, 'tStartRefresh')  # time at next scr refresh
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'fis_slider_2.started')
-                        fis_slider_2.setAutoDraw(True)
-                    
-                    # Check fis_slider_2 for response to end routine
-                    if fis_slider_2.getRating() is not None and fis_slider_2.status == STARTED:
-                        continueRoutine = False
-                    # Run 'Each Frame' code from fis_code_2
-                    TextPosition_2 = (fis_slider_2.markerPos-1.1)/1.65
-                    BoxPosition_2 = TextPosition_2 +0.023
-                    
-                    # *fis_BackGround_2* updates
-                    if fis_BackGround_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                        # keep track of start time/frame for later
-                        fis_BackGround_2.frameNStart = frameN  # exact frame index
-                        fis_BackGround_2.tStart = t  # local t and not account for scr refresh
-                        fis_BackGround_2.tStartRefresh = tThisFlipGlobal  # on global time
-                        win.timeOnFlip(fis_BackGround_2, 'tStartRefresh')  # time at next scr refresh
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'fis_BackGround_2.started')
-                        fis_BackGround_2.setAutoDraw(True)
-                    
-                    # *Fish_2* updates
-                    if Fish_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                        # keep track of start time/frame for later
-                        Fish_2.frameNStart = frameN  # exact frame index
-                        Fish_2.tStart = t  # local t and not account for scr refresh
-                        Fish_2.tStartRefresh = tThisFlipGlobal  # on global time
-                        win.timeOnFlip(Fish_2, 'tStartRefresh')  # time at next scr refresh
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'Fish_2.started')
-                        Fish_2.setAutoDraw(True)
-                    
-                    # *fis_WordBox_2* updates
-                    if fis_WordBox_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                        # keep track of start time/frame for later
-                        fis_WordBox_2.frameNStart = frameN  # exact frame index
-                        fis_WordBox_2.tStart = t  # local t and not account for scr refresh
-                        fis_WordBox_2.tStartRefresh = tThisFlipGlobal  # on global time
-                        win.timeOnFlip(fis_WordBox_2, 'tStartRefresh')  # time at next scr refresh
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'fis_WordBox_2.started')
-                        fis_WordBox_2.setAutoDraw(True)
-                    if fis_WordBox_2.status == STARTED:  # only update if drawing
-                        fis_WordBox_2.setPos([0, BoxPosition_2], log=False)
-                    
-                    # *fis_Words_2* updates
-                    if fis_Words_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                        # keep track of start time/frame for later
-                        fis_Words_2.frameNStart = frameN  # exact frame index
-                        fis_Words_2.tStart = t  # local t and not account for scr refresh
-                        fis_Words_2.tStartRefresh = tThisFlipGlobal  # on global time
-                        win.timeOnFlip(fis_Words_2, 'tStartRefresh')  # time at next scr refresh
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'fis_Words_2.started')
-                        fis_Words_2.setAutoDraw(True)
-                    if fis_Words_2.status == STARTED:  # only update if drawing
-                        fis_Words_2.setPos([-0.03,TextPosition_2], log=False)
-                    
-                    # check for quit (typically the Esc key)
-                    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-                        core.quit()
-                    
-                    # check if all components have finished
-                    if not continueRoutine:  # a component has requested a forced-end of Routine
-                        routineForceEnded = True
-                        break
-                    continueRoutine = False  # will revert to True if at least one component still running
-                    for thisComponent in fis_practiralComponents:
-                        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                            continueRoutine = True
-                            break  # at least one component has not yet finished
-                    
-                    # refresh the screen
-                    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                        win.flip()
-                
-                # --- Ending Routine "fis_practiral" ---
-                for thisComponent in fis_practiralComponents:
-                    if hasattr(thisComponent, "setAutoDraw"):
-                        thisComponent.setAutoDraw(False)
-                fis_temp.addData('fis_slider_2.response', fis_slider_2.getRating())
-                fis_temp.addData('fis_slider_2.rt', fis_slider_2.getRT())
-                # Run 'End Routine' code from fis_code_2
-                if fis_slider_2.getRating() > 1.55: 
-                    Response_2 = "ScrollUp"
-                else:
-                    if fis_slider_2.getRating() < 1.45:
-                        Response_2 = "ScrollDown"
-                    else:
-                        Response_2 = "NoResponse"
-                        
-                if CorrectResp == Response_2:
-                    Feedback_2 = '정답입니다'
-                else:
-                    if Response_2 == "NoResponse":
-                        Feedback_2 = '무응답입니다'
-                    else:
-                        Feedback_2 = "오답입니다"
-                    
-                fis_prac.addData('Response_2', Response_2)
-                fis_prac.addData('Feedback_2', Feedback_2)
-                # the Routine "fis_practiral" was not non-slip safe, so reset the non-slip timer
-                routineTimer.reset()
-                
-                # --- Prepare to start Routine "fis_feedback_prac" ---
-                continueRoutine = True
-                routineForceEnded = False
-                # update component parameters for each repeat
-                fis_Feedbacks_2.setText(str(Feedback_2))
-                # keep track of which components have finished
-                fis_feedback_pracComponents = [fis_BackGround_Feedback_2, fis_Feedbacks_2]
-                for thisComponent in fis_feedback_pracComponents:
-                    thisComponent.tStart = None
-                    thisComponent.tStop = None
-                    thisComponent.tStartRefresh = None
-                    thisComponent.tStopRefresh = None
-                    if hasattr(thisComponent, 'status'):
-                        thisComponent.status = NOT_STARTED
-                # reset timers
-                t = 0
-                _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-                frameN = -1
-                
-                # --- Run Routine "fis_feedback_prac" ---
-                while continueRoutine and routineTimer.getTime() < 1.0:
-                    # get current time
-                    t = routineTimer.getTime()
-                    tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-                    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-                    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-                    # update/draw components on each frame
-                    
-                    # *fis_BackGround_Feedback_2* updates
-                    if fis_BackGround_Feedback_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                        # keep track of start time/frame for later
-                        fis_BackGround_Feedback_2.frameNStart = frameN  # exact frame index
-                        fis_BackGround_Feedback_2.tStart = t  # local t and not account for scr refresh
-                        fis_BackGround_Feedback_2.tStartRefresh = tThisFlipGlobal  # on global time
-                        win.timeOnFlip(fis_BackGround_Feedback_2, 'tStartRefresh')  # time at next scr refresh
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'fis_BackGround_Feedback_2.started')
-                        fis_BackGround_Feedback_2.setAutoDraw(True)
-                    if fis_BackGround_Feedback_2.status == STARTED:
-                        # is it time to stop? (based on global clock, using actual start)
-                        if tThisFlipGlobal > fis_BackGround_Feedback_2.tStartRefresh + 1.0-frameTolerance:
-                            # keep track of stop time/frame for later
-                            fis_BackGround_Feedback_2.tStop = t  # not accounting for scr refresh
-                            fis_BackGround_Feedback_2.frameNStop = frameN  # exact frame index
-                            # add timestamp to datafile
-                            thisExp.timestampOnFlip(win, 'fis_BackGround_Feedback_2.stopped')
-                            fis_BackGround_Feedback_2.setAutoDraw(False)
-                    
-                    # *fis_Feedbacks_2* updates
-                    if fis_Feedbacks_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                        # keep track of start time/frame for later
-                        fis_Feedbacks_2.frameNStart = frameN  # exact frame index
-                        fis_Feedbacks_2.tStart = t  # local t and not account for scr refresh
-                        fis_Feedbacks_2.tStartRefresh = tThisFlipGlobal  # on global time
-                        win.timeOnFlip(fis_Feedbacks_2, 'tStartRefresh')  # time at next scr refresh
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'fis_Feedbacks_2.started')
-                        fis_Feedbacks_2.setAutoDraw(True)
-                    if fis_Feedbacks_2.status == STARTED:
-                        # is it time to stop? (based on global clock, using actual start)
-                        if tThisFlipGlobal > fis_Feedbacks_2.tStartRefresh + 0.5-frameTolerance:
-                            # keep track of stop time/frame for later
-                            fis_Feedbacks_2.tStop = t  # not accounting for scr refresh
-                            fis_Feedbacks_2.frameNStop = frameN  # exact frame index
-                            # add timestamp to datafile
-                            thisExp.timestampOnFlip(win, 'fis_Feedbacks_2.stopped')
-                            fis_Feedbacks_2.setAutoDraw(False)
-                    
-                    # check for quit (typically the Esc key)
-                    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-                        core.quit()
-                    
-                    # check if all components have finished
-                    if not continueRoutine:  # a component has requested a forced-end of Routine
-                        routineForceEnded = True
-                        break
-                    continueRoutine = False  # will revert to True if at least one component still running
-                    for thisComponent in fis_feedback_pracComponents:
-                        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                            continueRoutine = True
-                            break  # at least one component has not yet finished
-                    
-                    # refresh the screen
-                    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                        win.flip()
-                
-                # --- Ending Routine "fis_feedback_prac" ---
-                for thisComponent in fis_feedback_pracComponents:
-                    if hasattr(thisComponent, "setAutoDraw"):
-                        thisComponent.setAutoDraw(False)
-                # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-                if routineForceEnded:
-                    routineTimer.reset()
-                else:
-                    routineTimer.addTime(-1.000000)
-                thisExp.nextEntry()
-                
-            # completed 1.0 repeats of 'fis_temp'
-            
-            
-            # --- Prepare to start Routine "fis_continue_prac" ---
+            # --- Prepare to start Routine "fis_practiral" ---
             continueRoutine = True
             routineForceEnded = False
             # update component parameters for each repeat
-            fis_Continue_or_not.keys = []
-            fis_Continue_or_not.rt = []
-            _fis_Continue_or_not_allKeys = []
+            fis_slider_2.reset()
+            # Run 'Begin Routine' code from fis_code_2
+            fis_slider_2.marker = Fish_2
+            fis_slider_2.markerPos = 1.5
+            win.mouseVisible = False
+            print(_thisDir)
+            Fish_2.setImage(os.path.join(_thisDir,"fis_artwork", str(FishTypeFile)))
+            fis_Words_2.setText(Word)
             # keep track of which components have finished
-            fis_continue_pracComponents = [fis_Continue_or_not, fis_image_3]
-            for thisComponent in fis_continue_pracComponents:
+            fis_practiralComponents = [fis_slider_2, fis_BackGround_2, Fish_2, fis_WordBox_2, fis_Words_2]
+            for thisComponent in fis_practiralComponents:
                 thisComponent.tStart = None
                 thisComponent.tStop = None
                 thisComponent.tStartRefresh = None
@@ -8427,7 +7495,7 @@ for thisTotal_experiment in total_experiment:
             _timeToFirstFrame = win.getFutureFlipTime(clock="now")
             frameN = -1
             
-            # --- Run Routine "fis_continue_prac" ---
+            # --- Run Routine "fis_practiral" ---
             while continueRoutine:
                 # get current time
                 t = routineTimer.getTime()
@@ -8436,40 +7504,69 @@ for thisTotal_experiment in total_experiment:
                 frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                 # update/draw components on each frame
                 
-                # *fis_Continue_or_not* updates
-                waitOnFlip = False
-                if fis_Continue_or_not.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # *fis_slider_2* updates
+                if fis_slider_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                     # keep track of start time/frame for later
-                    fis_Continue_or_not.frameNStart = frameN  # exact frame index
-                    fis_Continue_or_not.tStart = t  # local t and not account for scr refresh
-                    fis_Continue_or_not.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(fis_Continue_or_not, 'tStartRefresh')  # time at next scr refresh
+                    fis_slider_2.frameNStart = frameN  # exact frame index
+                    fis_slider_2.tStart = t  # local t and not account for scr refresh
+                    fis_slider_2.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(fis_slider_2, 'tStartRefresh')  # time at next scr refresh
                     # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fis_Continue_or_not.started')
-                    fis_Continue_or_not.status = STARTED
-                    # keyboard checking is just starting
-                    waitOnFlip = True
-                    win.callOnFlip(fis_Continue_or_not.clock.reset)  # t=0 on next screen flip
-                    win.callOnFlip(fis_Continue_or_not.clearEvents, eventType='keyboard')  # clear events on next screen flip
-                if fis_Continue_or_not.status == STARTED and not waitOnFlip:
-                    theseKeys = fis_Continue_or_not.getKeys(keyList=['y','n'], waitRelease=False)
-                    _fis_Continue_or_not_allKeys.extend(theseKeys)
-                    if len(_fis_Continue_or_not_allKeys):
-                        fis_Continue_or_not.keys = _fis_Continue_or_not_allKeys[-1].name  # just the last key pressed
-                        fis_Continue_or_not.rt = _fis_Continue_or_not_allKeys[-1].rt
-                        # a response ends the routine
-                        continueRoutine = False
+                    thisExp.timestampOnFlip(win, 'fis_slider_2.started')
+                    fis_slider_2.setAutoDraw(True)
                 
-                # *fis_image_3* updates
-                if fis_image_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # Check fis_slider_2 for response to end routine
+                if fis_slider_2.getRating() is not None and fis_slider_2.status == STARTED:
+                    continueRoutine = False
+                # Run 'Each Frame' code from fis_code_2
+                TextPosition_2 = (fis_slider_2.markerPos-1.1)/1.65
+                BoxPosition_2 = TextPosition_2 +0.023
+                
+                # *fis_BackGround_2* updates
+                if fis_BackGround_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                     # keep track of start time/frame for later
-                    fis_image_3.frameNStart = frameN  # exact frame index
-                    fis_image_3.tStart = t  # local t and not account for scr refresh
-                    fis_image_3.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(fis_image_3, 'tStartRefresh')  # time at next scr refresh
+                    fis_BackGround_2.frameNStart = frameN  # exact frame index
+                    fis_BackGround_2.tStart = t  # local t and not account for scr refresh
+                    fis_BackGround_2.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(fis_BackGround_2, 'tStartRefresh')  # time at next scr refresh
+                    fis_BackGround_2.setAutoDraw(True)
+                
+                # *Fish_2* updates
+                if Fish_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    Fish_2.frameNStart = frameN  # exact frame index
+                    Fish_2.tStart = t  # local t and not account for scr refresh
+                    Fish_2.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(Fish_2, 'tStartRefresh')  # time at next scr refresh
                     # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fis_image_3.started')
-                    fis_image_3.setAutoDraw(True)
+                    thisExp.timestampOnFlip(win, 'Fish_2.started')
+                    Fish_2.setAutoDraw(True)
+                
+                # *fis_WordBox_2* updates
+                if fis_WordBox_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    fis_WordBox_2.frameNStart = frameN  # exact frame index
+                    fis_WordBox_2.tStart = t  # local t and not account for scr refresh
+                    fis_WordBox_2.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(fis_WordBox_2, 'tStartRefresh')  # time at next scr refresh
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'fis_WordBox_2.started')
+                    fis_WordBox_2.setAutoDraw(True)
+                if fis_WordBox_2.status == STARTED:  # only update if drawing
+                    fis_WordBox_2.setPos([0, BoxPosition_2], log=False)
+                
+                # *fis_Words_2* updates
+                if fis_Words_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    fis_Words_2.frameNStart = frameN  # exact frame index
+                    fis_Words_2.tStart = t  # local t and not account for scr refresh
+                    fis_Words_2.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(fis_Words_2, 'tStartRefresh')  # time at next scr refresh
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'fis_Words_2.started')
+                    fis_Words_2.setAutoDraw(True)
+                if fis_Words_2.status == STARTED:  # only update if drawing
+                    fis_Words_2.setPos([-0.03,TextPosition_2], log=False)
                 
                 # check for quit (typically the Esc key)
                 if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -8480,7 +7577,7 @@ for thisTotal_experiment in total_experiment:
                     routineForceEnded = True
                     break
                 continueRoutine = False  # will revert to True if at least one component still running
-                for thisComponent in fis_continue_pracComponents:
+                for thisComponent in fis_practiralComponents:
                     if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                         continueRoutine = True
                         break  # at least one component has not yet finished
@@ -8489,37 +7586,150 @@ for thisTotal_experiment in total_experiment:
                 if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
                     win.flip()
             
-            # --- Ending Routine "fis_continue_prac" ---
-            for thisComponent in fis_continue_pracComponents:
+            # --- Ending Routine "fis_practiral" ---
+            for thisComponent in fis_practiralComponents:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
-            # check responses
-            if fis_Continue_or_not.keys in ['', [], None]:  # No response was made
-                fis_Continue_or_not.keys = None
-            fis_prac.addData('fis_Continue_or_not.keys',fis_Continue_or_not.keys)
-            if fis_Continue_or_not.keys != None:  # we had a response
-                fis_prac.addData('fis_Continue_or_not.rt', fis_Continue_or_not.rt)
-            # Run 'End Routine' code from fis_code_3
-            if fis_Continue_or_not.keys == 'y':
-                fis_prac.finished = False
+            fis_temp.addData('fis_slider_2.response', fis_slider_2.getRating())
+            fis_temp.addData('fis_slider_2.rt', fis_slider_2.getRT())
+            # Run 'End Routine' code from fis_code_2
+            if fis_slider_2.getRating() > 1.55: 
+                Response_2 = "ScrollUp"
             else:
-                fis_prac.finished = True
-            # the Routine "fis_continue_prac" was not non-slip safe, so reset the non-slip timer
+                if fis_slider_2.getRating() < 1.45:
+                    Response_2 = "ScrollDown"
+                else:
+                    Response_2 = "NoResponse"
+                    
+            if CorrectResp == Response_2:
+                Feedback_2 = '정답'
+            else:
+                if Response_2 == "NoResponse":
+                    Feedback_2 = '무응답'
+                else:
+                    Feedback_2 = "오답"
+                
+            fish.addData('Response_2', Response_2)
+            fish.addData('Feedback_2', Feedback_2)
+            # the Routine "fis_practiral" was not non-slip safe, so reset the non-slip timer
             routineTimer.reset()
+            
+            # --- Prepare to start Routine "fis_feedback_prac" ---
+            continueRoutine = True
+            routineForceEnded = False
+            # update component parameters for each repeat
+            fis_Feedbacks_2.setText(str(Feedback_2))
+            # Run 'Begin Routine' code from code_2
+            win.mouseVisible = False
+            # keep track of which components have finished
+            fis_feedback_pracComponents = [fis_BackGround_Feedback_2, fis_Feedbacks_2]
+            for thisComponent in fis_feedback_pracComponents:
+                thisComponent.tStart = None
+                thisComponent.tStop = None
+                thisComponent.tStartRefresh = None
+                thisComponent.tStopRefresh = None
+                if hasattr(thisComponent, 'status'):
+                    thisComponent.status = NOT_STARTED
+            # reset timers
+            t = 0
+            _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+            frameN = -1
+            
+            # --- Run Routine "fis_feedback_prac" ---
+            while continueRoutine and routineTimer.getTime() < 1.0:
+                # get current time
+                t = routineTimer.getTime()
+                tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+                tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+                frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+                # update/draw components on each frame
+                
+                # *fis_BackGround_Feedback_2* updates
+                if fis_BackGround_Feedback_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    fis_BackGround_Feedback_2.frameNStart = frameN  # exact frame index
+                    fis_BackGround_Feedback_2.tStart = t  # local t and not account for scr refresh
+                    fis_BackGround_Feedback_2.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(fis_BackGround_Feedback_2, 'tStartRefresh')  # time at next scr refresh
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'fis_BackGround_Feedback_2.started')
+                    fis_BackGround_Feedback_2.setAutoDraw(True)
+                if fis_BackGround_Feedback_2.status == STARTED:
+                    # is it time to stop? (based on global clock, using actual start)
+                    if tThisFlipGlobal > fis_BackGround_Feedback_2.tStartRefresh + 1.0-frameTolerance:
+                        # keep track of stop time/frame for later
+                        fis_BackGround_Feedback_2.tStop = t  # not accounting for scr refresh
+                        fis_BackGround_Feedback_2.frameNStop = frameN  # exact frame index
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 'fis_BackGround_Feedback_2.stopped')
+                        fis_BackGround_Feedback_2.setAutoDraw(False)
+                
+                # *fis_Feedbacks_2* updates
+                if fis_Feedbacks_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    fis_Feedbacks_2.frameNStart = frameN  # exact frame index
+                    fis_Feedbacks_2.tStart = t  # local t and not account for scr refresh
+                    fis_Feedbacks_2.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(fis_Feedbacks_2, 'tStartRefresh')  # time at next scr refresh
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'fis_Feedbacks_2.started')
+                    fis_Feedbacks_2.setAutoDraw(True)
+                if fis_Feedbacks_2.status == STARTED:
+                    # is it time to stop? (based on global clock, using actual start)
+                    if tThisFlipGlobal > fis_Feedbacks_2.tStartRefresh + 0.5-frameTolerance:
+                        # keep track of stop time/frame for later
+                        fis_Feedbacks_2.tStop = t  # not accounting for scr refresh
+                        fis_Feedbacks_2.frameNStop = frameN  # exact frame index
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 'fis_Feedbacks_2.stopped')
+                        fis_Feedbacks_2.setAutoDraw(False)
+                
+                # check for quit (typically the Esc key)
+                if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+                    core.quit()
+                
+                # check if all components have finished
+                if not continueRoutine:  # a component has requested a forced-end of Routine
+                    routineForceEnded = True
+                    break
+                continueRoutine = False  # will revert to True if at least one component still running
+                for thisComponent in fis_feedback_pracComponents:
+                    if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                        continueRoutine = True
+                        break  # at least one component has not yet finished
+                
+                # refresh the screen
+                if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                    win.flip()
+            
+            # --- Ending Routine "fis_feedback_prac" ---
+            for thisComponent in fis_feedback_pracComponents:
+                if hasattr(thisComponent, "setAutoDraw"):
+                    thisComponent.setAutoDraw(False)
+            # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
+            if routineForceEnded:
+                routineTimer.reset()
+            else:
+                routineTimer.addTime(-1.000000)
             thisExp.nextEntry()
             
-        # completed PracCount repeats of 'fis_prac'
+        # completed fish_practice_reps repeats of 'fis_temp'
         
         
-        # --- Prepare to start Routine "fis_startMain" ---
+        # --- Prepare to start Routine "fis_continue_prac" ---
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
-        # setup some python lists for storing info about the fis_mouse_3
+        # Run 'Begin Routine' code from fis_code_3
+        win.mouseVisible = False
+        fis_Continue_or_not.keys = []
+        fis_Continue_or_not.rt = []
+        _fis_Continue_or_not_allKeys = []
+        # setup some python lists for storing info about the fis_mouse_skip
         gotValidClick = False  # until a click is received
         # keep track of which components have finished
-        fis_startMainComponents = [fis_mouse_3, fis_startmain]
-        for thisComponent in fis_startMainComponents:
+        fis_continue_pracComponents = [fis_image_3, fis_Continue_or_not, fis_mouse_skip, fis_next_text]
+        for thisComponent in fis_continue_pracComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
             thisComponent.tStartRefresh = None
@@ -8531,7 +7741,7 @@ for thisTotal_experiment in total_experiment:
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
         frameN = -1
         
-        # --- Run Routine "fis_startMain" ---
+        # --- Run Routine "fis_continue_prac" ---
         while continueRoutine:
             # get current time
             t = routineTimer.getTime()
@@ -8539,34 +7749,61 @@ for thisTotal_experiment in total_experiment:
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
-            # *fis_mouse_3* updates
-            if fis_mouse_3.status == NOT_STARTED and t >= 0.3-frameTolerance:
+            
+            # *fis_image_3* updates
+            if fis_image_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                fis_mouse_3.frameNStart = frameN  # exact frame index
-                fis_mouse_3.tStart = t  # local t and not account for scr refresh
-                fis_mouse_3.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fis_mouse_3, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.addData('fis_mouse_3.started', t)
-                fis_mouse_3.status = STARTED
-                fis_mouse_3.mouseClock.reset()
-                prevButtonState = fis_mouse_3.getPressed()  # if button is down already this ISN'T a new click
-            if fis_mouse_3.status == STARTED:  # only update if started and not finished!
-                buttons = fis_mouse_3.getPressed()
+                fis_image_3.frameNStart = frameN  # exact frame index
+                fis_image_3.tStart = t  # local t and not account for scr refresh
+                fis_image_3.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fis_image_3, 'tStartRefresh')  # time at next scr refresh
+                fis_image_3.setAutoDraw(True)
+            
+            # *fis_Continue_or_not* updates
+            waitOnFlip = False
+            if fis_Continue_or_not.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                fis_Continue_or_not.frameNStart = frameN  # exact frame index
+                fis_Continue_or_not.tStart = t  # local t and not account for scr refresh
+                fis_Continue_or_not.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fis_Continue_or_not, 'tStartRefresh')  # time at next scr refresh
+                fis_Continue_or_not.status = STARTED
+                # keyboard checking is just starting
+                waitOnFlip = True
+                win.callOnFlip(fis_Continue_or_not.clock.reset)  # t=0 on next screen flip
+                win.callOnFlip(fis_Continue_or_not.clearEvents, eventType='keyboard')  # clear events on next screen flip
+            if fis_Continue_or_not.status == STARTED and not waitOnFlip:
+                theseKeys = fis_Continue_or_not.getKeys(keyList=['space'], waitRelease=False)
+                _fis_Continue_or_not_allKeys.extend(theseKeys)
+                if len(_fis_Continue_or_not_allKeys):
+                    fis_Continue_or_not.keys = _fis_Continue_or_not_allKeys[-1].name  # just the last key pressed
+                    fis_Continue_or_not.rt = _fis_Continue_or_not_allKeys[-1].rt
+                    # a response ends the routine
+                    continueRoutine = False
+            # *fis_mouse_skip* updates
+            if fis_mouse_skip.status == NOT_STARTED and t >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                fis_mouse_skip.frameNStart = frameN  # exact frame index
+                fis_mouse_skip.tStart = t  # local t and not account for scr refresh
+                fis_mouse_skip.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fis_mouse_skip, 'tStartRefresh')  # time at next scr refresh
+                fis_mouse_skip.status = STARTED
+                fis_mouse_skip.mouseClock.reset()
+                prevButtonState = fis_mouse_skip.getPressed()  # if button is down already this ISN'T a new click
+            if fis_mouse_skip.status == STARTED:  # only update if started and not finished!
+                buttons = fis_mouse_skip.getPressed()
                 if buttons != prevButtonState:  # button state changed?
                     prevButtonState = buttons
                     if sum(buttons) > 0:  # state changed to a new click
                         continueRoutine = False  # abort routine on response            
-            # *fis_startmain* updates
-            if fis_startmain.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # *fis_next_text* updates
+            if fis_next_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                fis_startmain.frameNStart = frameN  # exact frame index
-                fis_startmain.tStart = t  # local t and not account for scr refresh
-                fis_startmain.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fis_startmain, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'fis_startmain.started')
-                fis_startmain.setAutoDraw(True)
+                fis_next_text.frameNStart = frameN  # exact frame index
+                fis_next_text.tStart = t  # local t and not account for scr refresh
+                fis_next_text.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fis_next_text, 'tStartRefresh')  # time at next scr refresh
+                fis_next_text.setAutoDraw(True)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -8577,7 +7814,7 @@ for thisTotal_experiment in total_experiment:
                 routineForceEnded = True
                 break
             continueRoutine = False  # will revert to True if at least one component still running
-            for thisComponent in fis_startMainComponents:
+            for thisComponent in fis_continue_pracComponents:
                 if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                     continueRoutine = True
                     break  # at least one component has not yet finished
@@ -8586,27 +7823,22 @@ for thisTotal_experiment in total_experiment:
             if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
                 win.flip()
         
-        # --- Ending Routine "fis_startMain" ---
-        for thisComponent in fis_startMainComponents:
+        # --- Ending Routine "fis_continue_prac" ---
+        for thisComponent in fis_continue_pracComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
         # store data for fish (TrialHandler)
-        x, y = fis_mouse_3.getPos()
-        buttons = fis_mouse_3.getPressed()
-        fish.addData('fis_mouse_3.x', x)
-        fish.addData('fis_mouse_3.y', y)
-        fish.addData('fis_mouse_3.leftButton', buttons[0])
-        fish.addData('fis_mouse_3.midButton', buttons[1])
-        fish.addData('fis_mouse_3.rightButton', buttons[2])
-        # the Routine "fis_startMain" was not non-slip safe, so reset the non-slip timer
+        # the Routine "fis_continue_prac" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
         # --- Prepare to start Routine "fis_readycount" ---
         continueRoutine = True
         routineForceEnded = False
         # update component parameters for each repeat
+        # Run 'Begin Routine' code from code
+        win.mouseVisible = False
         # keep track of which components have finished
-        fis_readycountComponents = [fis_text_5, fis_text_6, fis_text_7, fis_text_8]
+        fis_readycountComponents = [fis_back, fis_start_prac, fis_get_ready]
         for thisComponent in fis_readycountComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -8620,7 +7852,7 @@ for thisTotal_experiment in total_experiment:
         frameN = -1
         
         # --- Run Routine "fis_readycount" ---
-        while continueRoutine and routineTimer.getTime() < 4.45:
+        while continueRoutine and routineTimer.getTime() < 7.0:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -8628,85 +7860,53 @@ for thisTotal_experiment in total_experiment:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
-            # *fis_text_5* updates
-            if fis_text_5.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # *fis_back* updates
+            if fis_back.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                fis_text_5.frameNStart = frameN  # exact frame index
-                fis_text_5.tStart = t  # local t and not account for scr refresh
-                fis_text_5.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fis_text_5, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'fis_text_5.started')
-                fis_text_5.setAutoDraw(True)
-            if fis_text_5.status == STARTED:
+                fis_back.frameNStart = frameN  # exact frame index
+                fis_back.tStart = t  # local t and not account for scr refresh
+                fis_back.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fis_back, 'tStartRefresh')  # time at next scr refresh
+                fis_back.setAutoDraw(True)
+            if fis_back.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > fis_text_5.tStartRefresh + 1.5-frameTolerance:
+                if tThisFlipGlobal > fis_back.tStartRefresh + 7-frameTolerance:
                     # keep track of stop time/frame for later
-                    fis_text_5.tStop = t  # not accounting for scr refresh
-                    fis_text_5.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fis_text_5.stopped')
-                    fis_text_5.setAutoDraw(False)
+                    fis_back.tStop = t  # not accounting for scr refresh
+                    fis_back.frameNStop = frameN  # exact frame index
+                    fis_back.setAutoDraw(False)
             
-            # *fis_text_6* updates
-            if fis_text_6.status == NOT_STARTED and tThisFlip >= 1.55-frameTolerance:
+            # *fis_start_prac* updates
+            if fis_start_prac.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
                 # keep track of start time/frame for later
-                fis_text_6.frameNStart = frameN  # exact frame index
-                fis_text_6.tStart = t  # local t and not account for scr refresh
-                fis_text_6.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fis_text_6, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'fis_text_6.started')
-                fis_text_6.setAutoDraw(True)
-            if fis_text_6.status == STARTED:
+                fis_start_prac.frameNStart = frameN  # exact frame index
+                fis_start_prac.tStart = t  # local t and not account for scr refresh
+                fis_start_prac.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fis_start_prac, 'tStartRefresh')  # time at next scr refresh
+                fis_start_prac.setAutoDraw(True)
+            if fis_start_prac.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > fis_text_6.tStartRefresh + 0.95-frameTolerance:
+                if tThisFlipGlobal > fis_start_prac.tStartRefresh + 2-frameTolerance:
                     # keep track of stop time/frame for later
-                    fis_text_6.tStop = t  # not accounting for scr refresh
-                    fis_text_6.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fis_text_6.stopped')
-                    fis_text_6.setAutoDraw(False)
+                    fis_start_prac.tStop = t  # not accounting for scr refresh
+                    fis_start_prac.frameNStop = frameN  # exact frame index
+                    fis_start_prac.setAutoDraw(False)
             
-            # *fis_text_7* updates
-            if fis_text_7.status == NOT_STARTED and tThisFlip >= 2.55-frameTolerance:
+            # *fis_get_ready* updates
+            if fis_get_ready.status == NOT_STARTED and tThisFlip >= 3.5-frameTolerance:
                 # keep track of start time/frame for later
-                fis_text_7.frameNStart = frameN  # exact frame index
-                fis_text_7.tStart = t  # local t and not account for scr refresh
-                fis_text_7.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fis_text_7, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'fis_text_7.started')
-                fis_text_7.setAutoDraw(True)
-            if fis_text_7.status == STARTED:
+                fis_get_ready.frameNStart = frameN  # exact frame index
+                fis_get_ready.tStart = t  # local t and not account for scr refresh
+                fis_get_ready.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(fis_get_ready, 'tStartRefresh')  # time at next scr refresh
+                fis_get_ready.setAutoDraw(True)
+            if fis_get_ready.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > fis_text_7.tStartRefresh + 0.95-frameTolerance:
+                if tThisFlipGlobal > fis_get_ready.tStartRefresh + 2-frameTolerance:
                     # keep track of stop time/frame for later
-                    fis_text_7.tStop = t  # not accounting for scr refresh
-                    fis_text_7.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fis_text_7.stopped')
-                    fis_text_7.setAutoDraw(False)
-            
-            # *fis_text_8* updates
-            if fis_text_8.status == NOT_STARTED and tThisFlip >= 3.5-frameTolerance:
-                # keep track of start time/frame for later
-                fis_text_8.frameNStart = frameN  # exact frame index
-                fis_text_8.tStart = t  # local t and not account for scr refresh
-                fis_text_8.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(fis_text_8, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'fis_text_8.started')
-                fis_text_8.setAutoDraw(True)
-            if fis_text_8.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > fis_text_8.tStartRefresh + 0.95-frameTolerance:
-                    # keep track of stop time/frame for later
-                    fis_text_8.tStop = t  # not accounting for scr refresh
-                    fis_text_8.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'fis_text_8.stopped')
-                    fis_text_8.setAutoDraw(False)
+                    fis_get_ready.tStop = t  # not accounting for scr refresh
+                    fis_get_ready.frameNStop = frameN  # exact frame index
+                    fis_get_ready.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -8734,7 +7934,7 @@ for thisTotal_experiment in total_experiment:
         if routineForceEnded:
             routineTimer.reset()
         else:
-            routineTimer.addTime(-4.450000)
+            routineTimer.addTime(-7.000000)
         
         # set up handler to look after randomisation of conditions etc
         fis_round = data.TrialHandler(nReps=fis_round_tot, method='sequential', 
@@ -8756,7 +7956,7 @@ for thisTotal_experiment in total_experiment:
                     exec('{} = thisFis_round[paramName]'.format(paramName))
             
             # set up handler to look after randomisation of conditions etc
-            fis_trials = data.TrialHandler(nReps=1.0, method='sequential', 
+            fis_trials = data.TrialHandler(nReps=fish_trials, method='sequential', 
                 extraInfo=expInfo, originPath=-1,
                 trialList=data.importConditions(GOmain),
                 seed=None, name='fis_trials')
@@ -8783,10 +7983,18 @@ for thisTotal_experiment in total_experiment:
                 fis_slider.marker = Fish
                 fis_slider.markerPos = 1.5
                 my_text = visual.TextStim(win, text=Word, font='NanumSquare_acB.ttf')
-                
+                win.mouseVisible = False
                 print(_thisDir)
                 Fish.setImage(os.path.join(_thisDir,"fis_artwork", str(FishTypeFile)))
                 fis_Words.setText(Word)
+                # Run 'Begin Routine' code from fis_test_mode
+                thisn = fis_trials.thisN
+                
+                ##########TEST MODE###########
+                if test_mode == 1 and thisn == 3:
+                    fis_trials.finished=True
+                    fis_round.finished=True
+                    fish.finished=True
                 # keep track of which components have finished
                 fis_main_trialComponents = [fis_slider, fis_BackGround, Fish, fis_WordBox, fis_Words]
                 for thisComponent in fis_main_trialComponents:
@@ -8910,15 +8118,15 @@ for thisTotal_experiment in total_experiment:
                         Response = "NoResponse"
                         
                 if CorrectResp == Response:
-                    Feedback = '정답입니다'
+                    Feedback = '정답'
                 else:
                     if Response == "NoResponse":
-                        Feedback = '무응답입니다'
+                        Feedback = '무응답'
                     else:
-                        Feedback = "오답입니다"
+                        Feedback = "오답"
                     
-                fis_trials.addData('Response', Response)
-                fis_trials.addData('Feedback', Feedback)
+                fis_temp.addData('Response', Response)
+                fis_temp.addData('Feedback', Feedback)
                 # the Routine "fis_main_trial" was not non-slip safe, so reset the non-slip timer
                 routineTimer.reset()
                 
@@ -9019,7 +8227,7 @@ for thisTotal_experiment in total_experiment:
                     routineTimer.addTime(-1.000000)
                 thisExp.nextEntry()
                 
-            # completed 1.0 repeats of 'fis_trials'
+            # completed fish_trials repeats of 'fis_trials'
             
             
             # --- Prepare to start Routine "fis_main_control" ---
@@ -9058,7 +8266,11 @@ for thisTotal_experiment in total_experiment:
                 elif fis_roundN == 5:
                     GOmain = 'loop/[통합실험]ExpListOrange_Round5.xlsx'
             
-            
+            if test_mode == 1:
+                fis_mainbreak = 0
+                #fis_round.finished=True
+                #fish.finished=True
+                #fish_loop = 0
             
             
             # keep track of which components have finished
@@ -9133,7 +8345,7 @@ for thisTotal_experiment in total_experiment:
                 routineForceEnded = False
                 # update component parameters for each repeat
                 # keep track of which components have finished
-                fis_rout_breakComponents = [fis_text, fis_break_interval]
+                fis_rout_breakComponents = [fis_break_interval, fis_text]
                 for thisComponent in fis_rout_breakComponents:
                     thisComponent.tStart = None
                     thisComponent.tStop = None
@@ -9155,26 +8367,6 @@ for thisTotal_experiment in total_experiment:
                     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                     # update/draw components on each frame
                     
-                    # *fis_text* updates
-                    if fis_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                        # keep track of start time/frame for later
-                        fis_text.frameNStart = frameN  # exact frame index
-                        fis_text.tStart = t  # local t and not account for scr refresh
-                        fis_text.tStartRefresh = tThisFlipGlobal  # on global time
-                        win.timeOnFlip(fis_text, 'tStartRefresh')  # time at next scr refresh
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'fis_text.started')
-                        fis_text.setAutoDraw(True)
-                    if fis_text.status == STARTED:
-                        # is it time to stop? (based on global clock, using actual start)
-                        if tThisFlipGlobal > fis_text.tStartRefresh + 30.0-frameTolerance:
-                            # keep track of stop time/frame for later
-                            fis_text.tStop = t  # not accounting for scr refresh
-                            fis_text.frameNStop = frameN  # exact frame index
-                            # add timestamp to datafile
-                            thisExp.timestampOnFlip(win, 'fis_text.stopped')
-                            fis_text.setAutoDraw(False)
-                    
                     # *fis_break_interval* updates
                     if fis_break_interval.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                         # keep track of start time/frame for later
@@ -9182,8 +8374,6 @@ for thisTotal_experiment in total_experiment:
                         fis_break_interval.tStart = t  # local t and not account for scr refresh
                         fis_break_interval.tStartRefresh = tThisFlipGlobal  # on global time
                         win.timeOnFlip(fis_break_interval, 'tStartRefresh')  # time at next scr refresh
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'fis_break_interval.started')
                         fis_break_interval.setAutoDraw(True)
                     if fis_break_interval.status == STARTED:
                         # is it time to stop? (based on global clock, using actual start)
@@ -9191,9 +8381,23 @@ for thisTotal_experiment in total_experiment:
                             # keep track of stop time/frame for later
                             fis_break_interval.tStop = t  # not accounting for scr refresh
                             fis_break_interval.frameNStop = frameN  # exact frame index
-                            # add timestamp to datafile
-                            thisExp.timestampOnFlip(win, 'fis_break_interval.stopped')
                             fis_break_interval.setAutoDraw(False)
+                    
+                    # *fis_text* updates
+                    if fis_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                        # keep track of start time/frame for later
+                        fis_text.frameNStart = frameN  # exact frame index
+                        fis_text.tStart = t  # local t and not account for scr refresh
+                        fis_text.tStartRefresh = tThisFlipGlobal  # on global time
+                        win.timeOnFlip(fis_text, 'tStartRefresh')  # time at next scr refresh
+                        fis_text.setAutoDraw(True)
+                    if fis_text.status == STARTED:
+                        # is it time to stop? (based on global clock, using actual start)
+                        if tThisFlipGlobal > fis_text.tStartRefresh + 30.0-frameTolerance:
+                            # keep track of stop time/frame for later
+                            fis_text.tStop = t  # not accounting for scr refresh
+                            fis_text.frameNStop = frameN  # exact frame index
+                            fis_text.setAutoDraw(False)
                     
                     # check for quit (typically the Esc key)
                     if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -9230,7 +8434,7 @@ for thisTotal_experiment in total_experiment:
                 # setup some python lists for storing info about the fis_mouse
                 gotValidClick = False  # until a click is received
                 # keep track of which components have finished
-                fis_interblockComponents = [fis_mouse, fis_stratnextround]
+                fis_interblockComponents = [fis_mouse, fis_stratnextround, fis_stt_round]
                 for thisComponent in fis_interblockComponents:
                     thisComponent.tStart = None
                     thisComponent.tStop = None
@@ -9258,8 +8462,6 @@ for thisTotal_experiment in total_experiment:
                         fis_mouse.tStart = t  # local t and not account for scr refresh
                         fis_mouse.tStartRefresh = tThisFlipGlobal  # on global time
                         win.timeOnFlip(fis_mouse, 'tStartRefresh')  # time at next scr refresh
-                        # add timestamp to datafile
-                        thisExp.addData('fis_mouse.started', t)
                         fis_mouse.status = STARTED
                         fis_mouse.mouseClock.reset()
                         prevButtonState = fis_mouse.getPressed()  # if button is down already this ISN'T a new click
@@ -9276,9 +8478,16 @@ for thisTotal_experiment in total_experiment:
                         fis_stratnextround.tStart = t  # local t and not account for scr refresh
                         fis_stratnextround.tStartRefresh = tThisFlipGlobal  # on global time
                         win.timeOnFlip(fis_stratnextround, 'tStartRefresh')  # time at next scr refresh
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'fis_stratnextround.started')
                         fis_stratnextround.setAutoDraw(True)
+                    
+                    # *fis_stt_round* updates
+                    if fis_stt_round.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                        # keep track of start time/frame for later
+                        fis_stt_round.frameNStart = frameN  # exact frame index
+                        fis_stt_round.tStart = t  # local t and not account for scr refresh
+                        fis_stt_round.tStartRefresh = tThisFlipGlobal  # on global time
+                        win.timeOnFlip(fis_stt_round, 'tStartRefresh')  # time at next scr refresh
+                        fis_stt_round.setAutoDraw(True)
                     
                     # check for quit (typically the Esc key)
                     if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -9303,13 +8512,6 @@ for thisTotal_experiment in total_experiment:
                     if hasattr(thisComponent, "setAutoDraw"):
                         thisComponent.setAutoDraw(False)
                 # store data for fis_main_break (TrialHandler)
-                x, y = fis_mouse.getPos()
-                buttons = fis_mouse.getPressed()
-                fis_main_break.addData('fis_mouse.x', x)
-                fis_main_break.addData('fis_mouse.y', y)
-                fis_main_break.addData('fis_mouse.leftButton', buttons[0])
-                fis_main_break.addData('fis_mouse.midButton', buttons[1])
-                fis_main_break.addData('fis_mouse.rightButton', buttons[2])
                 # the Routine "fis_interblock" was not non-slip safe, so reset the non-slip timer
                 routineTimer.reset()
                 
@@ -9317,8 +8519,10 @@ for thisTotal_experiment in total_experiment:
                 continueRoutine = True
                 routineForceEnded = False
                 # update component parameters for each repeat
+                # Run 'Begin Routine' code from code
+                win.mouseVisible = False
                 # keep track of which components have finished
-                fis_readycountComponents = [fis_text_5, fis_text_6, fis_text_7, fis_text_8]
+                fis_readycountComponents = [fis_back, fis_start_prac, fis_get_ready]
                 for thisComponent in fis_readycountComponents:
                     thisComponent.tStart = None
                     thisComponent.tStop = None
@@ -9332,7 +8536,7 @@ for thisTotal_experiment in total_experiment:
                 frameN = -1
                 
                 # --- Run Routine "fis_readycount" ---
-                while continueRoutine and routineTimer.getTime() < 4.45:
+                while continueRoutine and routineTimer.getTime() < 7.0:
                     # get current time
                     t = routineTimer.getTime()
                     tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -9340,85 +8544,53 @@ for thisTotal_experiment in total_experiment:
                     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
                     # update/draw components on each frame
                     
-                    # *fis_text_5* updates
-                    if fis_text_5.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    # *fis_back* updates
+                    if fis_back.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                         # keep track of start time/frame for later
-                        fis_text_5.frameNStart = frameN  # exact frame index
-                        fis_text_5.tStart = t  # local t and not account for scr refresh
-                        fis_text_5.tStartRefresh = tThisFlipGlobal  # on global time
-                        win.timeOnFlip(fis_text_5, 'tStartRefresh')  # time at next scr refresh
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'fis_text_5.started')
-                        fis_text_5.setAutoDraw(True)
-                    if fis_text_5.status == STARTED:
+                        fis_back.frameNStart = frameN  # exact frame index
+                        fis_back.tStart = t  # local t and not account for scr refresh
+                        fis_back.tStartRefresh = tThisFlipGlobal  # on global time
+                        win.timeOnFlip(fis_back, 'tStartRefresh')  # time at next scr refresh
+                        fis_back.setAutoDraw(True)
+                    if fis_back.status == STARTED:
                         # is it time to stop? (based on global clock, using actual start)
-                        if tThisFlipGlobal > fis_text_5.tStartRefresh + 1.5-frameTolerance:
+                        if tThisFlipGlobal > fis_back.tStartRefresh + 7-frameTolerance:
                             # keep track of stop time/frame for later
-                            fis_text_5.tStop = t  # not accounting for scr refresh
-                            fis_text_5.frameNStop = frameN  # exact frame index
-                            # add timestamp to datafile
-                            thisExp.timestampOnFlip(win, 'fis_text_5.stopped')
-                            fis_text_5.setAutoDraw(False)
+                            fis_back.tStop = t  # not accounting for scr refresh
+                            fis_back.frameNStop = frameN  # exact frame index
+                            fis_back.setAutoDraw(False)
                     
-                    # *fis_text_6* updates
-                    if fis_text_6.status == NOT_STARTED and tThisFlip >= 1.55-frameTolerance:
+                    # *fis_start_prac* updates
+                    if fis_start_prac.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
                         # keep track of start time/frame for later
-                        fis_text_6.frameNStart = frameN  # exact frame index
-                        fis_text_6.tStart = t  # local t and not account for scr refresh
-                        fis_text_6.tStartRefresh = tThisFlipGlobal  # on global time
-                        win.timeOnFlip(fis_text_6, 'tStartRefresh')  # time at next scr refresh
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'fis_text_6.started')
-                        fis_text_6.setAutoDraw(True)
-                    if fis_text_6.status == STARTED:
+                        fis_start_prac.frameNStart = frameN  # exact frame index
+                        fis_start_prac.tStart = t  # local t and not account for scr refresh
+                        fis_start_prac.tStartRefresh = tThisFlipGlobal  # on global time
+                        win.timeOnFlip(fis_start_prac, 'tStartRefresh')  # time at next scr refresh
+                        fis_start_prac.setAutoDraw(True)
+                    if fis_start_prac.status == STARTED:
                         # is it time to stop? (based on global clock, using actual start)
-                        if tThisFlipGlobal > fis_text_6.tStartRefresh + 0.95-frameTolerance:
+                        if tThisFlipGlobal > fis_start_prac.tStartRefresh + 2-frameTolerance:
                             # keep track of stop time/frame for later
-                            fis_text_6.tStop = t  # not accounting for scr refresh
-                            fis_text_6.frameNStop = frameN  # exact frame index
-                            # add timestamp to datafile
-                            thisExp.timestampOnFlip(win, 'fis_text_6.stopped')
-                            fis_text_6.setAutoDraw(False)
+                            fis_start_prac.tStop = t  # not accounting for scr refresh
+                            fis_start_prac.frameNStop = frameN  # exact frame index
+                            fis_start_prac.setAutoDraw(False)
                     
-                    # *fis_text_7* updates
-                    if fis_text_7.status == NOT_STARTED and tThisFlip >= 2.55-frameTolerance:
+                    # *fis_get_ready* updates
+                    if fis_get_ready.status == NOT_STARTED and tThisFlip >= 3.5-frameTolerance:
                         # keep track of start time/frame for later
-                        fis_text_7.frameNStart = frameN  # exact frame index
-                        fis_text_7.tStart = t  # local t and not account for scr refresh
-                        fis_text_7.tStartRefresh = tThisFlipGlobal  # on global time
-                        win.timeOnFlip(fis_text_7, 'tStartRefresh')  # time at next scr refresh
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'fis_text_7.started')
-                        fis_text_7.setAutoDraw(True)
-                    if fis_text_7.status == STARTED:
+                        fis_get_ready.frameNStart = frameN  # exact frame index
+                        fis_get_ready.tStart = t  # local t and not account for scr refresh
+                        fis_get_ready.tStartRefresh = tThisFlipGlobal  # on global time
+                        win.timeOnFlip(fis_get_ready, 'tStartRefresh')  # time at next scr refresh
+                        fis_get_ready.setAutoDraw(True)
+                    if fis_get_ready.status == STARTED:
                         # is it time to stop? (based on global clock, using actual start)
-                        if tThisFlipGlobal > fis_text_7.tStartRefresh + 0.95-frameTolerance:
+                        if tThisFlipGlobal > fis_get_ready.tStartRefresh + 2-frameTolerance:
                             # keep track of stop time/frame for later
-                            fis_text_7.tStop = t  # not accounting for scr refresh
-                            fis_text_7.frameNStop = frameN  # exact frame index
-                            # add timestamp to datafile
-                            thisExp.timestampOnFlip(win, 'fis_text_7.stopped')
-                            fis_text_7.setAutoDraw(False)
-                    
-                    # *fis_text_8* updates
-                    if fis_text_8.status == NOT_STARTED and tThisFlip >= 3.5-frameTolerance:
-                        # keep track of start time/frame for later
-                        fis_text_8.frameNStart = frameN  # exact frame index
-                        fis_text_8.tStart = t  # local t and not account for scr refresh
-                        fis_text_8.tStartRefresh = tThisFlipGlobal  # on global time
-                        win.timeOnFlip(fis_text_8, 'tStartRefresh')  # time at next scr refresh
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'fis_text_8.started')
-                        fis_text_8.setAutoDraw(True)
-                    if fis_text_8.status == STARTED:
-                        # is it time to stop? (based on global clock, using actual start)
-                        if tThisFlipGlobal > fis_text_8.tStartRefresh + 0.95-frameTolerance:
-                            # keep track of stop time/frame for later
-                            fis_text_8.tStop = t  # not accounting for scr refresh
-                            fis_text_8.frameNStop = frameN  # exact frame index
-                            # add timestamp to datafile
-                            thisExp.timestampOnFlip(win, 'fis_text_8.stopped')
-                            fis_text_8.setAutoDraw(False)
+                            fis_get_ready.tStop = t  # not accounting for scr refresh
+                            fis_get_ready.frameNStop = frameN  # exact frame index
+                            fis_get_ready.setAutoDraw(False)
                     
                     # check for quit (typically the Esc key)
                     if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -9446,7 +8618,7 @@ for thisTotal_experiment in total_experiment:
                 if routineForceEnded:
                     routineTimer.reset()
                 else:
-                    routineTimer.addTime(-4.450000)
+                    routineTimer.addTime(-7.000000)
                 thisExp.nextEntry()
                 
             # completed fis_mainbreak repeats of 'fis_main_break'
@@ -9469,7 +8641,7 @@ continueRoutine = True
 routineForceEnded = False
 # update component parameters for each repeat
 # keep track of which components have finished
-total_endComponents = [total_end_text]
+total_endComponents = [end_back, total_end_text]
 for thisComponent in total_endComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -9491,6 +8663,22 @@ while continueRoutine and routineTimer.getTime() < 3.0:
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
     # update/draw components on each frame
     
+    # *end_back* updates
+    if end_back.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        end_back.frameNStart = frameN  # exact frame index
+        end_back.tStart = t  # local t and not account for scr refresh
+        end_back.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(end_back, 'tStartRefresh')  # time at next scr refresh
+        end_back.setAutoDraw(True)
+    if end_back.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > end_back.tStartRefresh + 3-frameTolerance:
+            # keep track of stop time/frame for later
+            end_back.tStop = t  # not accounting for scr refresh
+            end_back.frameNStop = frameN  # exact frame index
+            end_back.setAutoDraw(False)
+    
     # *total_end_text* updates
     if total_end_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
         # keep track of start time/frame for later
@@ -9498,8 +8686,6 @@ while continueRoutine and routineTimer.getTime() < 3.0:
         total_end_text.tStart = t  # local t and not account for scr refresh
         total_end_text.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(total_end_text, 'tStartRefresh')  # time at next scr refresh
-        # add timestamp to datafile
-        thisExp.timestampOnFlip(win, 'total_end_text.started')
         total_end_text.setAutoDraw(True)
     if total_end_text.status == STARTED:
         # is it time to stop? (based on global clock, using actual start)
@@ -9507,8 +8693,6 @@ while continueRoutine and routineTimer.getTime() < 3.0:
             # keep track of stop time/frame for later
             total_end_text.tStop = t  # not accounting for scr refresh
             total_end_text.frameNStop = frameN  # exact frame index
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'total_end_text.stopped')
             total_end_text.setAutoDraw(False)
     
     # check for quit (typically the Esc key)

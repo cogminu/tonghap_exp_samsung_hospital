@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.4),
-    on 10월 15, 2022, at 18:33
+    on 10월 16, 2022, at 15:23
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -64,7 +64,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['id*'], expName, expI
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\cogmi\\OneDrive\\문서\\GitHub\\tonghap_exp_samsung_hospital\\dtx_SMC_ver\\dtx_exp_trial_control.py',
+    originPath='C:\\Users\\Minu Kim\\Documents\\GitHub\\tonghap_exp_samsung_hospital\\dtx_SMC_ver\\dtx_exp_trial_control.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -181,7 +181,7 @@ wth_trials_n = 4; # 마음날씨 시행반복횟수, 기본 4회 (삼성병원�
 
 # flanker (boat)
 fprac = 2 #default 2
-fmain = 8 #default 15 trial control 8
+fmain = 8 #default (삼성병원 8) /  일반 15)
 
 # parachute
 para_prac = 2 #default 2 (practice loop)
@@ -310,7 +310,7 @@ wth_valence_rating_2 = visual.Slider(win=win, name='wth_valence_rating_2',
     labels=("부정", "중립", "긍정"), ticks=(-1, 0, 1), granularity=0.0,
     style='rating', styleTweaks=(), opacity=None,
     labelColor='black', markerColor='red', lineColor='black', colorSpace='rgb',
-    font='Noto Sans KR', labelHeight=0.03,
+    font='Malgun Gothic', labelHeight=0.03,
     flip=False, ori=0.0, depth=-2, readOnly=False)
 wth_valence_txt_2 = visual.TextStim(win=win, name='wth_valence_txt_2',
     text='단어에서 느껴지는 감정',
@@ -331,12 +331,12 @@ wth_self_rating_2 = visual.Slider(win=win, name='wth_self_rating_2',
     labels=("전혀 나와 관련 없음","나와 관련 매우 많음"), ticks=(0, 1), granularity=0.0,
     style='rating', styleTweaks=(), opacity=None,
     labelColor='black', markerColor='red', lineColor='black', colorSpace='rgb',
-    font='Noto Sans KR', labelHeight=0.03,
+    font='Malgun Gothic', labelHeight=0.03,
     flip=False, ori=0.0, depth=-5, readOnly=False)
 wth_rating_end_2 = visual.TextBox2(
      win, text='클릭해 주세요', font='Malgun Gothic',
      pos=(-.02, -.42),     letterHeight=0.03,
-     size=(0.19, 0.05), borderWidth=2.0,
+     size=(0.19, 0.06), borderWidth=2.0,
      color='black', colorSpace='rgb',
      opacity=None,
      bold=False, italic=False,
@@ -470,7 +470,7 @@ wth_valence_rating = visual.Slider(win=win, name='wth_valence_rating',
     labels=("부정", "중립", "긍정"), ticks=(-1, 0, 1), granularity=0.0,
     style='rating', styleTweaks=(), opacity=None,
     labelColor='black', markerColor='red', lineColor='black', colorSpace='rgb',
-    font='Noto Sans KR', labelHeight=0.03,
+    font='Malgun Gothic', labelHeight=0.03,
     flip=False, ori=0.0, depth=-2, readOnly=False)
 wth_valence_txt = visual.TextStim(win=win, name='wth_valence_txt',
     text='단어에서 느껴지는 감정',
@@ -491,12 +491,12 @@ wth_self_rating = visual.Slider(win=win, name='wth_self_rating',
     labels=("전혀 나와 관련 없음","나와 관련 매우 많음"), ticks=(0, 1), granularity=0.0,
     style='rating', styleTweaks=(), opacity=None,
     labelColor='black', markerColor='red', lineColor='black', colorSpace='rgb',
-    font='Noto Sans KR', labelHeight=0.03,
+    font='Malgun Gothic', labelHeight=0.03,
     flip=False, ori=0.0, depth=-5, readOnly=False)
 wth_rating_end = visual.TextBox2(
      win, text='클릭해 주세요', font='Malgun Gothic',
      pos=(-.02, -.42),     letterHeight=0.03,
-     size=(0.19, 0.05), borderWidth=2.0,
+     size=(0.19, 0.06), borderWidth=2.0,
      color='black', colorSpace='rgb',
      opacity=None,
      bold=False, italic=False,
@@ -564,7 +564,7 @@ fl_starter_back = visual.ImageStim(
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-1.0)
 fl_starter_text = visual.TextStim(win=win, name='fl_starter_text',
-    text='집행기능 측정을 시작합니다.\n\n안내영상을 시청하시려면\n화면을 더블클릭하세요.',
+    text='집행기능 측정을 시작합니다.\n\n약 7분정도 소요됩니다.\n\n안내영상을 시청하시려면\n화면을 더블클릭하세요.',
     font='Malgun Gothic',
     pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
@@ -846,7 +846,7 @@ fl_mainback = visual.ImageStim(
 fl_main_text = visual.TextStim(win=win, name='fl_main_text',
     text='본 실험으로 넘어가려면\n화면을 더블클릭하세요',
     font='Malgun Gothic',
-    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-1.0);
@@ -1246,6 +1246,8 @@ neg_button = "pics/neg_button.png"
 neu_button = "pics/neu_button.png"
 pos_button = "pics/pos_button.png"
 
+# Run 'Begin Experiment' code from para_code
+para_rt = -1
 para_back = visual.ImageStim(
     win=win,
     name='para_back', units='pix', 
@@ -1413,6 +1415,8 @@ neg_button = "pics/neg_button.png"
 neu_button = "pics/neu_button.png"
 pos_button = "pics/pos_button.png"
 
+# Run 'Begin Experiment' code from para_code
+para_rt = -1
 para_back = visual.ImageStim(
     win=win,
     name='para_back', units='pix', 
@@ -2019,6 +2023,8 @@ for thisWeather in weather:
             wth_movie.tStartRefresh = tThisFlipGlobal  # on global time
             win.timeOnFlip(wth_movie, 'tStartRefresh')  # time at next scr refresh
             wth_movie.setAutoDraw(True)
+        if wth_movie.status == FINISHED:  # force-end the routine
+            continueRoutine = False
         
         # *key_resp* updates
         waitOnFlip = False
@@ -3476,7 +3482,10 @@ for thisTotal_experiment in total_experiment:
         # Run 'Begin Routine' code from fl_random_cb
         win.fullscr = True
         
-        
+        if test_mode == 1:
+            win.mouseVisible = True
+        else:
+            win.mouseVisible = False
         fl_starter.keys = []
         fl_starter.rt = []
         _fl_starter_allKeys = []
@@ -3856,7 +3865,7 @@ for thisTotal_experiment in total_experiment:
             ##########TEST MODE###########
             if test_mode == 1 and thisn == 3:
                 flanker_prac_loop.finished=True
-                win.mouseVisible = True
+            
             
             
             
@@ -4527,9 +4536,6 @@ for thisTotal_experiment in total_experiment:
         _fl_key_resp_allKeys = []
         # setup some python lists for storing info about the fl_mouse_m
         gotValidClick = False  # until a click is received
-        # Run 'Begin Routine' code from fl_code
-        mouserec=fl_mouse_m.getPos()
-        minRT = .2
         # keep track of which components have finished
         fl_say_mainComponents = [fl_mainback, fl_main_text, fl_key_resp, fl_mouse_m]
         for thisComponent in fl_say_mainComponents:
@@ -4607,16 +4613,7 @@ for thisTotal_experiment in total_experiment:
                 if buttons != prevButtonState:  # button state changed?
                     prevButtonState = buttons
                     if sum(buttons) > 0:  # state changed to a new click
-                        continueRoutine = False  # abort routine on response            # Run 'Each Frame' code from fl_code
-            mouseloc = fl_mouse_m.getPos()
-            if mouseloc[0]==mouserec[0] and mouseloc[1]==mouserec[1]:
-                pass
-            elif fl_mainback.contains(fl_mouse_m):
-                 if t>minRT:
-                     continueRoutine = False
-                 else:
-                      mouserec = fl_mouse_m.getPos()
-            
+                        continueRoutine = False  # abort routine on response            
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
                 core.quit()
@@ -8674,7 +8671,7 @@ _timeToFirstFrame = win.getFutureFlipTime(clock="now")
 frameN = -1
 
 # --- Run Routine "total_end" ---
-while continueRoutine and routineTimer.getTime() < 3.0:
+while continueRoutine and routineTimer.getTime() < 5.0:
     # get current time
     t = routineTimer.getTime()
     tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -8692,7 +8689,7 @@ while continueRoutine and routineTimer.getTime() < 3.0:
         end_back.setAutoDraw(True)
     if end_back.status == STARTED:
         # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > end_back.tStartRefresh + 3-frameTolerance:
+        if tThisFlipGlobal > end_back.tStartRefresh + 5-frameTolerance:
             # keep track of stop time/frame for later
             end_back.tStop = t  # not accounting for scr refresh
             end_back.frameNStop = frameN  # exact frame index
@@ -8708,7 +8705,7 @@ while continueRoutine and routineTimer.getTime() < 3.0:
         total_end_text.setAutoDraw(True)
     if total_end_text.status == STARTED:
         # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > total_end_text.tStartRefresh + 3-frameTolerance:
+        if tThisFlipGlobal > total_end_text.tStartRefresh + 5-frameTolerance:
             # keep track of stop time/frame for later
             total_end_text.tStop = t  # not accounting for scr refresh
             total_end_text.frameNStop = frameN  # exact frame index
@@ -8740,7 +8737,7 @@ for thisComponent in total_endComponents:
 if routineForceEnded:
     routineTimer.reset()
 else:
-    routineTimer.addTime(-3.000000)
+    routineTimer.addTime(-5.000000)
 
 # --- End experiment ---
 # Flip one final time so any remaining win.callOnFlip() 

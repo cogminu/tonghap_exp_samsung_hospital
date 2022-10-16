@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.4),
-    on 10월 16, 2022, at 15:23
+    on 10월 16, 2022, at 15:50
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1284,6 +1284,13 @@ mouse_st = event.Mouse(win=win)
 x, y = [None, None]
 mouse_st.mouseClock = core.Clock()
 st2_resp = keyboard.Keyboard()
+text = visual.TextStim(win=win, name='text',
+    text='',
+    font='Malgun Gothic',
+    pos=(0, .3), height=0.04, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-8.0);
 
 # --- Initialize components for Routine "para_feedback" ---
 para_f_back = visual.ImageStim(
@@ -1453,6 +1460,13 @@ mouse_st = event.Mouse(win=win)
 x, y = [None, None]
 mouse_st.mouseClock = core.Clock()
 st2_resp = keyboard.Keyboard()
+text = visual.TextStim(win=win, name='text',
+    text='',
+    font='Malgun Gothic',
+    pos=(0, .3), height=0.04, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-8.0);
 
 # --- Initialize components for Routine "para_feedback" ---
 para_f_back = visual.ImageStim(
@@ -5592,9 +5606,12 @@ for thisTotal_experiment in total_experiment:
         if counter_resp == bhya_resp:
             inst='ins/st2_bhya.png'
             aud= 'ins/st2_bhya.wav'
+            theanswer = '정답: 파랑-웃음, 노랑-화남'
         elif counter_resp == bayh_resp:
             inst='ins/st2_bayh.png'
             aud= 'ins/st2_bayh.wav'
+            theanswer = '정답: 노랑-웃음, 파랑-화남'
+            
         
         para_inst_img.setImage(inst)
         para_inst_sound.setSound(aud, hamming=True)
@@ -5844,6 +5861,9 @@ for thisTotal_experiment in total_experiment:
             set_cond  = para_prac_loop.thisTrial["set"]
             thisn = para_prac_loop.thisN
             
+            
+            
+            
             ##########TEST MODE###########
             if test_mode == 1 and thisn == 3:
                 para_prac_loop.finished=True
@@ -6026,8 +6046,9 @@ for thisTotal_experiment in total_experiment:
             st2_resp.keys = []
             st2_resp.rt = []
             _st2_resp_allKeys = []
+            text.setText(theanswer)
             # keep track of which components have finished
-            parachuteComponents = [para_back, para_fix_prac, face_dist_2, para_targ_2, mouse_st, st2_resp]
+            parachuteComponents = [para_back, para_fix_prac, face_dist_2, para_targ_2, mouse_st, st2_resp, text]
             for thisComponent in parachuteComponents:
                 thisComponent.tStart = None
                 thisComponent.tStop = None
@@ -6175,6 +6196,15 @@ for thisTotal_experiment in total_experiment:
                             st2_resp.corr = 0
                         # a response ends the routine
                         continueRoutine = False
+                
+                # *text* updates
+                if text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    text.frameNStart = frameN  # exact frame index
+                    text.tStart = t  # local t and not account for scr refresh
+                    text.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(text, 'tStartRefresh')  # time at next scr refresh
+                    text.setAutoDraw(True)
                 
                 # check for quit (typically the Esc key)
                 if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -6581,6 +6611,9 @@ for thisTotal_experiment in total_experiment:
             ##########TEST MODE###########
             if test_mode == 1 and thisn == 3:
                 para_main_loop.finished=True
+                
+                
+            theanswer=''
             # keep track of which components have finished
             para_tag_mainComponents = []
             for thisComponent in para_tag_mainComponents:
@@ -6760,8 +6793,9 @@ for thisTotal_experiment in total_experiment:
             st2_resp.keys = []
             st2_resp.rt = []
             _st2_resp_allKeys = []
+            text.setText(theanswer)
             # keep track of which components have finished
-            parachuteComponents = [para_back, para_fix_prac, face_dist_2, para_targ_2, mouse_st, st2_resp]
+            parachuteComponents = [para_back, para_fix_prac, face_dist_2, para_targ_2, mouse_st, st2_resp, text]
             for thisComponent in parachuteComponents:
                 thisComponent.tStart = None
                 thisComponent.tStop = None
@@ -6909,6 +6943,15 @@ for thisTotal_experiment in total_experiment:
                             st2_resp.corr = 0
                         # a response ends the routine
                         continueRoutine = False
+                
+                # *text* updates
+                if text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    text.frameNStart = frameN  # exact frame index
+                    text.tStart = t  # local t and not account for scr refresh
+                    text.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(text, 'tStartRefresh')  # time at next scr refresh
+                    text.setAutoDraw(True)
                 
                 # check for quit (typically the Esc key)
                 if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
